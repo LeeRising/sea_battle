@@ -16,7 +16,7 @@ namespace Morskoy_boy
 {
     public partial class FriendsF : MaterialForm
     {
-
+        //fghgfh
         RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
         List<FriendsList> friendslist = new List<FriendsList>();
         int i = 0;
