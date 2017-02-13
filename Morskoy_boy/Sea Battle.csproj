@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{359A776D-F374-4F56-BAD4-1B38DB2A5D90}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Morskoy_boy</RootNamespace>
+    <AssemblyName>Morskoy_boy</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MaterialSkin">
+      <HintPath>..\..\..\..\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\..\..\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChatF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChatF.Designer.cs">
+      <DependentUpon>ChatF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\FriendsList.cs" />
+    <Compile Include="UI\MyControls\friendsListBox.cs" />
+    <Compile Include="UI\MyControls\friendsListBox.designer.cs">
+      <DependentUpon>friendsListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MyControls\exListBox.cs" />
+    <Compile Include="UI\MyControls\exListBox.designer.cs">
+      <DependentUpon>exListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FriendsF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FriendsF.Designer.cs">
+      <DependentUpon>FriendsF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameF.Designer.cs">
+      <DependentUpon>GameF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameHistoryF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameHistoryF.Designer.cs">
+      <DependentUpon>GameHistoryF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginF.Designer.cs">
+      <DependentUpon>LoginF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainF.Designer.cs">
+      <DependentUpon>MainF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterF.Designer.cs">
+      <DependentUpon>RegisterF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingF.Designer.cs">
+      <DependentUpon>SettingF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Cryptography.cs" />
+    <Compile Include="Tools\JsonParser.cs" />
+    <Compile Include="Tools\MailValid.cs" />
+    <Compile Include="UI\Translate.cs" />
+    <Compile Include="UI\User.cs" />
+    <EmbeddedResource Include="ChatF.resx">
+      <DependentUpon>ChatF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FriendsF.resx">
+      <DependentUpon>FriendsF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameF.resx">
+      <DependentUpon>GameF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameHistoryF.resx">
+      <DependentUpon>GameHistoryF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginF.resx">
+      <DependentUpon>LoginF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainF.resx">
+      <DependentUpon>MainF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RegisterF.resx">
+      <DependentUpon>RegisterF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingF.resx">
+      <DependentUpon>SettingF.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\decline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
