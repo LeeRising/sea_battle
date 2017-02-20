@@ -45,7 +45,7 @@ namespace Morskoy_boy.Tools
         }
         public static Image Avatar(string photo_url)
         {
-            var request = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/avatar/" + photo_url);
+            var request = WebRequest.Create("https://leebattle.000webhostapp.com/avatar/" + photo_url);
             Image ava = null ;
             using (var response = request.GetResponse())
             using (var stream = response.GetResponseStream())

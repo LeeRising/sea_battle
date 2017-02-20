@@ -30,7 +30,7 @@ namespace Morskoy_boy
         {
             try
             {
-                var get_friends_list_req = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/get_friend_to_list.php?login=" + User.login);
+                var get_friends_list_req = WebRequest.Create("https://leebattle.000webhostapp.com/get_friend_to_list.php?login=" + User.login);
                 string reqtext;
                 var response = (HttpWebResponse)get_friends_list_req.GetResponse();
                 using (var sr = new StreamReader(response.GetResponseStream()))
@@ -50,7 +50,7 @@ namespace Morskoy_boy
                     }
                     foreach (var v in friendslist)
                     {
-                        if (v.State == "online")
+                        if (v.State == "offline")
                         {
                             if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default));
                             else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo)));
@@ -73,9 +73,16 @@ namespace Morskoy_boy
             get_friends();
         }
 
+        private void stateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //get_friends();
+            //stateComboBox.SelectedItem.ToString()
+        }
+
         private void FriendsF_Load(object sender, EventArgs e)
         {
-            var get_friends_list_req = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/get_friend_to_list.php?login=" + User.login);
+            stateComboBox.SelectedIndex = 0;
+            var get_friends_list_req = WebRequest.Create("https://leebattle.000webhostapp.com/get_friend_to_list.php?login=" + User.login);
             string reqtext;
             var response = (HttpWebResponse)get_friends_list_req.GetResponse();
             using (var sr = new StreamReader(response.GetResponseStream()))
@@ -92,7 +99,7 @@ namespace Morskoy_boy
             }
             foreach (var v in friendslist)
             {
-                if (v.State == "online")
+                if (v.State == "offline")
                 {
                     if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default));
                     else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo)));

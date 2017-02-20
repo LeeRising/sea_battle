@@ -40,8 +40,8 @@ namespace Morskoy_boy
             try
             {
                 connection = true;
-                var get_info_req = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/get_acc_info.php?id=" + User.id);
-                var set_online_req = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/set_state.php?state=online&id=" + User.id);
+                var get_info_req = WebRequest.Create("https://leebattle.000webhostapp.com/get_acc_info.php?id=" + User.id);
+                var set_online_req = WebRequest.Create("https://leebattle.000webhostapp.com/set_state.php?state=online&id=" + User.id);
                 string reqtext;
                 var response = (HttpWebResponse)set_online_req.GetResponse();
                 response = (HttpWebResponse)get_info_req.GetResponse();
@@ -65,18 +65,21 @@ namespace Morskoy_boy
                 User.state = acc_info[11].Substring(0, acc_info[11].Length - 1);
                 nameL.Text = User.first_name + " " + User.last_name;
                 if (User.state == "online") nameL.ForeColor = Color.Green;
-                WebClient webClient = new WebClient();
-                string path = Application.StartupPath + "\\user\\" + User.ava;
-                if (!File.Exists(path))
+                using (WebClient webClient = new WebClient())
                 {
-                    string link = @"http://leerain-interactive.sytes.net/seabattle/avatar/" + User.ava;
-                    webClient.DownloadFile(new Uri(link), path);
-                    profileImg.Image = Image.FromFile(path);
+                    string path = Application.StartupPath + "\\user\\" + User.ava;
+                    if (!File.Exists(path))
+                    {
+                        string link = @"https://leebattle.000webhostapp.com/avatar/" + User.ava;
+                        webClient.DownloadFile(new Uri(link), path);
+                    }
+                    using (var fstream = File.OpenRead(path))
+                    {
+                        profileImg.Image = Bitmap.FromStream(fstream);
+                    }
                 }
-                else profileImg.Image = Image.FromFile(path);
                 User.lang = rk.GetValue("translate").ToString();
                 Translate.translate(User.lang, Name);
-                webClient.Dispose();
             }
             catch (Exception ex)
             {
@@ -112,7 +115,7 @@ namespace Morskoy_boy
             if (connection)
             {
                 f.Close();
-                var set_online_req = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/set_state.php?state=offline&id=" + User.id);
+                var set_online_req = WebRequest.Create("https://leebattle.000webhostapp.com/set_state.php?state=offline&id=" + User.id);
                 var response = (HttpWebResponse)set_online_req.GetResponse();
                 if (!logout) Application.Exit();
             }

@@ -31,9 +31,24 @@ namespace Morskoy_boy
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FriendsF));
-            this.friendsListBox1 = new Morskoy_boy.UI.MyControls.friendsListBox();
             this.stateComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.friendsListBox1 = new Morskoy_boy.UI.MyControls.friendsListBox();
             this.SuspendLayout();
+            // 
+            // stateComboBox
+            // 
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.ItemHeight = 23;
+            this.stateComboBox.Items.AddRange(new object[] {
+            "All",
+            "Online",
+            "Offline",
+            "Busy"});
+            this.stateComboBox.Location = new System.Drawing.Point(0, 64);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(218, 29);
+            this.stateComboBox.TabIndex = 1;
+            this.stateComboBox.SelectedIndexChanged += new System.EventHandler(this.stateComboBox_SelectedIndexChanged);
             // 
             // friendsListBox1
             // 
@@ -46,25 +61,11 @@ namespace Morskoy_boy
             this.friendsListBox1.Size = new System.Drawing.Size(218, 251);
             this.friendsListBox1.TabIndex = 0;
             // 
-            // stateComboBox
-            // 
-            this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.ItemHeight = 23;
-            this.stateComboBox.Items.AddRange(new object[] {
-            "all",
-            "online",
-            "offline",
-            "busy"});
-            this.stateComboBox.Location = new System.Drawing.Point(0, 64);
-            this.stateComboBox.Name = "stateComboBox";
-            this.stateComboBox.Size = new System.Drawing.Size(218, 29);
-            this.stateComboBox.TabIndex = 1;
-            // 
             // FriendsF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(218, 346);
+            this.ClientSize = new System.Drawing.Size(218, 345);
             this.ControlBox = false;
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.friendsListBox1);

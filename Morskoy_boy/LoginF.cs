@@ -37,32 +37,36 @@ namespace Morskoy_boy
             {
                 string login = loginTb.Text,
                    pass = Cryptography.getHashSha256(passTb.Text);
-                var request = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/get_user_id.php?login=" + login+"&password="+pass);
+                var request = WebRequest.Create("https://leebattle.000webhostapp.com/get_user_id.php?login=" + login+"&password="+pass);
                 string reqtext;
-                var response = (HttpWebResponse)request.GetResponse();
-                using (var sr = new StreamReader(response.GetResponseStream()))
+                using (var response = (HttpWebResponse)request.GetResponse())
                 {
-                    reqtext = sr.ReadToEnd();
-                }
-                User.id = JsonParser.OneResult(reqtext);
-                if (User.id != "null")
-                {
-                    rk.SetValue("id", User.id);
-                    rk.SetValue("login", login);
-                    rk.SetValue("password", pass);
-                    rk.SetValue("loging", "1");
-                    MessageBox.Show("Succesfull loging");
-                    MainF mf = new MainF();
-                    Hide();
-                    ShowInTaskbar = false;
-                    mf.ShowDialog();
-                    Show();
-                    ShowInTaskbar = true;
-                    File.Delete(Path.Combine(Application.StartupPath + "/user/") + User.ava);
-                }
-                else
-                {
-                    MessageBox.Show("Wrong login or password");
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        reqtext = sr.ReadToEnd();
+                    }
+                    User.id = JsonParser.OneResult(reqtext);
+                    if (User.id != "null")
+                    {
+                        rk.SetValue("id", User.id);
+                        rk.SetValue("login", login);
+                        rk.SetValue("password", pass);
+                        rk.SetValue("loging", "1");
+                        MessageBox.Show("Succesfull loging");
+                        MainF mf = new MainF();
+                        Hide();
+                        ShowInTaskbar = false;
+                        mf.ShowDialog();
+                        Show();
+                        ShowInTaskbar = true;
+                        File.Delete(Path.Combine(Application.StartupPath + "/user/") + User.ava);
+                        request.Abort();
+                        response.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong login or password");
+                    }
                 }
             }
             catch (Exception ex)

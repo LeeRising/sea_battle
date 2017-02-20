@@ -64,7 +64,7 @@ namespace Morskoy_boy
             {
                 if (loginTb.TextLength > 1)
                 {
-                    var set_online_req = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/get_users_login.php?login=" + loginTb.Text);
+                    var set_online_req = WebRequest.Create("https://leebattle.000webhostapp.com/get_users_login.php?login=" + loginTb.Text);
                     var response = (HttpWebResponse)set_online_req.GetResponse();
                     string reqtext;
                     using (var sr = new StreamReader(response.GetResponseStream()))
@@ -104,7 +104,7 @@ namespace Morskoy_boy
                     }
                     if (ava == "default.png")
                     {
-                        var create_new_user = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/create_new_user.php?login=" + loginTb.Text + "&password=" + Cryptography.getHashSha256(passTb.Text)
+                        var create_new_user = WebRequest.Create("https://leebattle.000webhostapp.com/create_new_user.php?login=" + loginTb.Text + "&password=" + Cryptography.getHashSha256(passTb.Text)
                             + "&fname="+ fnameTb.Text + "&lname="+ lnameTb.Text + "&sex="+ sex + "&email="+ emailTb.Text + "&regtime="+ DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss") + "&birthtime="+birthdayPicker.Value.ToString("yyyy-MM-dd") + "&photo="+ ava);
                         var response = (HttpWebResponse)create_new_user.GetResponse();
                         MessageBox.Show("Register Successfully");
@@ -113,7 +113,7 @@ namespace Morskoy_boy
                     if (ava != "default.png")
                     {
                         string[] s1 = ava.Split('.');
-                        var get_user_id_for_photo = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/get_user_id_for_photo.php");
+                        var get_user_id_for_photo = WebRequest.Create("https://leebattle.000webhostapp.com/get_user_id_for_photo.php");
                         var response = (HttpWebResponse)get_user_id_for_photo.GetResponse();
                         string id;
                         using (var sr = new StreamReader(response.GetResponseStream()))
@@ -126,9 +126,9 @@ namespace Morskoy_boy
                         File.Copy(ava1, Path.Combine(Application.StartupPath + @"\") + ava);
                         try
                         {
-                            FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create("ftp://leerain-interactive.sytes.net/" + ava);
+                            FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create("ftp://files.000webhost.com/avatar/" + ava);
                             request.Method = WebRequestMethods.Ftp.UploadFile;
-                            request.Credentials = new NetworkCredential("admin", "admin");
+                            request.Credentials = new NetworkCredential("leebattle", "jaoIJei213phz");
                             request.UsePassive = true;
                             request.UseBinary = true;
                             request.KeepAlive = false;
@@ -146,7 +146,7 @@ namespace Morskoy_boy
                             MessageBox.Show("Error connection!");
                         }
                         File.Delete(Path.Combine(Application.StartupPath + @"\") + ava);
-                        var create_new_user = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/create_new_user.php?login=" + loginTb.Text + "&password=" + Cryptography.getHashSha256(passTb.Text)
+                        var create_new_user = WebRequest.Create("https://leebattle.000webhostapp.com/create_new_user.php?login=" + loginTb.Text + "&password=" + Cryptography.getHashSha256(passTb.Text)
                             + "&fname=" + fnameTb.Text + "&lname=" + lnameTb.Text + "&sex=" + sex + "&email=" + emailTb.Text + "&regtime=" + DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss") + "&birthtime=" + birthdayPicker.Value.ToString("yyyy-MM-dd") + "&photo=" + ava);
                         var response1 = (HttpWebResponse)create_new_user.GetResponse();
                         MessageBox.Show("Register Successfully");
