@@ -36,7 +36,7 @@ namespace Morskoy_boy
             try
             {
                 string login = loginTb.Text,
-                   pass = Cryptography.md5(passTb.Text);
+                   pass = Cryptography.getHashSha256(passTb.Text);
                 var request = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/get_user_id.php?login=" + login+"&password="+pass);
                 string reqtext;
                 var response = (HttpWebResponse)request.GetResponse();

@@ -43,6 +43,7 @@
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profileImg = new System.Windows.Forms.PictureBox();
+            this.fastCheckBtnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImg)).BeginInit();
             this.SuspendLayout();
@@ -131,11 +132,12 @@
             this.menu.Dock = System.Windows.Forms.DockStyle.None;
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.fastCheckBtnToolStripMenuItem});
             this.menu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menu.Location = new System.Drawing.Point(0, 65);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(110, 24);
+            this.menu.Size = new System.Drawing.Size(293, 24);
             this.menu.TabIndex = 9;
             // 
             // menuToolStripMenuItem
@@ -175,6 +177,13 @@
             this.profileImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImg.TabIndex = 0;
             this.profileImg.TabStop = false;
+            // 
+            // fastCheckBtnToolStripMenuItem
+            // 
+            this.fastCheckBtnToolStripMenuItem.Name = "fastCheckBtnToolStripMenuItem";
+            this.fastCheckBtnToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.fastCheckBtnToolStripMenuItem.Text = "FastCheckBtn";
+            this.fastCheckBtnToolStripMenuItem.Click += new System.EventHandler(this.fastCheckBtnToolStripMenuItem_Click);
             // 
             // MainF
             // 
@@ -224,5 +233,6 @@
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fastCheckBtnToolStripMenuItem;
     }
 }

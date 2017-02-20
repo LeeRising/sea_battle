@@ -1,21 +1,23 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Morskoy_boy
 {
     class Cryptography
     {
-        public static string md5(string input)
+        internal static string getHashSha256(string password)
         {
-            MD5 md5 = MD5.Create();
-            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
-            byte[] hash = md5.ComputeHash(inputBytes);
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
+            using (SHA256Managed crypt = new SHA256Managed())
             {
-                sb.Append(hash[i].ToString("X2"));
-            }
-            return sb.ToString();
+                StringBuilder hash = new StringBuilder();
+                byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(password), 0, Encoding.UTF8.GetByteCount(password));
+                foreach (byte theByte in crypto)
+                {
+                    hash.Append(theByte.ToString("x2"));
+                }
+                return hash.ToString();
+            }  
         }
     }
 }

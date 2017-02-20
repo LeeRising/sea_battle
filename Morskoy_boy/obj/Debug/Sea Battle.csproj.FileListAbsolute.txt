@@ -32,3 +32,20 @@ D:\MyProject\С#\Morskoy_boy\Morskoy_boy\obj\Debug\Sea Battle.csprojResolveAssem
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Morskoy_boy.exe.config
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.exe
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.pdb
+D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Morskoy_boy.exe
+D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Morskoy_boy.pdb
+D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MaterialSkin.dll
+D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MetroFramework.dll
+D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Newtonsoft.Json.dll
+D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Newtonsoft.Json.xml
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csprojResolveAssemblyReference.cache
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.ChatF.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.FriendsF.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.GameF.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.GameHistoryF.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.LoginF.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.MainF.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.Properties.Resources.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.RegisterF.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.SettingF.resources
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csproj.GenerateResource.Cache

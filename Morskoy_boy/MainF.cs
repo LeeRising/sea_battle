@@ -19,6 +19,11 @@ namespace Morskoy_boy
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void fastCheckBtnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show();
+        }
+
         string[] acc_info;
         RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
         bool logout = false;

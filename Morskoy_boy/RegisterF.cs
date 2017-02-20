@@ -104,7 +104,7 @@ namespace Morskoy_boy
                     }
                     if (ava == "default.png")
                     {
-                        var create_new_user = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/create_new_user.php?login=" + loginTb.Text + "&password=" + Cryptography.md5(passTb.Text)
+                        var create_new_user = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/create_new_user.php?login=" + loginTb.Text + "&password=" + Cryptography.getHashSha256(passTb.Text)
                             + "&fname="+ fnameTb.Text + "&lname="+ lnameTb.Text + "&sex="+ sex + "&email="+ emailTb.Text + "&regtime="+ DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss") + "&birthtime="+birthdayPicker.Value.ToString("yyyy-MM-dd") + "&photo="+ ava);
                         var response = (HttpWebResponse)create_new_user.GetResponse();
                         MessageBox.Show("Register Successfully");
@@ -146,7 +146,7 @@ namespace Morskoy_boy
                             MessageBox.Show("Error connection!");
                         }
                         File.Delete(Path.Combine(Application.StartupPath + @"\") + ava);
-                        var create_new_user = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/create_new_user.php?login=" + loginTb.Text + "&password=" + Cryptography.md5(passTb.Text)
+                        var create_new_user = WebRequest.Create("http://leerain-interactive.sytes.net/seabattle/json/create_new_user.php?login=" + loginTb.Text + "&password=" + Cryptography.getHashSha256(passTb.Text)
                             + "&fname=" + fnameTb.Text + "&lname=" + lnameTb.Text + "&sex=" + sex + "&email=" + emailTb.Text + "&regtime=" + DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss") + "&birthtime=" + birthdayPicker.Value.ToString("yyyy-MM-dd") + "&photo=" + ava);
                         var response1 = (HttpWebResponse)create_new_user.GetResponse();
                         MessageBox.Show("Register Successfully");
