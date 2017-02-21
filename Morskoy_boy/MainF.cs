@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using Morskoy_boy.UI;
+using Morskoy_boy.UI.Dialogs;
 using System.Text.RegularExpressions;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -21,7 +22,18 @@ namespace Morskoy_boy
 
         private void fastCheckBtnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show();
+            using(MyMessageBox mb =new MyMessageBox("Caption","Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Info))
+            {
+                mb.ShowDialog(this);
+            }
+            using (MyMessageBox mb = new MyMessageBox("Caption1", "Label text1", MyMessageBox.ButtonType.YesNo, MyMessageBox.IconType.Info))
+            {
+                mb.ShowDialog(this);
+            }
+            using (MyMessageBox mb = new MyMessageBox("Caption2", "Label text2", MyMessageBox.ButtonType.YesNoCancel, MyMessageBox.IconType.Info))
+            {
+                mb.ShowDialog(this);
+            }
         }
 
         string[] acc_info;

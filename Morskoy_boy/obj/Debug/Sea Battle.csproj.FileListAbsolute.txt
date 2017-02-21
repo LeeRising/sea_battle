@@ -49,3 +49,4 @@ D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.Properties.Resourc
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.RegisterF.resources
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.SettingF.resources
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csproj.GenerateResource.Cache
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.UI.Dialogs.MyMessageBox.resources
