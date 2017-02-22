@@ -36,7 +36,7 @@
             // 
             // MessageBoxLabel
             // 
-            this.MessageBoxLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.MessageBoxLabel.BackColor = System.Drawing.Color.White;
             this.MessageBoxLabel.Depth = 0;
             this.MessageBoxLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.MessageBoxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

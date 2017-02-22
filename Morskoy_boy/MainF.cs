@@ -24,15 +24,8 @@ namespace Morskoy_boy
         {
             using(MyMessageBox mb =new MyMessageBox("Caption","Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Info))
             {
-                mb.ShowDialog(this);
-            }
-            using (MyMessageBox mb = new MyMessageBox("Caption1", "Label text1", MyMessageBox.ButtonType.YesNo, MyMessageBox.IconType.Info))
-            {
-                mb.ShowDialog(this);
-            }
-            using (MyMessageBox mb = new MyMessageBox("Caption2", "Label text2", MyMessageBox.ButtonType.YesNoCancel, MyMessageBox.IconType.Info))
-            {
-                mb.ShowDialog(this);
+                //mb.ShowDialog(this);
+                //MessageBox.Show(mb.DialogRes);
             }
         }
 
