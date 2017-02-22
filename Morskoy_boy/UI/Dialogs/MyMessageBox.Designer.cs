@@ -45,17 +45,20 @@
             this.MessageBoxLabel.Name = "MessageBoxLabel";
             this.MessageBoxLabel.Size = new System.Drawing.Size(378, 73);
             this.MessageBoxLabel.TabIndex = 0;
-            this.MessageBoxLabel.Text = "materialLabel1";
+            this.MessageBoxLabel.Text = "MessageText";
+            this.MessageBoxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn3
             // 
+            this.btn3.AutoSize = true;
+            this.btn3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn3.Depth = 0;
             this.btn3.Location = new System.Drawing.Point(258, 153);
             this.btn3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btn3.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn3.Name = "btn3";
             this.btn3.Primary = false;
-            this.btn3.Size = new System.Drawing.Size(85, 35);
+            this.btn3.Size = new System.Drawing.Size(47, 36);
             this.btn3.TabIndex = 2;
             this.btn3.Text = "Btn3";
             this.btn3.UseVisualStyleBackColor = false;
@@ -63,13 +66,15 @@
             // 
             // btn2
             // 
+            this.btn2.AutoSize = true;
+            this.btn2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn2.Depth = 0;
             this.btn2.Location = new System.Drawing.Point(165, 153);
             this.btn2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btn2.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn2.Name = "btn2";
             this.btn2.Primary = false;
-            this.btn2.Size = new System.Drawing.Size(85, 35);
+            this.btn2.Size = new System.Drawing.Size(47, 36);
             this.btn2.TabIndex = 3;
             this.btn2.Text = "Btn2";
             this.btn2.UseVisualStyleBackColor = false;
@@ -77,13 +82,15 @@
             // 
             // btn1
             // 
+            this.btn1.AutoSize = true;
+            this.btn1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn1.Depth = 0;
             this.btn1.Location = new System.Drawing.Point(72, 153);
             this.btn1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btn1.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn1.Name = "btn1";
             this.btn1.Primary = false;
-            this.btn1.Size = new System.Drawing.Size(85, 35);
+            this.btn1.Size = new System.Drawing.Size(47, 36);
             this.btn1.TabIndex = 4;
             this.btn1.Text = "Btn1";
             this.btn1.UseVisualStyleBackColor = false;
@@ -101,8 +108,9 @@
             this.Controls.Add(this.MessageBoxLabel);
             this.Name = "MyMessageBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MyMessageBox";
+            this.Text = "MessageCaption";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
