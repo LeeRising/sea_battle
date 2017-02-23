@@ -82,11 +82,11 @@ namespace Morskoy_boy
                     }
                 }
                 User.lang = rk.GetValue("translate").ToString();
-                Translate.translate(User.lang, Name);
+                Translate.translate(this,User.lang);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection error");
+                MessageBox.Show(ex.ToString());
                 connection = false;
                 Application.Exit();
             }
@@ -98,7 +98,7 @@ namespace Morskoy_boy
             f.ShowDialog();
             if (!f.Focused)
             {
-                Translate.translate(User.lang, Name);
+                Translate.translate(this,User.lang);
             }
         }
 

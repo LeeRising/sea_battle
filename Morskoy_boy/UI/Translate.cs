@@ -6,13 +6,17 @@ namespace Morskoy_boy.UI
 {
     class Translate
     {
-        public static void translate(string lang,string formname)
+        public static void translate(Form f,string lang)
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(Path.Combine(Application.StartupPath + "/lang/") + lang + ".xml");
-            switch (formname)
+            XmlNodeList nodeList;
+            doc.Load(Application.StartupPath + "/lang/" + lang + ".xml");
+            switch (f.Name)
             {
                 case "MainF":
+                    nodeList = doc.DocumentElement.SelectNodes("mainf");
+                    f.Text = nodeList[0].InnerText;
+                    //MessageBox.Show(nodeList.Count.ToString());
                     break;
                 case "LoginF":
                     break;

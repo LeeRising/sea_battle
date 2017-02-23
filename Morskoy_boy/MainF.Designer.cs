@@ -205,8 +205,6 @@ namespace Morskoy_boy
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
-            this.MaximumSize = new System.Drawing.Size(414, 263);
-            this.MinimumSize = new System.Drawing.Size(414, 263);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Name = "MainF";
             this.Text = "Batlle in the see";

@@ -1,0 +1,42 @@
+<translate>
+<loginf>
+<fname>Login to play</fname>
+<loginl>Login:</loginl>
+<passl>Password:</passl>
+<loginbtn>Login</loginbtn>
+<regbtn>Register</regbtn>
+<exitbtn>Exit</exitbtn>
+</loginf>
+<registerf>
+<fname>Register new user</fname>
+<loginl>Login:</loginl>
+<passl>Password:</passl>
+<rppassl>Repeat pass:</rppassl>
+<firstn>First name:</firstn>
+<lastn>Last name:</lastn>
+<sexl>Sex:</sexl>
+<malel>male</malel>
+<femalel>female</femalel>
+<birthl>Birthday</birthl>
+<regbtn>Register</regbtn>
+<backbtn>Exit</backbtn>
+</registerf>
+<mainf>
+<fname>Batlle in the sea11</fname>
+<vscompbtn>VS Computer</vscompbtn>
+<vshumbtn>VS Player</vshumbtn>
+<gamehbtn>Game history</gamehbtn>
+<friendbtn>Friends</friendbtn>
+<menum>Menu</menum>
+<settm>Setting</settm>
+<logoutm>Log out</logoutm>
+</mainf>
+<dialogs>
+<okbtn>Ok</okbtn>
+<yesbtn>Yes</yesbtn>
+<nobtn>No</nobtn>
+<cancelbtn>Cancel</cancelbtn>
+</dialogs>
+<messages>
+</messages>
+</translate>

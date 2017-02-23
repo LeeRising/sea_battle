@@ -66,7 +66,7 @@ namespace Morskoy_boy
         }
         private void FriendsF_Activated(object sender, EventArgs e)
         {
-            Translate.translate(User.lang, Name);
+            //Translate.translate(User.lang, Name);
             var skinmanager = MaterialSkinManager.Instance;
             skinmanager.AddFormToManage(this);
             skinmanager.ColorScheme = new ColorScheme(Primary.DeepPurple900, Primary.DeepPurple800, Primary.LightGreen900, Accent.Red700, TextShade.WHITE);
