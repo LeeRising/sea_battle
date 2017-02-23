@@ -1,4 +1,6 @@
-﻿namespace Morskoy_boy
+﻿using System.Windows.Forms;
+
+namespace Morskoy_boy
 {
     partial class MainF
     {
@@ -42,8 +44,8 @@
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profileImg = new System.Windows.Forms.PictureBox();
             this.fastCheckBtnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profileImg = new System.Windows.Forms.PictureBox();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImg)).BeginInit();
             this.SuspendLayout();
@@ -137,7 +139,7 @@
             this.menu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menu.Location = new System.Drawing.Point(0, 65);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(293, 24);
+            this.menu.Size = new System.Drawing.Size(201, 24);
             this.menu.TabIndex = 9;
             // 
             // menuToolStripMenuItem
@@ -152,14 +154,14 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.settingToolStripMenuItem.Text = "Setting";
             this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
@@ -169,6 +171,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // fastCheckBtnToolStripMenuItem
+            // 
+            this.fastCheckBtnToolStripMenuItem.Name = "fastCheckBtnToolStripMenuItem";
+            this.fastCheckBtnToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.fastCheckBtnToolStripMenuItem.Text = "FastCheckBtn";
+            this.fastCheckBtnToolStripMenuItem.Click += new System.EventHandler(this.fastCheckBtnToolStripMenuItem_Click);
+            // 
             // profileImg
             // 
             this.profileImg.Location = new System.Drawing.Point(12, 103);
@@ -177,13 +186,6 @@
             this.profileImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImg.TabIndex = 0;
             this.profileImg.TabStop = false;
-            // 
-            // fastCheckBtnToolStripMenuItem
-            // 
-            this.fastCheckBtnToolStripMenuItem.Name = "fastCheckBtnToolStripMenuItem";
-            this.fastCheckBtnToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.fastCheckBtnToolStripMenuItem.Text = "FastCheckBtn";
-            this.fastCheckBtnToolStripMenuItem.Click += new System.EventHandler(this.fastCheckBtnToolStripMenuItem_Click);
             // 
             // MainF
             // 
@@ -203,6 +205,9 @@
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
+            this.MaximumSize = new System.Drawing.Size(414, 263);
+            this.MinimumSize = new System.Drawing.Size(414, 263);
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Name = "MainF";
             this.Text = "Batlle in the see";
             this.Activated += new System.EventHandler(this.MainF_Activated);
@@ -216,23 +221,23 @@
             this.PerformLayout();
 
         }
-
+        
         #endregion
 
-        private System.Windows.Forms.PictureBox profileImg;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button gamehistoryBtn;
-        private System.Windows.Forms.Button friendsBtn;
-        private System.Windows.Forms.Label nameL;
-        private System.Windows.Forms.Label loseL;
-        private System.Windows.Forms.Label winL;
-        private System.Windows.Forms.Label rankL;
-        private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fastCheckBtnToolStripMenuItem;
+        private PictureBox profileImg;
+        private Button button1;
+        private Button button2;
+        private Button gamehistoryBtn;
+        private Button friendsBtn;
+        private Label nameL;
+        private Label loseL;
+        private Label winL;
+        private Label rankL;
+        private MenuStrip menu;
+        private ToolStripMenuItem menuToolStripMenuItem;
+        private ToolStripMenuItem settingToolStripMenuItem;
+        private ToolStripMenuItem logOutToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
+        private ToolStripMenuItem fastCheckBtnToolStripMenuItem;
     }
 }

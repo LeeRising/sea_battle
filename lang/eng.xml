@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translate>
+  <loginf>
+    <fname name="Login to play"/>
+    <loginl name="Login:"/>
+    <passl name="Password:"/>
+    
+    <loginbtn name="Login"/>
+    <regbtn name="Register"/>
+    <exitbtn name="Exit"/>
+  </loginf>
+  <registerf>
+    <fname name="Register new user"/>
+    <loginl name="Login:"/>
+    <passl name="Password:"/>
+    <rppassl name="Repeat pass:"/>
+    <firstn name="First name:"/>
+    <lastn name="Last name:"/>
+    <sexl name="Sex:"/>
+    <malel name="male"/>
+    <femalel name="female"/>
+    <birthl name="Birthday"/>
+
+    <regbtn name="Register"/>
+    <backbtn name="Exit"/>
+  </registerf>
+  <mainf>
+    <fname name="Batlle in the sea"/>
+    <vscompbtn name="VS Computer"/>
+    <vshumbtn name="VS Player"/>
+    <gamehbtn name="Game history"/>
+    <friendbtn name="Friends"/>
+
+    <menum name="Menu"/>
+    <settm name="Setting"/>
+    <logoutm name="Log out"/>
+  </mainf>
+  <dialogs>
+    <okbtn name="Ok"/>
+    <yesbtn name="Yes"/>
+    <nobtn name="No"/>
+    <cancelbtn name="Cancel"/>
+  </dialogs>
+  <messages>
+  
+  </messages>
+</translate>

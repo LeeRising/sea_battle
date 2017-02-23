@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using MaterialSkin.Controls;
 using System.Threading;
+using Morskoy_boy.UI.Dialogs;
 
 namespace Morskoy_boy
 {
@@ -52,7 +53,10 @@ namespace Morskoy_boy
                         rk.SetValue("login", login);
                         rk.SetValue("password", pass);
                         rk.SetValue("loging", "1");
-                        MessageBox.Show("Succesfull loging");
+                        using (MyMessageBox mb = new MyMessageBox("Info", "Succesfull loging", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Info))
+                        {
+                            mb.ShowDialog(this);
+                        }
                         MainF mf = new MainF();
                         Hide();
                         ShowInTaskbar = false;
@@ -65,13 +69,20 @@ namespace Morskoy_boy
                     }
                     else
                     {
-                        MessageBox.Show("Wrong login or password");
+                        using (MyMessageBox mb = new MyMessageBox("Error", "Wrong login or password!", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
+                        {
+                            mb.ShowDialog(this);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //Checke exeption
+                using (MyMessageBox mb = new MyMessageBox("Error", ex.ToString(), MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
+                {
+                    mb.ShowDialog(this);
+                }
             }
         }
 

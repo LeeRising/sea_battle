@@ -17,30 +17,13 @@ namespace Morskoy_boy
         public MainF()
         {
             InitializeComponent();
-            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void fastCheckBtnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using(MyMessageBox mb =new MyMessageBox("Caption","Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
             {
-                mb.ShowDialog(this);
-            }
-            using (MyMessageBox mb = new MyMessageBox("Caption", "Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Info))
-            {
-                mb.ShowDialog(this);
-            }
-            using (MyMessageBox mb = new MyMessageBox("Caption", "Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Warning))
-            {
-                mb.ShowDialog(this);
-            }
-            using (MyMessageBox mb = new MyMessageBox("Caption", "Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Question))
-            {
-                mb.ShowDialog(this);
-            }
-            using (MyMessageBox mb = new MyMessageBox("Caption", "Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.None))
-            {
-                mb.ShowDialog(this);
+                //mb.ShowDialog(this);
             }
         }
 
