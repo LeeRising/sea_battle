@@ -17,26 +17,20 @@ namespace Morskoy_boy.UI.Dialogs
                 case ButtonType.OK:
                     btn3.Text = "Ok";
                     btn3.Visible = true;
-                    btn3.DialogResult = DialogResult.OK;
                     break;
                 case ButtonType.YesNo:
                     btn2.Text = "Yes";
                     btn2.Visible = true;
-                    btn2.DialogResult = DialogResult.Yes;
                     btn3.Text = "No";
                     btn3.Visible = true;
-                    btn3.DialogResult = DialogResult.No;
                     break;
                 case ButtonType.YesNoCancel:
                     btn1.Text = "Yes";
                     btn1.Visible = true;
-                    btn1.DialogResult = DialogResult.Yes;
                     btn2.Text = "No";
                     btn2.Visible = true;
-                    btn2.DialogResult = DialogResult.No;
                     btn3.Text = "Cancel";
                     btn3.Visible = true;
-                    btn3.DialogResult = DialogResult.Cancel;
                     break;
             }
         }
@@ -90,6 +84,18 @@ namespace Morskoy_boy.UI.Dialogs
             Text = caption;
             MessageBoxLabel.Text = text;
             BtnForType(bt);
+        }
+        public MyMessageBox(string text)
+        {
+            InitializeComponent();
+            btn3.Text = "Ok";
+            btn3.Visible = true;
+            btn3.Click += (sender, e) => { Close(); };
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey900, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            MessageBoxLabel.Text = text;
         }
     }
 }

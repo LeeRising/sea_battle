@@ -14,8 +14,8 @@ namespace Morskoy_boy.UI
             switch (f.Name)
             {
                 case "MainF":
-                    nodeList = doc.DocumentElement.SelectNodes("mainf");
-                    f.Text = nodeList[0].InnerText;
+                    //nodeList = doc.DocumentElement.SelectSingleNode("mainf");
+                    //f.Text = nodeList[0].InnerText;
                     //MessageBox.Show(nodeList.Count.ToString());
                     break;
                 case "LoginF":

@@ -23,7 +23,15 @@ namespace Morskoy_boy
         {
             using(MyMessageBox mb =new MyMessageBox("Caption","Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
             {
-                //mb.ShowDialog(this);
+                
+            }
+            using(MyMessageBox mb=new MyMessageBox("test"))
+            {
+                if (f.Visible == true) f.Hide();
+                Hide();
+                mb.ShowDialog();
+                Show();
+                if (f.Visible == false) f.Show();
             }
         }
 
@@ -91,7 +99,6 @@ namespace Morskoy_boy
                 Application.Exit();
             }
         }
-        
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingF f = new SettingF();
@@ -101,7 +108,6 @@ namespace Morskoy_boy
                 Translate.translate(this,User.lang);
             }
         }
-
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rk = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
@@ -112,7 +118,6 @@ namespace Morskoy_boy
             logout = true;
             Close();
         }
-
         private void MainF_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (connection)
@@ -123,7 +128,6 @@ namespace Morskoy_boy
                 if (!logout) Application.Exit();
             }
         }
-
         private void friendsBtn_Click(object sender, EventArgs e)
         {
             switch (friend_window)
@@ -145,20 +149,17 @@ namespace Morskoy_boy
                     break;
             }
         }
-
         private void MainF_LocationChanged(object sender, EventArgs e)
         {
             f.Location = new Point(Location.X+Size.Width, Location.Y);
             f1.Location = new Point(Location.X - f1.Size.Width, Location.Y);
         }
-
         private void MainF_Activated(object sender, EventArgs e)
         {
             var skinmanager = MaterialSkinManager.Instance;
             skinmanager.AddFormToManage(this);
             skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
         }
-
         private void gamehistoryBtn_Click(object sender, EventArgs e)
         {
             switch (game_history_window)

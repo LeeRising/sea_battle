@@ -205,8 +205,8 @@ namespace Morskoy_boy
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
-            this.StartPosition = FormStartPosition.CenterScreen;
             this.Name = "MainF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Batlle in the see";
             this.Activated += new System.EventHandler(this.MainF_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainF_FormClosed);
