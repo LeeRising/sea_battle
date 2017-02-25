@@ -7,6 +7,7 @@ using System.Net;
 using MaterialSkin.Controls;
 using System.Threading;
 using Morskoy_boy.UI.Dialogs;
+using Morskoy_boy.Tools;
 
 namespace Morskoy_boy
 {
@@ -38,41 +39,31 @@ namespace Morskoy_boy
             {
                 string login = loginTb.Text,
                    pass = Cryptography.getHashSha256(passTb.Text);
-                var request = WebRequest.Create("https://leebattle.000webhostapp.com/get_user_id.php?login=" + login+"&password="+pass);
-                string reqtext;
-                using (var response = (HttpWebResponse)request.GetResponse())
+
+                User.id = JsonParser.OneResult(GetWebRequest._getRequest("https://leebattle.000webhostapp.com/get_user_id.php?login=" + login + "&password=" + pass));
+                if (User.id != "null")
                 {
-                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    rk.SetValue("id", User.id);
+                    rk.SetValue("login", login);
+                    rk.SetValue("password", pass);
+                    rk.SetValue("loging", "1");
+                    using (MyMessageBox mb = new MyMessageBox("Info", "Succesfull loging", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Info))
                     {
-                        reqtext = sr.ReadToEnd();
+                        mb.ShowDialog(this);
                     }
-                    User.id = JsonParser.OneResult(reqtext);
-                    if (User.id != "null")
+                    MainF mf = new MainF();
+                    Hide();
+                    ShowInTaskbar = false;
+                    mf.ShowDialog();
+                    Show();
+                    ShowInTaskbar = true;
+                    File.Delete(Path.Combine(Application.StartupPath + "/user/") + User.ava);
+                }
+                else
+                {
+                    using (MyMessageBox mb = new MyMessageBox("Error", "Wrong login or password!", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
                     {
-                        rk.SetValue("id", User.id);
-                        rk.SetValue("login", login);
-                        rk.SetValue("password", pass);
-                        rk.SetValue("loging", "1");
-                        using (MyMessageBox mb = new MyMessageBox("Info", "Succesfull loging", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Info))
-                        {
-                            mb.ShowDialog(this);
-                        }
-                        MainF mf = new MainF();
-                        Hide();
-                        ShowInTaskbar = false;
-                        mf.ShowDialog();
-                        Show();
-                        ShowInTaskbar = true;
-                        File.Delete(Path.Combine(Application.StartupPath + "/user/") + User.ava);
-                        request.Abort();
-                        response.Dispose();
-                    }
-                    else
-                    {
-                        using (MyMessageBox mb = new MyMessageBox("Error", "Wrong login or password!", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
-                        {
-                            mb.ShowDialog(this);
-                        }
+                        mb.ShowDialog(this);
                     }
                 }
             }
@@ -88,7 +79,7 @@ namespace Morskoy_boy
 
         private void LoginF_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
 
         private void LoginF_Load(object sender, EventArgs e)

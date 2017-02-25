@@ -6,6 +6,7 @@ using System.Net;
 using System.Windows.Forms;
 using Morskoy_boy.UI;
 using Morskoy_boy.UI.Dialogs;
+using Morskoy_boy.Tools;
 using System.Text.RegularExpressions;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -27,11 +28,11 @@ namespace Morskoy_boy
             }
             using(MyMessageBox mb=new MyMessageBox("test"))
             {
-                if (f.Visible == true) f.Hide();
-                Hide();
-                mb.ShowDialog();
-                Show();
-                if (f.Visible == false) f.Show();
+                //if (f.Visible == true) f.Hide();
+                //Hide();
+                //mb.ShowDialog();
+                //Show();
+                //if (f.Visible == false & friend_window) f.Show();
             }
         }
 
@@ -51,16 +52,11 @@ namespace Morskoy_boy
             try
             {
                 connection = true;
-                var get_info_req = WebRequest.Create("https://leebattle.000webhostapp.com/get_acc_info.php?id=" + User.id);
-                var set_online_req = WebRequest.Create("https://leebattle.000webhostapp.com/set_state.php?state=online&id=" + User.id);
-                string reqtext;
+
+                var set_online_req = WebRequest.Create("https://leebattle.000webhostapp.com/set_state.php?state=Online&id=" + User.id);
                 var response = (HttpWebResponse)set_online_req.GetResponse();
-                response = (HttpWebResponse)get_info_req.GetResponse();
-                using (var sr = new StreamReader(response.GetResponseStream()))
-                {
-                    reqtext = sr.ReadToEnd();
-                }
-                string s = JsonParser.ArrayParse(reqtext);
+
+                string s = JsonParser.ArrayParse(GetWebRequest._getRequest("https://leebattle.000webhostapp.com/get_acc_info.php?id=" + User.id));
                 s=Regex.Replace(s, "\\[|\\]|\"|,|\\ ", "");
                 acc_info = s.Split('\n');
                 User.first_name = acc_info[1].Substring(0, acc_info[1].Length-1);
@@ -75,7 +71,7 @@ namespace Morskoy_boy
                 User.ava = acc_info[10].Substring(0, acc_info[10].Length - 1);
                 User.state = acc_info[11].Substring(0, acc_info[11].Length - 1);
                 nameL.Text = User.first_name + " " + User.last_name;
-                if (User.state == "online") nameL.ForeColor = Color.Green;
+                if (User.state == "Online") nameL.ForeColor = Color.Green;
                 using (WebClient webClient = new WebClient())
                 {
                     string path = Application.StartupPath + "\\user\\" + User.ava;
@@ -90,6 +86,7 @@ namespace Morskoy_boy
                     }
                 }
                 User.lang = rk.GetValue("translate").ToString();
+
                 Translate.translate(this,User.lang);
             }
             catch (Exception ex)
@@ -113,7 +110,7 @@ namespace Morskoy_boy
             rk = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
             rk.SetValue("loging", "0");
             rk.SetValue("login", "");
-            rk.SetValue("id", "0");
+            rk.SetValue("id", "");
             rk.SetValue("password", "");
             logout = true;
             Close();
@@ -123,7 +120,7 @@ namespace Morskoy_boy
             if (connection)
             {
                 f.Close();
-                var set_online_req = WebRequest.Create("https://leebattle.000webhostapp.com/set_state.php?state=offline&id=" + User.id);
+                var set_online_req = WebRequest.Create("https://leebattle.000webhostapp.com/set_state.php?state=Offline&id=" + User.id);
                 var response = (HttpWebResponse)set_online_req.GetResponse();
                 if (!logout) Application.Exit();
             }

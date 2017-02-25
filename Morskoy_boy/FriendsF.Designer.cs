@@ -32,7 +32,7 @@ namespace Morskoy_boy
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FriendsF));
             this.stateComboBox = new MetroFramework.Controls.MetroComboBox();
-            this.friendsListBox1 = new Morskoy_boy.UI.MyControls.friendsListBox();
+            this.friendsListBox1 = new UI.MyControls.friendsListBox();
             this.SuspendLayout();
             // 
             // stateComboBox
@@ -43,11 +43,13 @@ namespace Morskoy_boy
             "All",
             "Online",
             "Offline",
-            "Busy"});
+            "Busy",
+            "Afk"});
             this.stateComboBox.Location = new System.Drawing.Point(0, 64);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(218, 29);
             this.stateComboBox.TabIndex = 1;
+            this.stateComboBox.Text = "All";
             this.stateComboBox.SelectedIndexChanged += new System.EventHandler(this.stateComboBox_SelectedIndexChanged);
             // 
             // friendsListBox1
