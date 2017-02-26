@@ -40,7 +40,7 @@ namespace Morskoy_boy.Tools
         }
         public string State
         {
-            get { return state.Substring(0, state.Length - 1); }
+            get { return state; }
             set { state = value; }
         }
         public static Image Avatar(string photo_url)

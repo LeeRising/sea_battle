@@ -1,33 +1,47 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
+using System.Net;
+using System.IO;
 
 namespace Morskoy_boy
 {
     class JsonParser
     {
-        public static string ArrayParse(string request)
+        public static JArray ArrayParse(string url)
         {
             try
             {
-                string response = null;
-                JObject joResponse = JObject.Parse(request);
-                JArray array = (JArray)joResponse["result"];
-                foreach (var s1 in array)
+                var request = WebRequest.Create(url);
+                string reqtext=string.Empty;
+                using (var response = (HttpWebResponse)request.GetResponse())
                 {
-                    response += s1;
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        reqtext = sr.ReadToEnd();
+                    }
                 }
-                return response;
+                JArray array = JArray.Parse(reqtext);
+                return array;
             }
             catch (Exception ex)
             {
-                return "null";
+                return null;
             }
         }
-        public static string OneResult(string request)
+        public static string OneResult(string url)
         {
             try
             {
-                JObject joResponse = JObject.Parse(request);
+                var request = WebRequest.Create(url);
+                string reqtext;
+                using (var response = (HttpWebResponse)request.GetResponse())
+                {
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        reqtext = sr.ReadToEnd();
+                    }
+                }
+                JObject joResponse = JObject.Parse(reqtext);
                 return joResponse.GetValue("result").ToString();
             }
             catch (Exception ex)

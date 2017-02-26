@@ -3,11 +3,9 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using Morskoy_boy.UI;
 using System.IO;
-using System.Net;
 using MaterialSkin.Controls;
-using System.Threading;
 using Morskoy_boy.UI.Dialogs;
-using Morskoy_boy.Tools;
+using MaterialSkin;
 
 namespace Morskoy_boy
 {
@@ -39,8 +37,7 @@ namespace Morskoy_boy
             {
                 string login = loginTb.Text,
                    pass = Cryptography.getHashSha256(passTb.Text);
-
-                User.id = JsonParser.OneResult(GetWebRequest._getRequest("https://leebattle.000webhostapp.com/get_user_id.php?login=" + login + "&password=" + pass));
+                User.id = JsonParser.OneResult("https://leebattle.000webhostapp.com/get_user_id.php?login=" + login + "&password=" + pass);
                 if (User.id != "null")
                 {
                     rk.SetValue("id", User.id);
@@ -58,6 +55,8 @@ namespace Morskoy_boy
                     Show();
                     ShowInTaskbar = true;
                     File.Delete(Path.Combine(Application.StartupPath + "/user/") + User.ava);
+                    loginTb.Text = "";
+                    passTb.Text = "";
                 }
                 else
                 {
@@ -77,11 +76,6 @@ namespace Morskoy_boy
             }
         }
 
-        private void LoginF_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //Application.Exit();
-        }
-
         private void LoginF_Load(object sender, EventArgs e)
         {
             if (rk == null)
@@ -99,6 +93,13 @@ namespace Morskoy_boy
                 Show();
                 ShowInTaskbar = true;
             }
+        }
+
+        private void LoginF_Activated(object sender, EventArgs e)
+        {
+            var skinmanager = MaterialSkinManager.Instance;
+            skinmanager.AddFormToManage(this);
+            skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
         }
     }
 }

@@ -64,14 +64,7 @@ namespace Morskoy_boy
             {
                 if (loginTb.TextLength > 1)
                 {
-                    var set_online_req = WebRequest.Create("https://leebattle.000webhostapp.com/get_users_login.php?login=" + loginTb.Text);
-                    var response = (HttpWebResponse)set_online_req.GetResponse();
-                    string reqtext;
-                    using (var sr = new StreamReader(response.GetResponseStream()))
-                    {
-                        reqtext = sr.ReadToEnd();
-                    }
-                    if (JsonParser.OneResult(reqtext)=="null" && Regex.IsMatch(loginTb.Text, "[A-Za-z]"))
+                    if (JsonParser.OneResult("https://leebattle.000webhostapp.com/get_users_login.php?login=" + loginTb.Text) =="null" && Regex.IsMatch(loginTb.Text, "[A-Za-z]"))
                     {
                         pB1.Image = Properties.Resources.check;
                         p1c = true;
@@ -83,7 +76,7 @@ namespace Morskoy_boy
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -120,7 +113,7 @@ namespace Morskoy_boy
                         {
                             id = sr.ReadToEnd();
                         }
-                        id=id.Substring(2, id.Length-2);
+                        id = id.Substring(2, id.Length - 2);
                         id = id.Substring(0, id.Length - 2);
                         ava = (int.Parse(id.ToString()) + 1).ToString() + "." + s1[1];
                         File.Copy(ava1, Path.Combine(Application.StartupPath + @"\") + ava);
