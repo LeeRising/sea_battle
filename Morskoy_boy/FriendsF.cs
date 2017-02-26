@@ -12,6 +12,8 @@ using Morskoy_boy.UI.Dialogs;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Threading;
+using System.Net;
+using System.IO;
 
 namespace Morskoy_boy
 {
@@ -20,27 +22,33 @@ namespace Morskoy_boy
         RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
 
         List<FriendsList> friendslist = new List<FriendsList>();
-        List<FriendsList> friendslist1 = new List<FriendsList>();
 
         List<FriendsList> onlineList = new List<FriendsList>();
         List<FriendsList> offlineList = new List<FriendsList>();
         List<FriendsList> afkList = new List<FriendsList>();
         List<FriendsList> busyList = new List<FriendsList>();
-
-        List<FriendsList> onlineList1 = new List<FriendsList>();
-        List<FriendsList> offlineList1 = new List<FriendsList>();
-        List<FriendsList> afkList1 = new List<FriendsList>();
-        List<FriendsList> busyList1 = new List<FriendsList>();
-        JArray _FArray, _FArrayNew;
+        JArray _FArray;
         System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
         public FriendsF()
         {
             InitializeComponent();
         }
+        string reqtext, reqtext1;
+        Thread thread;
         private void FriendsF_Load(object sender, EventArgs e)
         {
-            _FArray = JsonParser.ArrayParse("https://leebattle.000webhostapp.com/get_friend_to_list.php?login=" + User.login);
+            var request = WebRequest.Create(Variables._get_friend_to_list + User.login);
+            reqtext = string.Empty;
+            using (var response = (HttpWebResponse)request.GetResponse())
+            {
+                using (var sr = new StreamReader(response.GetResponseStream()))
+                {
+                    reqtext = sr.ReadToEnd();
+                }
+            }
+            _FArray = new JArray();
+            _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
             foreach (var _JObject in _FArray)
             {
                 JToken token = _JObject;
@@ -56,53 +64,59 @@ namespace Morskoy_boy
                 if (v.State == "Online") onlineList.Add(v);
                 if (v.State == "Afk") afkList.Add(v);
                 if (v.State == "Busy") busyList.Add(v);
-                if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default));
-                else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo)));
+                //if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default));
+                //else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo)));
             }
-            Thread thread = new Thread(get_friends);
-            thread.Start();
+            stateComboBox.SelectedItem = "All";
+            t.Interval = 1000;
+            t.Tick += (se, ea) =>
+            {
+                thread = new Thread(get_friends);
+                thread.Start();
+                Thread.Sleep(0);
+            };
+            t.Start();
         }
 
         void get_friends()
         {
-            while (true)
+            if (this.InvokeRequired)
             {
-                if (this.InvokeRequired)
+                this.BeginInvoke(new MethodInvoker(get_friends));
+            }
+            else
+            {
+                var request = WebRequest.Create(Variables._get_friend_to_list + User.login);
+                reqtext1 = string.Empty;
+                using (var response = (HttpWebResponse)request.GetResponse())
                 {
-                    this.Invoke(new MethodInvoker(get_friends));
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        reqtext1 = sr.ReadToEnd();
+                    }
                 }
-                else
+                if (reqtext != reqtext1)
                 {
-                    _FArrayNew = JsonParser.ArrayParse("https://leebattle.000webhostapp.com/get_friend_to_list.php?login=" + User.login);
-                    foreach (var _JObject in _FArrayNew)
+                    friendslist = new List<FriendsList>();
+                    friendsListBox1.Items.Clear();
+                    reqtext = reqtext1;
+                    _FArray = new JArray();
+                    _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
+                    foreach (var _JObject in _FArray)
                     {
                         JToken token = _JObject;
-                        friendslist1.Add(new FriendsList((string)_JObject.SelectToken("First_name"),
+                        friendslist.Add(new FriendsList((string)_JObject.SelectToken("First_name"),
                             (string)_JObject.SelectToken("Last_name"),
                             (string)_JObject.SelectToken("Rank"),
                             (string)_JObject.SelectToken("Photo"),
                             (string)_JObject.SelectToken("State")));
                     }
-                    foreach (var v in friendslist1)
+                    offlineList = new List<FriendsList>();
+                    onlineList = new List<FriendsList>();
+                    afkList = new List<FriendsList>();
+                    busyList = new List<FriendsList>();
+                    foreach (var v in friendslist)
                     {
-                        if (v.State == "Offline") offlineList1.Add(v);
-                        if (v.State == "Online") onlineList1.Add(v);
-                        if (v.State == "Afk") afkList1.Add(v);
-                        if (v.State == "Busy") busyList1.Add(v);
-                    }
-                    if (friendslist != friendslist1) { }
-                    //foreach (var _JObject in _FArrayNew)
-                    //{
-                    //    JToken token = _JObject;
-                    //    friendslist.Add(new FriendsList((string)_JObject.SelectToken("First_name"),
-                    //        (string)_JObject.SelectToken("Last_name"),
-                    //        (string)_JObject.SelectToken("Rank"),
-                    //        (string)_JObject.SelectToken("Photo"),
-                    //        (string)_JObject.SelectToken("State")));
-                    //}
-                    foreach (var v in friendslist1)
-                    {
-                        friendsListBox1.Items.Clear();
                         if (v.State == "Offline") offlineList.Add(v);
                         if (v.State == "Online") onlineList.Add(v);
                         if (v.State == "Afk") afkList.Add(v);
@@ -110,16 +124,9 @@ namespace Morskoy_boy
                         if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default));
                         else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo)));
                     }
-
+                    thread.Abort();
                 }
             }
-        }
-        private void FriendsF_Activated(object sender, EventArgs e)
-        {
-            //Translate.translate(User.lang, Name);
-            var skinmanager = MaterialSkinManager.Instance;
-            skinmanager.AddFormToManage(this);
-            skinmanager.ColorScheme = new ColorScheme(Primary.DeepPurple900, Primary.DeepPurple800, Primary.LightGreen900, Accent.Red700, TextShade.WHITE);
         }
         private void stateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

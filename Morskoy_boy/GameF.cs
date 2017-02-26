@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Morskoy_boy
 {
-    public partial class GameF : Form
+    public partial class GameF : MaterialForm
     {
         public GameF()
         {

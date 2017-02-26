@@ -5,6 +5,7 @@ using Morskoy_boy.UI;
 using System.IO;
 using MaterialSkin.Controls;
 using Morskoy_boy.UI.Dialogs;
+using Morskoy_boy.Tools;
 using MaterialSkin;
 
 namespace Morskoy_boy
@@ -14,12 +15,16 @@ namespace Morskoy_boy
         public LoginF()
         {
             InitializeComponent();
+            var skinmanager = MaterialSkinManager.Instance;
+            skinmanager.AddFormToManage(this);
+            skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
         }
 
         RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle", true);
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
+            Close();
             Application.Exit();
         }
         private void regBtn_Click(object sender, EventArgs e)
@@ -37,7 +42,7 @@ namespace Morskoy_boy
             {
                 string login = loginTb.Text,
                    pass = Cryptography.getHashSha256(passTb.Text);
-                User.id = JsonParser.OneResult("https://leebattle.000webhostapp.com/get_user_id.php?login=" + login + "&password=" + pass);
+                User.id = JsonParser.OneResult(Variables._get_user_id + login + "&password=" + pass);
                 if (User.id != "null")
                 {
                     rk.SetValue("id", User.id);

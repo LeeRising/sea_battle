@@ -65,6 +65,7 @@
       <DependentUpon>ChatF.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\FriendsList.cs" />
+    <Compile Include="Tools\Variables.cs" />
     <Compile Include="UI\Dialogs\MyMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>

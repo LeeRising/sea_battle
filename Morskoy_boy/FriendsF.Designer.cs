@@ -67,13 +67,16 @@ namespace Morskoy_boy
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(218, 345);
+            this.MaximumSize = new System.Drawing.Size(218, 345);
+            this.MinimumSize = new System.Drawing.Size(218, 345);
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.ControlBox = false;
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.friendsListBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FriendsF";
+            this.Sizable = false;
             this.Text = "My Friends";
-            this.Activated += new System.EventHandler(this.FriendsF_Activated);
             this.Load += new System.EventHandler(this.FriendsF_Load);
             this.ResumeLayout(false);
 

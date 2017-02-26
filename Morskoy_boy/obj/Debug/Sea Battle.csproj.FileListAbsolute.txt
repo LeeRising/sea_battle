@@ -50,3 +50,24 @@ D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.RegisterF.resource
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.SettingF.resources
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csproj.GenerateResource.Cache
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.UI.Dialogs.MyMessageBox.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Morskoy_boy.exe.config
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Morskoy_boy.exe
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Morskoy_boy.pdb
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MaterialSkin.dll
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MetroFramework.dll
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Newtonsoft.Json.dll
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Newtonsoft.Json.xml
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csprojResolveAssemblyReference.cache
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.ChatF.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.FriendsF.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.GameF.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.GameHistoryF.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.LoginF.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.MainF.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.Properties.Resources.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.RegisterF.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.SettingF.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.UI.Dialogs.MyMessageBox.resources
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csproj.GenerateResource.Cache
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.exe
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.pdb

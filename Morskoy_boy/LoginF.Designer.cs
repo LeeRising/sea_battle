@@ -107,6 +107,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(291, 210);
+            this.MaximumSize = new System.Drawing.Size(291, 210);
+            this.MinimumSize = new System.Drawing.Size(291, 210);
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Controls.Add(this.regBtn);
             this.Controls.Add(this.passTb);
             this.Controls.Add(this.loginTb);
@@ -116,6 +119,7 @@
             this.Controls.Add(this.loginBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginF";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login to play";
             this.Activated += new System.EventHandler(this.LoginF_Activated);

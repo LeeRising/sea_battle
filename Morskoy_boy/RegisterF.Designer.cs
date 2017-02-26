@@ -281,6 +281,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(419, 365);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.birthdayPicker);
             this.Controls.Add(this.label7);
@@ -303,7 +304,11 @@
             this.Controls.Add(this.loginTb);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(419, 365);
+            this.MinimumSize = new System.Drawing.Size(419, 365);
             this.Name = "RegisterF";
+            this.Sizable = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Register new user";
             this.Load += new System.EventHandler(this.RegisterF_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pB3)).EndInit();

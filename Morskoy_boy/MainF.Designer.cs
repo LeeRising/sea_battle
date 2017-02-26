@@ -31,21 +31,21 @@ namespace Morskoy_boy
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainF));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.gamehistoryBtn = new System.Windows.Forms.Button();
-            this.friendsBtn = new System.Windows.Forms.Button();
-            this.nameL = new System.Windows.Forms.Label();
-            this.winL = new System.Windows.Forms.Label();
-            this.loseL = new System.Windows.Forms.Label();
-            this.rankL = new System.Windows.Forms.Label();
-            this.menu = new System.Windows.Forms.MenuStrip();
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fastCheckBtnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profileImg = new System.Windows.Forms.PictureBox();
+            this.button1 = new Button();
+            this.button2 = new Button();
+            this.gamehistoryBtn = new Button();
+            this.friendsBtn = new Button();
+            this.nameL = new Label();
+            this.winL = new Label();
+            this.loseL = new Label();
+            this.rankL = new Label();
+            this.menu = new MenuStrip();
+            this.menuToolStripMenuItem = new ToolStripMenuItem();
+            this.settingToolStripMenuItem = new ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new ToolStripMenuItem();
+            this.fastCheckBtnToolStripMenuItem = new ToolStripMenuItem();
+            this.profileImg = new PictureBox();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImg)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +96,7 @@ namespace Morskoy_boy
             // 
             this.nameL.AutoSize = true;
             this.nameL.BackColor = System.Drawing.Color.White;
+            this.nameL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.nameL.Location = new System.Drawing.Point(135, 106);
             this.nameL.Name = "nameL";
             this.nameL.Size = new System.Drawing.Size(35, 13);
@@ -131,20 +132,20 @@ namespace Morskoy_boy
             // 
             // menu
             // 
-            this.menu.Dock = System.Windows.Forms.DockStyle.None;
-            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu.Dock = DockStyle.None;
+            this.menu.Items.AddRange(new ToolStripItem[] {
             this.menuToolStripMenuItem,
             this.aboutToolStripMenuItem,
             this.fastCheckBtnToolStripMenuItem});
-            this.menu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menu.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menu.Location = new System.Drawing.Point(0, 65);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(201, 24);
+            this.menu.Size = new System.Drawing.Size(168, 24);
             this.menu.TabIndex = 9;
             // 
             // menuToolStripMenuItem
             // 
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             this.settingToolStripMenuItem,
             this.logOutToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
@@ -174,8 +175,8 @@ namespace Morskoy_boy
             // fastCheckBtnToolStripMenuItem
             // 
             this.fastCheckBtnToolStripMenuItem.Name = "fastCheckBtnToolStripMenuItem";
-            this.fastCheckBtnToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.fastCheckBtnToolStripMenuItem.Text = "FastCheckBtn";
+            this.fastCheckBtnToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.fastCheckBtnToolStripMenuItem.Text = "TestBtn";
             this.fastCheckBtnToolStripMenuItem.Click += new System.EventHandler(this.fastCheckBtnToolStripMenuItem_Click);
             // 
             // profileImg
@@ -183,14 +184,14 @@ namespace Morskoy_boy
             this.profileImg.Location = new System.Drawing.Point(12, 103);
             this.profileImg.Name = "profileImg";
             this.profileImg.Size = new System.Drawing.Size(104, 148);
-            this.profileImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profileImg.SizeMode = PictureBoxSizeMode.StretchImage;
             this.profileImg.TabIndex = 0;
             this.profileImg.TabStop = false;
             // 
             // MainF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(414, 263);
             this.Controls.Add(this.nameL);
@@ -205,11 +206,14 @@ namespace Morskoy_boy
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
+            this.MaximumSize = new System.Drawing.Size(414, 263);
+            this.MinimumSize = new System.Drawing.Size(414, 263);
             this.Name = "MainF";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Sizable = false;
+            this.SizeGripStyle = SizeGripStyle.Hide;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Batlle in the see";
-            this.Activated += new System.EventHandler(this.MainF_Activated);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainF_FormClosed);
+            this.FormClosed += new FormClosedEventHandler(this.MainF_FormClosed);
             this.Load += new System.EventHandler(this.MainF_Load);
             this.LocationChanged += new System.EventHandler(this.MainF_LocationChanged);
             this.menu.ResumeLayout(false);
