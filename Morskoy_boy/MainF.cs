@@ -43,12 +43,9 @@ namespace Morskoy_boy
         bool friend_window = false,
             game_history_window = false,
             connection = false;
-        int x, y;
 
         private void MainF_Load(object sender, EventArgs e)
         {
-            x = Location.X;
-            y = Location.Y;
             User.login = rk.GetValue("login").ToString();
             User.id = rk.GetValue("id").ToString();
             try
@@ -64,15 +61,16 @@ namespace Morskoy_boy
                     User.last_name = (string)_JObject.SelectToken("Last_name");
                     User.sex = (string)_JObject.SelectToken("Sex");
                     User.e_mail = (string)_JObject.SelectToken("E_mail");
-                    winL.Text = User.wins = (string)_JObject.SelectToken("Wins");
-                    loseL.Text = User.loses = (string)_JObject.SelectToken("Loses");
+                    User.wins = (string)_JObject.SelectToken("Wins");
+                    User.loses = (string)_JObject.SelectToken("Loses");
                     rankL.Text = User.rank = (string)_JObject.SelectToken("Rank");
                     User.reg_date = (string)_JObject.SelectToken("Register_time");
                     User.birth_date = (string)_JObject.SelectToken("Birth_date");
                     User.ava = (string)_JObject.SelectToken("Photo");
                     User.state = (string)_JObject.SelectToken("State");
                     nameL.Text = User.first_name + " " + User.last_name;
-                    //if (User.state == "Online") nameL.ForeColor = Color.Green;
+                    winL.Text = "Wins:" + User.wins;
+                    loseL.Text = "Loses:" + User.loses;
                     using (WebClient webClient = new WebClient())
                     {
                         string path = Application.StartupPath + "\\user\\" + User.ava;
@@ -115,6 +113,7 @@ namespace Morskoy_boy
             rk.SetValue("id", "");
             rk.SetValue("password", "");
             logout = true;
+            File.Delete(Path.Combine(Application.StartupPath + @"\user\") + User.ava);
             Close();
         }
         private void MainF_FormClosed(object sender, FormClosedEventArgs e)
@@ -132,7 +131,12 @@ namespace Morskoy_boy
             f.Location = new Point(Location.X+Size.Width, Location.Y);
             f1.Location = new Point(Location.X - f1.Size.Width, Location.Y);
         }
-
+        private void MainF_Activated(object sender, EventArgs e)
+        {
+            var skinmanager = MaterialSkinManager.Instance;
+            skinmanager.AddFormToManage(this);
+            skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
+        }
         private void friendsBtn_Click(object sender, EventArgs e)
         {
             switch (friend_window)

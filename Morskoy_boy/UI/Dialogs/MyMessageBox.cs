@@ -91,11 +91,17 @@ namespace Morskoy_boy.UI.Dialogs
             btn3.Text = "Ok";
             btn3.Visible = true;
             btn3.Click += (sender, e) => { Close(); };
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey900, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            var skinmanager = MaterialSkinManager.Instance;
+            skinmanager.AddFormToManage(this);
+            skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
             MessageBoxLabel.Text = text;
+        }
+
+        private void MyMessageBox_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var skinmanager = MaterialSkinManager.Instance;
+            skinmanager.AddFormToManage(this);
+            skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
         }
     }
 }

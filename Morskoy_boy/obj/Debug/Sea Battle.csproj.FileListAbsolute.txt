@@ -38,7 +38,6 @@ D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MaterialSkin.dll
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MetroFramework.dll
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Newtonsoft.Json.dll
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Newtonsoft.Json.xml
-D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csprojResolveAssemblyReference.cache
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.ChatF.resources
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.FriendsF.resources
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.GameF.resources
@@ -71,3 +70,6 @@ D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.UI.Dialogs.MyMessa
 \\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csproj.GenerateResource.Cache
 \\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.exe
 \\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.pdb
+D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Bunifu_UI_v1.52.dll
+D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MetroFramework.Fonts.dll
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csprojResolveAssemblyReference.cache

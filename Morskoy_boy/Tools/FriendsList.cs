@@ -10,13 +10,15 @@ namespace Morskoy_boy.Tools
         private string rank;
         private string photo_url;
         private string state;
-        public FriendsList(string _first_name, string _last_name, string _rank, string _photo_url, string _state)
+        private string last_online;
+        public FriendsList(string _first_name, string _last_name, string _rank, string _photo_url, string _state,string _last_online)
         {
             first_name = _first_name;
             last_name = _last_name;
             rank = _rank;
             photo_url = _photo_url;
             state = _state;
+            last_online = _last_online;
         }
         public string First_name
         {
@@ -42,6 +44,11 @@ namespace Morskoy_boy.Tools
         {
             get { return state; }
             set { state = value; }
+        }
+        public string Last_online
+        {
+            get { return last_online; }
+            set { last_online = value; }
         }
         public static Image Avatar(string photo_url)
         {

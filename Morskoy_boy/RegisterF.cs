@@ -8,6 +8,7 @@ using System.Net;
 using System.IO;
 using MaterialSkin.Controls;
 using System.Text.RegularExpressions;
+using Morskoy_boy.UI.Dialogs;
 
 namespace Morskoy_boy
 {
@@ -20,7 +21,7 @@ namespace Morskoy_boy
         }
         string ava="default.png",ava1,
             sex;
-        bool p1c=true, p2c=true, p3c=true;
+        bool p1c = false, p2c = false, p3c = false;
 
         #region Fields
         private void emailTb_TextChanged(object sender, EventArgs e)
@@ -73,7 +74,10 @@ namespace Morskoy_boy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                using(MyMessageBox mb = new MyMessageBox("Error connection!"))
+                {
+                    mb.ShowDialog();
+                }
             }
         }//login check
         #endregion
@@ -81,7 +85,7 @@ namespace Morskoy_boy
         #region BtnClick
         private void regBtn_Click(object sender, EventArgs e)
         {
-            if (p1c & p2c & p3c)
+            if (p1c==true & p2c == true & p3c == true)
             {
                 try
                 {
@@ -95,7 +99,10 @@ namespace Morskoy_boy
                         var create_new_user = WebRequest.Create(Variables._create_new_user + loginTb.Text + "&password=" + Cryptography.getHashSha256(passTb.Text)
                             + "&fname="+ fnameTb.Text + "&lname="+ lnameTb.Text + "&sex="+ sex + "&email="+ emailTb.Text + "&regtime="+ DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss") + "&birthtime="+birthdayPicker.Value.ToString("yyyy-MM-dd") + "&photo="+ ava);
                         var response = (HttpWebResponse)create_new_user.GetResponse();
-                        MessageBox.Show("Register Successfully");
+                        using(MyMessageBox mb = new MyMessageBox("Register Successfully"))
+                        {
+                            mb.ShowDialog();
+                        }
                         Close();
                     }
                     if (ava != "default.png")
@@ -108,13 +115,12 @@ namespace Morskoy_boy
                         {
                             id = sr.ReadToEnd();
                         }
-                        id = id.Substring(2, id.Length - 2);
-                        id = id.Substring(0, id.Length - 2);
+                        id = id.Substring(4, id.Length - 8);
                         ava = (int.Parse(id.ToString()) + 1).ToString() + "." + s1[1];
                         File.Copy(ava1, Path.Combine(Application.StartupPath + @"\") + ava);
                         try
                         {
-                            FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create("ftp://seabattle.sytes.net/avatar/" + ava);
+                            FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create("ftp://seabattle.sytes.net/" + ava);
                             request.Method = WebRequestMethods.Ftp.UploadFile;
                             request.Credentials = new NetworkCredential("admin", "admin");
                             //request.Credentials = new NetworkCredential("leebattle", "jaoIJei213phz");
@@ -130,24 +136,36 @@ namespace Morskoy_boy
                             reqStream.Close();
                             request.Abort();
                         }
-                        catch (Exception ex)
+                        catch (WebException ex)
                         {
-                            MessageBox.Show("Error connection!");
+                            using(MyMessageBox mb = new MyMessageBox("Error connection!"))
+                            {
+                                mb.ShowDialog();
+                            }
                         }
                         File.Delete(Path.Combine(Application.StartupPath + @"\") + ava);
                         var create_new_user = WebRequest.Create(Variables._create_new_user + loginTb.Text + "&password=" + Cryptography.getHashSha256(passTb.Text)
                             + "&fname=" + fnameTb.Text + "&lname=" + lnameTb.Text + "&sex=" + sex + "&email=" + emailTb.Text + "&regtime=" + DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss") + "&birthtime=" + birthdayPicker.Value.ToString("yyyy-MM-dd") + "&photo=" + ava);
                         var response1 = (HttpWebResponse)create_new_user.GetResponse();
-                        MessageBox.Show("Register Successfully");
+                        using(MyMessageBox mb = new MyMessageBox("Register Successfully"))
+                        {
+                            mb.ShowDialog();
+                        }
                         Close();
                     }
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Error connection!");
+                    using(MyMessageBox mb = new MyMessageBox("Error connection!"))
+                    {
+                        mb.ShowDialog();
+                    }
                 }
             }
-            else MessageBox.Show("Please check your information!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else using(MyMessageBox mb = new MyMessageBox("Error", "Please check your information!", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
+                {
+                    mb.ShowDialog();
+                }
         }//registration
         
 
@@ -171,7 +189,10 @@ namespace Morskoy_boy
             }
             catch (Exception ex)
             {
-                MessageBox.Show("You must choose only picture!");
+                using(MyMessageBox mb = new MyMessageBox("You must choose only picture!"))
+                {
+                    mb.ShowDialog();
+                } 
             }
         }//avatar changed  
         #endregion

@@ -82,7 +82,7 @@
             this.regBtn.Location = new System.Drawing.Point(60, 325);
             this.regBtn.Name = "regBtn";
             this.regBtn.Size = new System.Drawing.Size(75, 23);
-            this.regBtn.TabIndex = 30;
+            this.regBtn.TabIndex = 10;
             this.regBtn.Text = "Register";
             this.regBtn.UseVisualStyleBackColor = true;
             this.regBtn.Click += new System.EventHandler(this.regBtn_Click);
@@ -92,7 +92,7 @@
             this.passTb.Location = new System.Drawing.Point(79, 113);
             this.passTb.Name = "passTb";
             this.passTb.Size = new System.Drawing.Size(151, 20);
-            this.passTb.TabIndex = 5;
+            this.passTb.TabIndex = 2;
             this.passTb.UseSystemPasswordChar = true;
             // 
             // label2
@@ -109,7 +109,7 @@
             this.rppassTb.Location = new System.Drawing.Point(94, 146);
             this.rppassTb.Name = "rppassTb";
             this.rppassTb.Size = new System.Drawing.Size(136, 20);
-            this.rppassTb.TabIndex = 7;
+            this.rppassTb.TabIndex = 3;
             this.rppassTb.UseSystemPasswordChar = true;
             this.rppassTb.TextChanged += new System.EventHandler(this.rppassTb_TextChanged);
             // 
@@ -127,7 +127,7 @@
             this.emailTb.Location = new System.Drawing.Point(60, 177);
             this.emailTb.Name = "emailTb";
             this.emailTb.Size = new System.Drawing.Size(170, 20);
-            this.emailTb.TabIndex = 9;
+            this.emailTb.TabIndex = 4;
             this.emailTb.TextChanged += new System.EventHandler(this.emailTb_TextChanged);
             // 
             // label4
@@ -144,7 +144,7 @@
             this.fnameTb.Location = new System.Drawing.Point(82, 207);
             this.fnameTb.Name = "fnameTb";
             this.fnameTb.Size = new System.Drawing.Size(148, 20);
-            this.fnameTb.TabIndex = 11;
+            this.fnameTb.TabIndex = 5;
             // 
             // label5
             // 
@@ -203,7 +203,7 @@
             this.backBtn.Location = new System.Drawing.Point(283, 325);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(78, 23);
-            this.backBtn.TabIndex = 31;
+            this.backBtn.TabIndex = 11;
             this.backBtn.Text = "Back to login";
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
@@ -213,7 +213,7 @@
             this.lnameTb.Location = new System.Drawing.Point(83, 237);
             this.lnameTb.Name = "lnameTb";
             this.lnameTb.Size = new System.Drawing.Size(147, 20);
-            this.lnameTb.TabIndex = 33;
+            this.lnameTb.TabIndex = 6;
             // 
             // label6
             // 
@@ -239,7 +239,7 @@
             this.birthdayPicker.Location = new System.Drawing.Point(248, 279);
             this.birthdayPicker.Name = "birthdayPicker";
             this.birthdayPicker.Size = new System.Drawing.Size(158, 20);
-            this.birthdayPicker.TabIndex = 35;
+            this.birthdayPicker.TabIndex = 9;
             this.birthdayPicker.Value = new System.DateTime(2017, 1, 28, 11, 14, 0, 0);
             // 
             // groupBox1
@@ -259,7 +259,7 @@
             this.femaleRb.Location = new System.Drawing.Point(145, 17);
             this.femaleRb.Name = "femaleRb";
             this.femaleRb.Size = new System.Drawing.Size(56, 17);
-            this.femaleRb.TabIndex = 1;
+            this.femaleRb.TabIndex = 8;
             this.femaleRb.Text = "female";
             this.femaleRb.UseVisualStyleBackColor = true;
             // 
@@ -270,7 +270,7 @@
             this.maleRb.Location = new System.Drawing.Point(30, 17);
             this.maleRb.Name = "maleRb";
             this.maleRb.Size = new System.Drawing.Size(47, 17);
-            this.maleRb.TabIndex = 0;
+            this.maleRb.TabIndex = 7;
             this.maleRb.TabStop = true;
             this.maleRb.Text = "male";
             this.maleRb.UseVisualStyleBackColor = true;
@@ -304,11 +304,11 @@
             this.Controls.Add(this.loginTb);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(419, 365);
-            this.MinimumSize = new System.Drawing.Size(419, 365);
+            this.MaximizeBox = false;
             this.Name = "RegisterF";
             this.Sizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register new user";
             this.Load += new System.EventHandler(this.RegisterF_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pB3)).EndInit();
