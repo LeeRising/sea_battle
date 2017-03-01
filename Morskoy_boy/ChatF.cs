@@ -12,9 +12,11 @@ namespace Morskoy_boy
 {
     public partial class ChatF : MaterialForm
     {
-        public ChatF()
+        public ChatF(string friends_name)
         {
             InitializeComponent();
+            Text = friends_name;
+            //Юзатьи табконтрол и тейбл лейаут
         }
     }
 }

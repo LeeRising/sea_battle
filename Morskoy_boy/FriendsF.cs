@@ -35,6 +35,8 @@ namespace Morskoy_boy
 
         private string reqtext, reqtext1;
 
+        private int index;
+
         public FriendsF()
         {
             InitializeComponent();
@@ -139,7 +141,6 @@ namespace Morskoy_boy
                 }
             }
         }
-
         private void searchTb_TextChanged(object sender, EventArgs e)
         {
             string search_str = searchTb.Text;
@@ -189,16 +190,16 @@ namespace Morskoy_boy
                     {
                         if (v.State == "Offline")
                         {
-                            if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                                 v.Rank, Properties.Resources._default, RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
-                            else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                                 v.Rank, FriendsList.Avatar(v.Photo), RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
                         }
                         else
                         {
-                            if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                                 v.Rank, Properties.Resources._default, v.State));
-                            else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                                 v.Rank, FriendsList.Avatar(v.Photo), v.State));
                         }
                     }
@@ -206,18 +207,18 @@ namespace Morskoy_boy
                 case 1:
                     foreach (var v in onlineList)
                     {
-                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
-                            v.Rank, Properties.Resources._default,v.State));
-                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
+                            v.Rank, Properties.Resources._default, v.State));
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                             v.Rank, FriendsList.Avatar(v.Photo), v.State));
                     }
                     break;
                 case 2:
                     foreach (var v in offlineList)
                     {
-                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
-                            v.Rank, Properties.Resources._default,RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
-                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
+                            v.Rank, Properties.Resources._default, RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                             v.Rank, FriendsList.Avatar(v.Photo), RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
                     }
                     break;
@@ -226,21 +227,73 @@ namespace Morskoy_boy
                     {
                         if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                             v.Rank, Properties.Resources._default, v.State));
-                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                             v.Rank, FriendsList.Avatar(v.Photo), v.State));
                     }
                     break;
                 case 3:
                     foreach (var v in busyList)
                     {
-                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                             v.Rank, Properties.Resources._default, v.State));
-                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
                             v.Rank, FriendsList.Avatar(v.Photo), v.State));
                     }
                     break;
             }
             _selected_state = stateComboBox.SelectedIndex;
         }
+        private void friendsListB_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                index = friendsListB.IndexFromPoint(e.Location);
+                if (index != ListBox.NoMatches)
+                {
+                    friendsListB.ContextMenuStrip = contextMenu;
+                }
+            }
+        }
+        #region MenuItemsClicks
+        private void sendMessageMenuItem_Click(object sender, EventArgs e)
+        {
+            ChatF f=null;
+            switch (_selected_state)
+            {
+                case 0:
+                    //if(friendslist)
+                    f = new ChatF(friendslist[index].First_name + " " + friendslist[index].Last_name);
+                    f.Show();
+                    break;
+                case 1:
+                    //if(onlineList)
+                    f = new ChatF(onlineList[index].First_name + " " + onlineList[index].Last_name);
+                        f.Show();
+                    break;
+                case 2:
+                    //if(offlineList)
+                    f = new ChatF(offlineList[index].First_name + " " + offlineList[index].Last_name);
+                        f.Show();
+                    break;
+                case 4:
+                    //if(afkList)
+                    f = new ChatF(afkList[index].First_name + " " + afkList[index].Last_name);
+                        f.Show();
+                    break;
+                case 3:
+                    //if(busyList)
+                    f = new ChatF(busyList[index].First_name + " " + busyList[index].Last_name);
+                        f.Show();
+                    break;
+            }
+            //f.Dispose();
+            //Дописати шоб канало і на пошук
+        }
+
+        private void seeFullInfoMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

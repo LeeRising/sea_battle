@@ -34,9 +34,9 @@ namespace Morskoy_boy
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FriendsF));
             this.stateComboBox = new MetroFramework.Controls.MetroComboBox();
             this.contextMenu = new MaterialSkin.Controls.MaterialContextMenuStrip();
-            this.searchTb = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.sendMessageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seeFullInfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchTb = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.friendsListB = new Morskoy_boy.UI.MyControls.friendsListBox();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,21 @@ namespace Morskoy_boy
             this.seeFullInfoMenuItem});
             this.contextMenu.MouseState = MaterialSkin.MouseState.HOVER;
             this.contextMenu.Name = "materialContextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(150, 48);
+            this.contextMenu.Size = new System.Drawing.Size(153, 70);
+            // 
+            // sendMessageMenuItem
+            // 
+            this.sendMessageMenuItem.Name = "sendMessageMenuItem";
+            this.sendMessageMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sendMessageMenuItem.Text = "Send Message";
+            this.sendMessageMenuItem.Click += new System.EventHandler(this.sendMessageMenuItem_Click);
+            // 
+            // seeFullInfoMenuItem
+            // 
+            this.seeFullInfoMenuItem.Name = "seeFullInfoMenuItem";
+            this.seeFullInfoMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.seeFullInfoMenuItem.Text = "See full info";
+            this.seeFullInfoMenuItem.Click += new System.EventHandler(this.seeFullInfoMenuItem_Click);
             // 
             // searchTb
             // 
@@ -86,18 +100,6 @@ namespace Morskoy_boy
             this.searchTb.UseSystemPasswordChar = false;
             this.searchTb.TextChanged += new System.EventHandler(this.searchTb_TextChanged);
             // 
-            // sendMessageMenuItem
-            // 
-            this.sendMessageMenuItem.Name = "sendMessageMenuItem";
-            this.sendMessageMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.sendMessageMenuItem.Text = "Send Message";
-            // 
-            // seeFullInfoMenuItem
-            // 
-            this.seeFullInfoMenuItem.Name = "seeFullInfoMenuItem";
-            this.seeFullInfoMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.seeFullInfoMenuItem.Text = "See full info";
-            // 
             // friendsListB
             // 
             this.friendsListB.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -108,6 +110,7 @@ namespace Morskoy_boy
             this.friendsListB.Name = "friendsListB";
             this.friendsListB.Size = new System.Drawing.Size(278, 251);
             this.friendsListB.TabIndex = 1;
+            this.friendsListB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.friendsListB_MouseDown);
             // 
             // FriendsF
             // 
