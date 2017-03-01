@@ -8,6 +8,7 @@
         public static string last_name { get; set; }
         public static string sex { get; set; }
         public static string e_mail { get; set; }
+        public static string cash { get; set; }
         public static string wins { get; set; }
         public static string loses { get; set; }
         public static string rank { get; set; }

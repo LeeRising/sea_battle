@@ -56,21 +56,23 @@ namespace Morskoy_boy
                 var response = (HttpWebResponse)set_online_req.GetResponse();
                 foreach (var _JObject in JsonParser.ArrayParse(Variables._get_acc_info + User.id))
                 {
-                    JToken token = _JObject;
                     User.first_name = (string)_JObject.SelectToken("First_name");
                     User.last_name = (string)_JObject.SelectToken("Last_name");
                     User.sex = (string)_JObject.SelectToken("Sex");
                     User.e_mail = (string)_JObject.SelectToken("E_mail");
+                    User.cash = (string)_JObject.SelectToken("Cash");
                     User.wins = (string)_JObject.SelectToken("Wins");
                     User.loses = (string)_JObject.SelectToken("Loses");
-                    rankL.Text = User.rank = (string)_JObject.SelectToken("Rank");
+                    User.rank = (string)_JObject.SelectToken("Rank");
                     User.reg_date = (string)_JObject.SelectToken("Register_time");
                     User.birth_date = (string)_JObject.SelectToken("Birth_date");
                     User.ava = (string)_JObject.SelectToken("Photo");
                     User.state = (string)_JObject.SelectToken("State");
+
                     nameL.Text = User.first_name + " " + User.last_name;
                     winL.Text = "Wins:" + User.wins;
                     loseL.Text = "Loses:" + User.loses;
+                    rankL.Text = User.rank;
                     using (WebClient webClient = new WebClient())
                     {
                         string path = Application.StartupPath + "\\user\\" + User.ava;
@@ -142,8 +144,7 @@ namespace Morskoy_boy
             switch (friend_window)
             {
                 case false:
-                    friendsBtn.BackColor = Color.Blue;
-                    friendsBtn.ForeColor = Color.White;
+                    friendsBtn.Style = MetroFramework.MetroColorStyle.Black;
                     f = new FriendsF();
                     friend_window = true;
                     f.StartPosition = FormStartPosition.Manual;
@@ -152,8 +153,7 @@ namespace Morskoy_boy
                     Location = new Point(Location.X - f.Size.Width / 2, Location.Y);
                     break;
                 case true:
-                    friendsBtn.BackColor = Color.White;
-                    friendsBtn.ForeColor = Color.Black;
+                    friendsBtn.Style = MetroFramework.MetroColorStyle.Purple;
                     friend_window = false;
                     f.Hide();
                     Location = new Point(Location.X + f.Size.Width / 2, Location.Y);
@@ -165,7 +165,7 @@ namespace Morskoy_boy
             switch (game_history_window)
             {
                 case false:
-                    gamehistoryBtn.BackColor = Color.Lime;
+                    gamehistoryBtn.Style = MetroFramework.MetroColorStyle.Black;
                     f1 = new GameHistoryF();
                     game_history_window = true;
                     f1.StartPosition = FormStartPosition.Manual;
@@ -174,7 +174,7 @@ namespace Morskoy_boy
                     Location = new Point(Location.X + f1.Size.Width / 2, Location.Y);
                     break;
                 case true:
-                    gamehistoryBtn.BackColor = Color.White;
+                    gamehistoryBtn.Style = MetroFramework.MetroColorStyle.Purple;
                     game_history_window = false;
                     f1.Hide();
                     Location = new Point(Location.X - f1.Size.Width / 2, Location.Y);

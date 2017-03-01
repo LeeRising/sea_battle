@@ -7,7 +7,7 @@ namespace Morskoy_boy.UI.MyControls
     {
         private string _user_name;
         private string _user_rank;
-        private string _state;
+        public string _state;
         private Image _user_avatar;
         
 
@@ -55,7 +55,7 @@ namespace Morskoy_boy.UI.MyControls
             }
             else
             {
-                e.Graphics.FillRectangle(Brushes.Beige, e.Bounds);
+                e.Graphics.FillRectangle(Brushes.White, e.Bounds);
             }
 
             // draw some item separator
@@ -64,28 +64,34 @@ namespace Morskoy_boy.UI.MyControls
             // draw item image
             e.Graphics.DrawImage(this.User_avatar, e.Bounds.X + margin.Left, e.Bounds.Y + margin.Top, imageSize.Width, imageSize.Height);
 
-            // calculate bounds for title text drawing
-            Rectangle titleBounds = new Rectangle(e.Bounds.X + margin.Horizontal + imageSize.Width,
+            // calculate bounds
+            Rectangle nameBounds = new Rectangle(e.Bounds.X + margin.Horizontal + imageSize.Width,
                                                   e.Bounds.Y + margin.Top,
                                                   e.Bounds.Width - margin.Right - imageSize.Width - margin.Horizontal,
-                                                  (int)nameFont.GetHeight() + 2);
+                                                  (int)nameFont.GetHeight());
             
-            // calculate bounds for details text drawing
-            Rectangle detailBounds = new Rectangle(e.Bounds.X + margin.Horizontal + imageSize.Width,
-                                                   e.Bounds.Y + (int)nameFont.GetHeight() + 2 + margin.Vertical + margin.Top,
+            Rectangle rankBounds = new Rectangle(e.Bounds.X + margin.Horizontal + imageSize.Width,
+                                                   e.Bounds.Y + (int)nameFont.GetHeight() + margin.Top+5,
                                                    e.Bounds.Width - margin.Right - imageSize.Width - margin.Horizontal,
-                                                   e.Bounds.Height - margin.Bottom - (int)nameFont.GetHeight() - 2 - margin.Vertical - margin.Top);
+                                                   (int)rankFont.GetHeight()+2);
 
             Rectangle stateBounds = new Rectangle(e.Bounds.X + margin.Horizontal + imageSize.Width,
-                                                   e.Bounds.Y + (int)stateFont.GetHeight() + 25 + margin.Vertical + margin.Top,
+                                                   e.Bounds.Y + (int)rankFont.GetHeight() + margin.Top+25,
                                                    e.Bounds.Width - margin.Right - imageSize.Width - margin.Horizontal,
-                                                   e.Bounds.Height - margin.Bottom - (int)stateFont.GetHeight() - 25 - margin.Vertical - margin.Top);
+                                                   (int)stateFont.GetHeight()+2);
 
             // draw the text within the bounds
-            e.Graphics.DrawString(this.User_name, nameFont, Brushes.Black, titleBounds, aligment);
-            e.Graphics.DrawString(this.User_rank, rankFont, Brushes.Blue, detailBounds, aligment);
-            //if(State == "Offline")e.Graphics.DrawString(this.State, stateFont, Brushes.Red, stateBounds, aligment);
-            if(State != "Offline")e.Graphics.DrawString(this.State, stateFont, Brushes.Green, stateBounds, aligment);
+            e.Graphics.DrawString(this.User_name, nameFont, Brushes.Black, nameBounds, aligment);
+            e.Graphics.DrawString(this.User_rank, rankFont, Brushes.Blue, rankBounds, aligment);
+
+            if (_state == "Online")
+                e.Graphics.DrawString(this.State, stateFont, Brushes.Green, stateBounds, aligment);
+            if (_state == "Afk")
+                e.Graphics.DrawString(this.State, stateFont, Brushes.Purple, stateBounds, aligment);
+            if (_state == "Busy")
+                e.Graphics.DrawString(this.State, stateFont, Brushes.IndianRed, stateBounds, aligment);
+            if (_state != "Busy" & _state != "Online" & _state != "Afk")
+                e.Graphics.DrawString(this.State, stateFont, Brushes.Black, stateBounds, aligment);
 
             // put some focus rectangle
             e.DrawFocusRectangle();
@@ -124,9 +130,8 @@ namespace Morskoy_boy.UI.MyControls
             _fmt = new StringFormat();
             _fmt.Alignment = StringAlignment.Near;
             _fmt.LineAlignment = StringAlignment.Near;
-            _nameFont = new Font(this.Font, FontStyle.Bold);
-            _rankFont = new Font(this.Font, FontStyle.Regular);
-            _stateFont = new Font(this.Font, FontStyle.Regular);
+            _rankFont = _stateFont = new Font("Rockwell", (float)10.3);
+            _nameFont = new Font("Verdana",(float)10.3);
         }
 
         protected override void OnDrawItem(DrawItemEventArgs e)

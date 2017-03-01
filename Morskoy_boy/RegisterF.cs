@@ -26,7 +26,7 @@ namespace Morskoy_boy
         #region Fields
         private void emailTb_TextChanged(object sender, EventArgs e)
         {
-            if (emailTb.TextLength > 1)
+            if (!String.IsNullOrEmpty(emailTb.Text))
             {
                 if (MailValid.IsValid(emailTb.Text))
                 {
@@ -55,10 +55,10 @@ namespace Morskoy_boy
         }//pass check
         private void loginTb_TextChanged(object sender, EventArgs e)
         {
-            if (loginTb.Text == "" | loginTb.TextLength == 1) pB1.Image = Properties.Resources.decline;
+            if (String.IsNullOrEmpty(loginTb.Text)) pB1.Image = Properties.Resources.decline;
             try
             {
-                if (loginTb.TextLength > 1)
+                if (!String.IsNullOrEmpty(loginTb.Text))
                 {
                     if (JsonParser.OneResult(Variables._get_users_login + loginTb.Text) =="null" && Regex.IsMatch(loginTb.Text, "[A-Za-z]"))
                     {

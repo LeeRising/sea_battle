@@ -83,7 +83,7 @@
     <Compile Include="ChatF.Designer.cs">
       <DependentUpon>ChatF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\FriendsList.cs" />
+    <Compile Include="UI\FriendsList.cs" />
     <Compile Include="Tools\RelativeTime.cs" />
     <Compile Include="Tools\Variables.cs" />
     <Compile Include="UI\Dialogs\MyMessageBox.cs">

@@ -103,7 +103,7 @@ namespace Morskoy_boy
             // 
             this.profileImg.Location = new System.Drawing.Point(12, 103);
             this.profileImg.Name = "profileImg";
-            this.profileImg.Size = new System.Drawing.Size(156, 221);
+            this.profileImg.Size = new System.Drawing.Size(156, 240);
             this.profileImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImg.TabIndex = 0;
             this.profileImg.TabStop = false;
@@ -112,7 +112,7 @@ namespace Morskoy_boy
             // 
             this.friendsBtn.BackColor = System.Drawing.Color.White;
             this.friendsBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.friendsBtn.Location = new System.Drawing.Point(294, 262);
+            this.friendsBtn.Location = new System.Drawing.Point(294, 286);
             this.friendsBtn.Name = "friendsBtn";
             this.friendsBtn.Size = new System.Drawing.Size(93, 79);
             this.friendsBtn.Style = MetroFramework.MetroColorStyle.Purple;
@@ -129,36 +129,40 @@ namespace Morskoy_boy
             // nameL
             // 
             this.nameL.AutoSize = true;
+            this.nameL.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.nameL.Location = new System.Drawing.Point(195, 103);
             this.nameL.Name = "nameL";
-            this.nameL.Size = new System.Drawing.Size(45, 19);
+            this.nameL.Size = new System.Drawing.Size(58, 25);
             this.nameL.TabIndex = 11;
             this.nameL.Text = "Name";
             // 
             // winL
             // 
             this.winL.AutoSize = true;
-            this.winL.Location = new System.Drawing.Point(195, 132);
+            this.winL.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.winL.Location = new System.Drawing.Point(195, 145);
             this.winL.Name = "winL";
-            this.winL.Size = new System.Drawing.Size(37, 19);
+            this.winL.Size = new System.Drawing.Size(49, 25);
             this.winL.TabIndex = 12;
             this.winL.Text = "Wins";
             // 
             // loseL
             // 
             this.loseL.AutoSize = true;
-            this.loseL.Location = new System.Drawing.Point(284, 132);
+            this.loseL.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.loseL.Location = new System.Drawing.Point(294, 145);
             this.loseL.Name = "loseL";
-            this.loseL.Size = new System.Drawing.Size(40, 19);
+            this.loseL.Size = new System.Drawing.Size(53, 25);
             this.loseL.TabIndex = 13;
             this.loseL.Text = "Loses";
             // 
             // rankL
             // 
             this.rankL.AutoSize = true;
-            this.rankL.Location = new System.Drawing.Point(68, 327);
+            this.rankL.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.rankL.Location = new System.Drawing.Point(65, 346);
             this.rankL.Name = "rankL";
-            this.rankL.Size = new System.Drawing.Size(37, 19);
+            this.rankL.Size = new System.Drawing.Size(49, 25);
             this.rankL.TabIndex = 14;
             this.rankL.Text = "Rank";
             // 
@@ -166,7 +170,7 @@ namespace Morskoy_boy
             // 
             this.gamehistoryBtn.BackColor = System.Drawing.Color.White;
             this.gamehistoryBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.gamehistoryBtn.Location = new System.Drawing.Point(195, 262);
+            this.gamehistoryBtn.Location = new System.Drawing.Point(195, 286);
             this.gamehistoryBtn.Name = "gamehistoryBtn";
             this.gamehistoryBtn.Size = new System.Drawing.Size(93, 79);
             this.gamehistoryBtn.Style = MetroFramework.MetroColorStyle.Purple;
@@ -184,7 +188,7 @@ namespace Morskoy_boy
             // 
             this.metroTile2.BackColor = System.Drawing.Color.White;
             this.metroTile2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.metroTile2.Location = new System.Drawing.Point(294, 177);
+            this.metroTile2.Location = new System.Drawing.Point(294, 201);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(93, 79);
             this.metroTile2.Style = MetroFramework.MetroColorStyle.Purple;
@@ -202,7 +206,7 @@ namespace Morskoy_boy
             // 
             this.metroTile3.BackColor = System.Drawing.Color.White;
             this.metroTile3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.metroTile3.Location = new System.Drawing.Point(195, 177);
+            this.metroTile3.Location = new System.Drawing.Point(195, 201);
             this.metroTile3.Name = "metroTile3";
             this.metroTile3.Size = new System.Drawing.Size(93, 79);
             this.metroTile3.Style = MetroFramework.MetroColorStyle.Purple;
@@ -221,7 +225,7 @@ namespace Morskoy_boy
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(403, 358);
+            this.ClientSize = new System.Drawing.Size(402, 376);
             this.Controls.Add(this.rankL);
             this.Controls.Add(this.loseL);
             this.Controls.Add(this.winL);

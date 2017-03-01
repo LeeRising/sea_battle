@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
-using MaterialSkin;
 using Morskoy_boy.UI.MyControls;
 using Morskoy_boy.UI;
 using Morskoy_boy.Tools;
 using Microsoft.Win32;
-using System.Text.RegularExpressions;
 using System.Collections.Generic;
-using Morskoy_boy.UI.Dialogs;
-using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Threading;
 using System.Net;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Morskoy_boy
 {
@@ -27,15 +25,16 @@ namespace Morskoy_boy
         List<FriendsList> offlineList = new List<FriendsList>();
         List<FriendsList> afkList = new List<FriendsList>();
         List<FriendsList> busyList = new List<FriendsList>();
+        List<FriendsList> searchList = new List<FriendsList>();
         JArray _FArray;
         System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
         Thread thread;
 
-        private int _selected_state=0;
+        private int _selected_state = 0;
 
         private string reqtext, reqtext1;
-        
+
         public FriendsF()
         {
             InitializeComponent();
@@ -59,7 +58,7 @@ namespace Morskoy_boy
                     (string)_JObject.SelectToken("Last_name"),
                     (string)_JObject.SelectToken("Rank"),
                     (string)_JObject.SelectToken("Photo"),
-                    (string)_JObject.SelectToken("State"), 
+                    (string)_JObject.SelectToken("State"),
                     (string)_JObject.SelectToken("Last_online")));
             }
             foreach (var v in friendslist)
@@ -75,7 +74,7 @@ namespace Morskoy_boy
                 "Offline:" + offlineList.Count,
                 "Busy:" + busyList.Count,
                 "Afk:" + afkList.Count });
-            stateComboBox.SelectedIndex= _selected_state;
+            stateComboBox.SelectedIndex = _selected_state;
             t.Interval = 1000;
             t.Tick += (se, ea) =>
             {
@@ -105,7 +104,7 @@ namespace Morskoy_boy
                 if (reqtext != reqtext1)
                 {
                     friendslist = new List<FriendsList>();
-                    friendsListBox1.Items.Clear();
+                    friendsListB.Items.Clear();
                     reqtext = reqtext1;
                     _FArray = new JArray();
                     _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
@@ -140,52 +139,104 @@ namespace Morskoy_boy
                 }
             }
         }
+
+        private void searchTb_TextChanged(object sender, EventArgs e)
+        {
+            string search_str = searchTb.Text;
+            if (!String.IsNullOrEmpty(search_str))
+            {
+                friendsListB.Items.Clear();
+                searchList.Clear();
+                foreach (var v in friendslist)
+                {
+                    searchList = friendslist.Where(x => Regex.IsMatch(x.First_name, search_str,RegexOptions.IgnoreCase) 
+                    | Regex.IsMatch(x.Last_name, search_str, RegexOptions.IgnoreCase)).ToList();
+                }
+                foreach (var v in searchList)
+                {
+                    if (v.State == "Offline")
+                    {
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, Properties.Resources._default, RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
+
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, FriendsList.Avatar(v.Photo), RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
+                    }
+                    else
+                    {
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, Properties.Resources._default, v.State));
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, FriendsList.Avatar(v.Photo), v.State));
+                    }
+                }
+            }
+            else
+            {
+                stateComboBox.SelectedIndex = -1;
+            }
+        }
         private void stateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            friendsListBox1.Items.Clear();
+            friendsListB.Items.Clear();
             switch (stateComboBox.SelectedIndex)
             {
-                case 1:
-                    foreach (var v in onlineList)
-                    {
-                        if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default,v.State));
-                        else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo), v.State));
-                    }
-                    break;
-                case 2:
-                    foreach (var v in offlineList)
-                    {
-                        if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default,RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
-                        else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo), RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
-                    }
-                    break;
-                case 4:
-                    foreach (var v in afkList)
-                    {
-                        if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default, v.State));
-                        else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo), v.State));
-                    }
-                    break;
-                case 3:
-                    foreach (var v in busyList)
-                    {
-                        if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default, v.State));
-                        else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo), v.State));
-                    }
+                case -1:
+                    stateComboBox.SelectedIndex = _selected_state;
                     break;
                 case 0:
                     foreach (var v in friendslist)
                     {
                         if (v.State == "Offline")
                         {
-                            if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default, RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
-                            else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo), RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
+                            if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                                v.Rank, Properties.Resources._default, RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
+                            else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                                v.Rank, FriendsList.Avatar(v.Photo), RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
                         }
                         else
                         {
-                            if (v.Photo == "default.png") friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, Properties.Resources._default, v.State));
-                            else friendsListBox1.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, v.Rank, FriendsList.Avatar(v.Photo), v.State));
+                            if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                                v.Rank, Properties.Resources._default, v.State));
+                            else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                                v.Rank, FriendsList.Avatar(v.Photo), v.State));
                         }
+                    }
+                    break;
+                case 1:
+                    foreach (var v in onlineList)
+                    {
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, Properties.Resources._default,v.State));
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, FriendsList.Avatar(v.Photo), v.State));
+                    }
+                    break;
+                case 2:
+                    foreach (var v in offlineList)
+                    {
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, Properties.Resources._default,RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, FriendsList.Avatar(v.Photo), RelativeTime._RelativeTime(Convert.ToDateTime(v.Last_online))));
+                    }
+                    break;
+                case 4:
+                    foreach (var v in afkList)
+                    {
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
+                            v.Rank, Properties.Resources._default, v.State));
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, FriendsList.Avatar(v.Photo), v.State));
+                    }
+                    break;
+                case 3:
+                    foreach (var v in busyList)
+                    {
+                        if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, Properties.Resources._default, v.State));
+                        else friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name, 
+                            v.Rank, FriendsList.Avatar(v.Photo), v.State));
                     }
                     break;
             }
