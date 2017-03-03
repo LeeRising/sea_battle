@@ -12,6 +12,7 @@ using System.Net;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using MetroFramework.Controls;
 
 namespace Morskoy_boy
 {
@@ -56,7 +57,8 @@ namespace Morskoy_boy
             _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
             foreach (var _JObject in _FArray)
             {
-                friendslist.Add(new FriendsList((string)_JObject.SelectToken("First_name"),
+                friendslist.Add(new FriendsList((uint)_JObject.SelectToken("id"), 
+                    (string)_JObject.SelectToken("First_name"),
                     (string)_JObject.SelectToken("Last_name"),
                     (string)_JObject.SelectToken("Rank"),
                     (string)_JObject.SelectToken("Photo"),
@@ -82,7 +84,6 @@ namespace Morskoy_boy
             {
                 thread = new Thread(get_friends);
                 thread.Start();
-                Thread.Sleep(1);
             };
             t.Start();
         }
@@ -103,7 +104,7 @@ namespace Morskoy_boy
                         reqtext1 = sr.ReadToEnd();
                     }
                 }
-                if (reqtext != reqtext1)
+                if (reqtext != reqtext1)//|| !Focused
                 {
                     friendslist = new List<FriendsList>();
                     friendsListB.Items.Clear();
@@ -112,7 +113,8 @@ namespace Morskoy_boy
                     _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
                     foreach (var _JObject in _FArray)
                     {
-                        friendslist.Add(new FriendsList((string)_JObject.SelectToken("First_name"),
+                        friendslist.Add(new FriendsList((uint)_JObject.SelectToken("id"), 
+                            (string)_JObject.SelectToken("First_name"),
                             (string)_JObject.SelectToken("Last_name"),
                             (string)_JObject.SelectToken("Rank"),
                             (string)_JObject.SelectToken("Photo"),
@@ -255,39 +257,106 @@ namespace Morskoy_boy
             }
         }
         #region MenuItemsClicks
+
+        ChatF f = new ChatF();
+        MetroTabPage mtp;
+
+        void ChatPageCreator(List<FriendsList> list)
+        {
+            mtp = new MetroTabPage();
+            mtp.Text = list[index].First_name + " " + list[index].Last_name;
+            mtp.Tag = list[index].Id;
+            mtp.Controls.Add(new RichTextBox
+            {
+                Name = "Dialog" + (f.chatsTab.Controls.Count) + 1.ToString(),
+                Location = new System.Drawing.Point(5, 5),
+                Size = new System.Drawing.Size(426, 179)
+            });
+            f.chatsTab.Controls.Add(mtp);
+        }
         private void sendMessageMenuItem_Click(object sender, EventArgs e)
         {
-            ChatF f=null;
-            switch (_selected_state)
+            switch (f.Visible)
             {
-                case 0:
-                    //if(friendslist)
-                    f = new ChatF(friendslist[index].First_name + " " + friendslist[index].Last_name);
+                case false:
                     f.Show();
+                    if (String.IsNullOrEmpty(searchTb.Text))
+                    {
+                        switch (_selected_state)
+                        {
+                            case 0:
+                                ChatPageCreator(friendslist);
+                                break;
+                            case 1:
+                                break;
+                            case 2:
+                                //   f = new ChatF(offlineList[index].First_name + " " + offlineList[index].Last_name);
+                                f.Show();
+                                break;
+                            case 4:
+                                //  f = new ChatF(afkList[index].First_name + " " + afkList[index].Last_name);
+                                f.Show();
+                                break;
+                            case 3:
+                                //  f = new ChatF(busyList[index].First_name + " " + busyList[index].Last_name);
+                                break;
+                        }
+                    }
+                    else
+                    {
+
+                    }
                     break;
-                case 1:
-                    //if(onlineList)
-                    f = new ChatF(onlineList[index].First_name + " " + onlineList[index].Last_name);
+
+                case true:
+                    if (String.IsNullOrEmpty(searchTb.Text))
+                    {
+                        switch (_selected_state)
+                        {
+                            case 0:
+                                foreach (var mtpage in f.chatsTab.Controls.OfType<MetroTabPage>())
+                                {
+                                    for (int i = 0; i < friendslist.Capacity; i++)
+                                    {
+                                        if (mtpage.Tag != (object)friendslist[i].Id)
+                                        {
+                                            MessageBox.Show("1");
+                                            ChatPageCreator(friendslist);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("2");
+                                            f.Activate();
+                                            f.chatsTab.SelectedTab = mtpage;
+                                        }
+                                    }
+                                }
+                                break;
+                            case 1:
+                                //  f = new ChatF(onlineList[index].First_name + " " + onlineList[index].Last_name);
+                                f.Show();
+                                break;
+                            case 2:
+                                //   f = new ChatF(offlineList[index].First_name + " " + offlineList[index].Last_name);
+                                f.Show();
+                                break;
+                            case 4:
+                                //  f = new ChatF(afkList[index].First_name + " " + afkList[index].Last_name);
+                                f.Show();
+                                break;
+                            case 3:
+                                //  f = new ChatF(busyList[index].First_name + " " + busyList[index].Last_name);
+                                f.Show();
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        //f = new ChatF(searchList[index].First_name + " " + searchList[index].Last_name);
                         f.Show();
-                    break;
-                case 2:
-                    //if(offlineList)
-                    f = new ChatF(offlineList[index].First_name + " " + offlineList[index].Last_name);
-                        f.Show();
-                    break;
-                case 4:
-                    //if(afkList)
-                    f = new ChatF(afkList[index].First_name + " " + afkList[index].Last_name);
-                        f.Show();
-                    break;
-                case 3:
-                    //if(busyList)
-                    f = new ChatF(busyList[index].First_name + " " + busyList[index].Last_name);
-                        f.Show();
+                    }
                     break;
             }
-            //f.Dispose();
-            //Дописати шоб канало і на пошук
         }
 
         private void seeFullInfoMenuItem_Click(object sender, EventArgs e)

@@ -12,11 +12,15 @@ namespace Morskoy_boy
 {
     public partial class ChatF : MaterialForm
     {
-        public ChatF(string friends_name)
+        public ChatF()
         {
             InitializeComponent();
-            Text = friends_name;
-            //Юзатьи табконтрол и тейбл лейаут
+            Text = "My Messages";
+        }
+
+        private void sendBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

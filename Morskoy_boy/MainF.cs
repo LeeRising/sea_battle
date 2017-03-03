@@ -22,18 +22,18 @@ namespace Morskoy_boy
 
         private void fastCheckBtnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (MyMessageBox mb = new MyMessageBox("Caption", "Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
-            {
+            //using (MyMessageBox mb = new MyMessageBox("Caption", "Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
+            //{
 
-            }
-            using (MyMessageBox mb = new MyMessageBox("test"))
-            {
-                //if (f.Visible == true) f.Hide();
-                //Hide();
-                //mb.ShowDialog();
-                //Show();
-                //if (f.Visible == false & friend_window) f.Show();
-            }
+            //}
+            //using (MyMessageBox mb = new MyMessageBox("test"))
+            //{
+            //    //if (f.Visible == true) f.Hide();
+            //    //Hide();
+            //    //mb.ShowDialog();
+            //    //Show();
+            //    //if (f.Visible == false & friend_window) f.Show();
+            //}
         }
 
         RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
