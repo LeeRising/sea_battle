@@ -27,6 +27,9 @@ namespace Morskoy_boy
         List<FriendsList> afkList = new List<FriendsList>();
         List<FriendsList> busyList = new List<FriendsList>();
         List<FriendsList> searchList = new List<FriendsList>();
+
+        List<FriendsList> bufferList = new List<FriendsList>();
+
         JArray _FArray;
         System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
@@ -173,6 +176,7 @@ namespace Morskoy_boy
                             v.Rank, FriendsList.Avatar(v.Photo), v.State));
                     }
                 }
+                bufferList = searchList;
             }
             else
             {
@@ -188,6 +192,7 @@ namespace Morskoy_boy
                     stateComboBox.SelectedIndex = _selected_state;
                     break;
                 case 0:
+                    bufferList = friendslist;
                     foreach (var v in friendslist)
                     {
                         if (v.State == "Offline")
@@ -207,6 +212,7 @@ namespace Morskoy_boy
                     }
                     break;
                 case 1:
+                    bufferList = onlineList;
                     foreach (var v in onlineList)
                     {
                         if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
@@ -216,6 +222,7 @@ namespace Morskoy_boy
                     }
                     break;
                 case 2:
+                    bufferList = offlineList;
                     foreach (var v in offlineList)
                     {
                         if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
@@ -225,6 +232,7 @@ namespace Morskoy_boy
                     }
                     break;
                 case 4:
+                    bufferList = afkList;
                     foreach (var v in afkList)
                     {
                         if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
@@ -234,6 +242,7 @@ namespace Morskoy_boy
                     }
                     break;
                 case 3:
+                    bufferList = busyList;
                     foreach (var v in busyList)
                     {
                         if (v.Photo == "default.png") friendsListB.Items.Add(new friendsListBoxItem(v.First_name + " " + v.Last_name,
@@ -244,6 +253,7 @@ namespace Morskoy_boy
                     break;
             }
             _selected_state = stateComboBox.SelectedIndex;
+            searchTb.Text = String.Empty;
         }
         private void friendsListB_MouseDown(object sender, MouseEventArgs e)
         {
@@ -256,6 +266,7 @@ namespace Morskoy_boy
                 }
             }
         }
+
         #region MenuItemsClicks
 
         ChatF f = new ChatF();
@@ -276,85 +287,28 @@ namespace Morskoy_boy
         }
         private void sendMessageMenuItem_Click(object sender, EventArgs e)
         {
+            if (f.IsDisposed || f==null)
+                f = new ChatF();
+
             switch (f.Visible)
             {
                 case false:
                     f.Show();
-                    if (String.IsNullOrEmpty(searchTb.Text))
-                    {
-                        switch (_selected_state)
-                        {
-                            case 0:
-                                ChatPageCreator(friendslist);
-                                break;
-                            case 1:
-                                break;
-                            case 2:
-                                //   f = new ChatF(offlineList[index].First_name + " " + offlineList[index].Last_name);
-                                f.Show();
-                                break;
-                            case 4:
-                                //  f = new ChatF(afkList[index].First_name + " " + afkList[index].Last_name);
-                                f.Show();
-                                break;
-                            case 3:
-                                //  f = new ChatF(busyList[index].First_name + " " + busyList[index].Last_name);
-                                break;
-                        }
-                    }
-                    else
-                    {
-
-                    }
+                    ChatPageCreator(bufferList);
                     break;
 
                 case true:
-                    if (String.IsNullOrEmpty(searchTb.Text))
+                    var isExist = false;
+                    foreach (var mtpage in f.chatsTab.Controls.OfType<MetroTabPage>())
                     {
-                        switch (_selected_state)
+                        if ((uint)mtpage.Tag == bufferList[index].Id)
                         {
-                            case 0:
-                                foreach (var mtpage in f.chatsTab.Controls.OfType<MetroTabPage>())
-                                {
-                                    for (int i = 0; i < friendslist.Capacity; i++)
-                                    {
-                                        if (mtpage.Tag != (object)friendslist[i].Id)
-                                        {
-                                            MessageBox.Show("1");
-                                            ChatPageCreator(friendslist);
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("2");
-                                            f.Activate();
-                                            f.chatsTab.SelectedTab = mtpage;
-                                        }
-                                    }
-                                }
-                                break;
-                            case 1:
-                                //  f = new ChatF(onlineList[index].First_name + " " + onlineList[index].Last_name);
-                                f.Show();
-                                break;
-                            case 2:
-                                //   f = new ChatF(offlineList[index].First_name + " " + offlineList[index].Last_name);
-                                f.Show();
-                                break;
-                            case 4:
-                                //  f = new ChatF(afkList[index].First_name + " " + afkList[index].Last_name);
-                                f.Show();
-                                break;
-                            case 3:
-                                //  f = new ChatF(busyList[index].First_name + " " + busyList[index].Last_name);
-                                f.Show();
-                                break;
+                            isExist = true;
+                            f.Focus();
+                            f.chatsTab.SelectedTab = mtpage;
                         }
                     }
-                    else
-                    {
-                        //f = new ChatF(searchList[index].First_name + " " + searchList[index].Last_name);
-                        f.Show();
-                    }
+                    if (!isExist) ChatPageCreator(bufferList);
                     break;
             }
         }
