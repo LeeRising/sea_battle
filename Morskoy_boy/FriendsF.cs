@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using MetroFramework.Controls;
+using System.Threading.Tasks;
 
 namespace Morskoy_boy
 {
@@ -90,61 +91,60 @@ namespace Morskoy_boy
             };
             t.Start();
         }
-        void get_friends()
+        async void get_friends()
         {
-            if (this.InvokeRequired)
+            await Task.Run(()=> 
             {
-                this.BeginInvoke(new MethodInvoker(get_friends));
-            }
-            else
-            {
-                var request = WebRequest.Create(Variables._get_friend_to_list + User.login);
-                reqtext1 = string.Empty;
-                using (var response = (HttpWebResponse)request.GetResponse())
+                Invoke((MethodInvoker)(() =>
                 {
-                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    var request = WebRequest.Create(Variables._get_friend_to_list + User.login);
+                    reqtext1 = string.Empty;
+                    using (var response = (HttpWebResponse)request.GetResponse())
                     {
-                        reqtext1 = sr.ReadToEnd();
+                        using (var sr = new StreamReader(response.GetResponseStream()))
+                        {
+                            reqtext1 = sr.ReadToEnd();
+                        }
                     }
-                }
-                if (reqtext != reqtext1)//|| !Focused
-                {
-                    friendslist = new List<FriendsList>();
-                    friendsListB.Items.Clear();
-                    reqtext = reqtext1;
-                    _FArray = new JArray();
-                    _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
-                    foreach (var _JObject in _FArray)
+                    if (reqtext != reqtext1)//|| !Focused
                     {
-                        friendslist.Add(new FriendsList((uint)_JObject.SelectToken("id"), 
-                            (string)_JObject.SelectToken("First_name"),
-                            (string)_JObject.SelectToken("Last_name"),
-                            (string)_JObject.SelectToken("Rank"),
-                            (string)_JObject.SelectToken("Photo"),
-                            (string)_JObject.SelectToken("State"),
-                            (string)_JObject.SelectToken("Last_online")));
-                    }
-                    offlineList = new List<FriendsList>();
-                    onlineList = new List<FriendsList>();
-                    afkList = new List<FriendsList>();
-                    busyList = new List<FriendsList>();
-                    foreach (var v in friendslist)
-                    {
-                        if (v.State == "Offline") offlineList.Add(v);
-                        if (v.State == "Online") onlineList.Add(v);
-                        if (v.State == "Afk") afkList.Add(v);
-                        if (v.State == "Busy") busyList.Add(v);
-                    }
-                    stateComboBox.Items.Clear();
-                    stateComboBox.Items.AddRange(new object[] { "All:" + friendslist.Count,
+                        friendslist = new List<FriendsList>();
+                        friendsListB.Items.Clear();
+                        reqtext = reqtext1;
+                        _FArray = new JArray();
+                        _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
+                        foreach (var _JObject in _FArray)
+                        {
+                            friendslist.Add(new FriendsList((uint)_JObject.SelectToken("id"),
+                                (string)_JObject.SelectToken("First_name"),
+                                (string)_JObject.SelectToken("Last_name"),
+                                (string)_JObject.SelectToken("Rank"),
+                                (string)_JObject.SelectToken("Photo"),
+                                (string)_JObject.SelectToken("State"),
+                                (string)_JObject.SelectToken("Last_online")));
+                        }
+                        offlineList = new List<FriendsList>();
+                        onlineList = new List<FriendsList>();
+                        afkList = new List<FriendsList>();
+                        busyList = new List<FriendsList>();
+                        foreach (var v in friendslist)
+                        {
+                            if (v.State == "Offline") offlineList.Add(v);
+                            if (v.State == "Online") onlineList.Add(v);
+                            if (v.State == "Afk") afkList.Add(v);
+                            if (v.State == "Busy") busyList.Add(v);
+                        }
+                        stateComboBox.Items.Clear();
+                        stateComboBox.Items.AddRange(new object[] { "All:" + friendslist.Count,
                         "Online:" + onlineList.Count,
                         "Offline:" + offlineList.Count,
                         "Busy:" + busyList.Count,
                         "Afk:" + afkList.Count });
-                    stateComboBox.SelectedIndex = _selected_state;
-                    thread.Abort();
-                }
-            }
+                        stateComboBox.SelectedIndex = _selected_state;
+                        thread.Abort();
+                    }
+                }));
+            }); 
         }
         private void searchTb_TextChanged(object sender, EventArgs e)
         {
@@ -284,6 +284,7 @@ namespace Morskoy_boy
                 Size = new System.Drawing.Size(426, 179)
             });
             f.chatsTab.Controls.Add(mtp);
+            f.chatsTab.SelectedTab = mtp;
         }
         private void sendMessageMenuItem_Click(object sender, EventArgs e)
         {

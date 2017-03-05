@@ -73,3 +73,5 @@ D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.UI.Dialogs.MyMessa
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Bunifu_UI_v1.52.dll
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MetroFramework.Fonts.dll
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csprojResolveAssemblyReference.cache
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\Bunifu_UI_v1.52.dll
+\\Leerain-pc\d\MyProject\С#\sea_battle\Morskoy_boy\bin\Debug\MetroFramework.Fonts.dll
