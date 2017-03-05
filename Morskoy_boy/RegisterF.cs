@@ -33,6 +33,11 @@ namespace Morskoy_boy
                     pB3.Image = Properties.Resources.check;
                     p3c = true;
                 }
+                else
+                {
+                    pB3.Image = Properties.Resources.decline;
+                    p3c = false;
+                }
             }
             else
             {
@@ -60,7 +65,7 @@ namespace Morskoy_boy
             {
                 if (!String.IsNullOrEmpty(loginTb.Text))
                 {
-                    if (JsonParser.OneResult(Variables._get_users_login + loginTb.Text) =="null" && Regex.IsMatch(loginTb.Text, "[A-Za-z]"))
+                    if (JsonParser.OneResult(Variables._get_users_login + loginTb.Text) == "null" && Regex.IsMatch(loginTb.Text, "[A-Za-z]"))
                     {
                         pB1.Image = Properties.Resources.check;
                         p1c = true;
@@ -74,7 +79,7 @@ namespace Morskoy_boy
             }
             catch (Exception ex)
             {
-                using(MyMessageBox mb = new MyMessageBox("Error connection!"))
+                using(MyMessageBox mb = new MyMessageBox("Connection error!"))
                 {
                     mb.ShowDialog();
                 }
@@ -138,7 +143,7 @@ namespace Morskoy_boy
                         }
                         catch (WebException ex)
                         {
-                            using(MyMessageBox mb = new MyMessageBox("Error connection!"))
+                            using(MyMessageBox mb = new MyMessageBox("Connection error!"))
                             {
                                 mb.ShowDialog();
                             }
@@ -162,7 +167,8 @@ namespace Morskoy_boy
                     }
                 }
             }
-            else using(MyMessageBox mb = new MyMessageBox("Error", "Please check your information!", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
+            else
+                using (MyMessageBox mb = new MyMessageBox("Error", "Please check your information!", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
                 {
                     mb.ShowDialog();
                 }

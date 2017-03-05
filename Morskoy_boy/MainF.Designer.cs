@@ -103,7 +103,7 @@ namespace Morskoy_boy
             // 
             this.profileImg.Location = new System.Drawing.Point(12, 103);
             this.profileImg.Name = "profileImg";
-            this.profileImg.Size = new System.Drawing.Size(156, 240);
+            this.profileImg.Size = new System.Drawing.Size(160, 240);
             this.profileImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImg.TabIndex = 0;
             this.profileImg.TabStop = false;
