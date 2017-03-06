@@ -10,6 +10,8 @@ using Morskoy_boy.Tools;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using Newtonsoft.Json.Linq;
+using System.Net.Sockets;
+using System.Text;
 
 namespace Morskoy_boy
 {
@@ -20,8 +22,19 @@ namespace Morskoy_boy
             InitializeComponent();
         }
 
+        TcpClient clientSocket = new TcpClient();
+        NetworkStream serverStream = default(NetworkStream);
         private void fastCheckBtnToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!clientSocket.Connected)
+            {
+                clientSocket.Connect("192.168.1.101", 9858);
+            }
+            serverStream = clientSocket.GetStream();
+            byte[] outStream = Encoding.UTF8.GetBytes("TestMessage$");
+            serverStream.Write(outStream, 0, outStream.Length);
+            serverStream.Flush();
+            serverStream = null;
             //using (MyMessageBox mb = new MyMessageBox("Caption", "Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
             //{
 
