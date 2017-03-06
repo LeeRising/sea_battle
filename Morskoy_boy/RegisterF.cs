@@ -128,7 +128,6 @@ namespace Morskoy_boy
                             FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create("ftp://seabattle.sytes.net/" + ava);
                             request.Method = WebRequestMethods.Ftp.UploadFile;
                             request.Credentials = new NetworkCredential("admin", "admin");
-                            //request.Credentials = new NetworkCredential("leebattle", "jaoIJei213phz");
                             request.UsePassive = true;
                             request.UseBinary = true;
                             request.KeepAlive = false;
