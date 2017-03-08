@@ -9,7 +9,7 @@ namespace Morskoy_boy.UI
         public static void translate(Form f,string lang)
         {
             XmlDocument doc = new XmlDocument();
-            XmlNodeList nodeList;
+            //XmlNodeList nodeList;
             doc.Load(Application.StartupPath + "/lang/" + lang + ".xml");
             switch (f.Name)
             {

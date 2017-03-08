@@ -77,7 +77,7 @@ namespace Morskoy_boy
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 using(MyMessageBox mb = new MyMessageBox("Connection error!"))
                 {
@@ -140,7 +140,7 @@ namespace Morskoy_boy
                             reqStream.Close();
                             request.Abort();
                         }
-                        catch (WebException ex)
+                        catch (WebException)
                         {
                             using(MyMessageBox mb = new MyMessageBox("Connection error!"))
                             {
@@ -158,7 +158,7 @@ namespace Morskoy_boy
                         Close();
                     }
                 }
-                catch (MySqlException ex)
+                catch (Exception)
                 {
                     using(MyMessageBox mb = new MyMessageBox("Error connection!"))
                     {
@@ -192,7 +192,7 @@ namespace Morskoy_boy
                 string[] s = oFD.FileName.Split('\\');
                 ava = s[s.Length - 1];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 using(MyMessageBox mb = new MyMessageBox("You must choose only picture!"))
                 {
