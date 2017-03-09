@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Text;
 using RegistrationServer.Tools;
 using System.Runtime.InteropServices;
-using System.Threading;
 
 namespace RegistrationServer
 {
@@ -17,6 +16,7 @@ namespace RegistrationServer
         private static int counter;
         static void Main()
         {
+            Console.Title = "Sea Battle Registration Server";
             SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
             serverSocket = new TcpListener(IPAddress.Parse("192.168.1.101"), 9858);
             clientSocket = default(TcpClient);
@@ -39,10 +39,12 @@ namespace RegistrationServer
                     dataFromClient = Encoding.UTF8.GetString(bytesFrom);
                     dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
                     Console.WriteLine(DateTime.Now.ToString("[HH:mm:ss]") + " " + dataFromClient);
-                    counter += 1;
+                    counter++;
                 }
             }
         }
+        [DllImport("user32.dll")]
+        static extern int SetWindowText(IntPtr hWnd, string text);
         private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
         {
             switch (ctrlType)

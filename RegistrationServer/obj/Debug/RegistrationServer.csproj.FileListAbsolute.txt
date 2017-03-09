@@ -5,3 +5,4 @@ D:\MyProject\С#\sea_battle\RegistrationServer\bin\Debug\Newtonsoft.Json.dll
 D:\MyProject\С#\sea_battle\RegistrationServer\bin\Debug\Newtonsoft.Json.xml
 D:\MyProject\С#\sea_battle\RegistrationServer\obj\Debug\RegistrationServer.exe
 D:\MyProject\С#\sea_battle\RegistrationServer\obj\Debug\RegistrationServer.pdb
+D:\MyProject\С#\sea_battle\RegistrationServer\obj\Debug\RegistrationServer.csprojResolveAssemblyReference.cache
