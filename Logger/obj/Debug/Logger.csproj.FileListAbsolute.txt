@@ -1,0 +1,4 @@
+D:\MyProject\С#\sea_battle\Logger\bin\Debug\Logger.dll
+D:\MyProject\С#\sea_battle\Logger\bin\Debug\Logger.pdb
+D:\MyProject\С#\sea_battle\Logger\obj\Debug\Logger.dll
+D:\MyProject\С#\sea_battle\Logger\obj\Debug\Logger.pdb

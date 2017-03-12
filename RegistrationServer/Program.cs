@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using Log;
 using RegistrationServer.Tools;
 using System.Runtime.InteropServices;
 
@@ -31,11 +32,11 @@ namespace RegistrationServer
                 {
                     clientSocket = serverSocket.AcceptTcpClient();
 
-                    byte[] bytesFrom = new byte[99999];
+                    byte[] bytesFrom = new byte[1024];
                     string dataFromClient = null;
 
                     NetworkStream networkStream = clientSocket.GetStream();
-                    networkStream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
+                    networkStream.Read(bytesFrom, 0, bytesFrom.Length);
                     dataFromClient = Encoding.UTF8.GetString(bytesFrom);
                     dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
                     Console.WriteLine(DateTime.Now.ToString("[HH:mm:ss]") + " " + dataFromClient);
@@ -55,7 +56,7 @@ namespace RegistrationServer
                     serverSocket.Stop();
                     Console.WriteLine(DateTime.Now.ToString("[HH:mm:ss]") + " Server Stoped!");
                     Console.WriteLine(DateTime.Now.ToString("[HH:mm:ss]") + " Count of registration members:" + counter);
-                    Logger.LoggerMthod(conwriter.GetLines(), DateTime.Now);
+                    Logger.LoggerMethod("reg",conwriter.GetLines(), DateTime.Now);
                     break;
                 case CtrlTypes.CTRL_C_EVENT:
                     isclosing = true;
