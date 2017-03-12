@@ -26,14 +26,6 @@ namespace Morskoy_boy
         NetworkStream serverStream = default(NetworkStream);
         private void fastCheckBtnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string input = "Registration Pacets";
-            string hexOutput = String.Empty;
-            foreach (char letter in input)
-            {
-                int value = Convert.ToInt32(letter);
-                hexOutput += String.Format("{0:X} ", value);
-            }
-            MessageBox.Show(hexOutput+"1");
             //clientSocket = new TcpClient();
             //if (!clientSocket.Connected)
             //    clientSocket.Connect("192.168.1.101", 9858);
