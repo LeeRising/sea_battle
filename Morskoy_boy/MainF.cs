@@ -22,22 +22,21 @@ namespace Morskoy_boy
             InitializeComponent();
         }
 
-        TcpClient clientSocket;
-        NetworkStream serverStream = default(NetworkStream);
+        //TcpClient clientSocket;
+        //NetworkStream serverStream = default(NetworkStream);
+        //clientSocket = new TcpClient();
+        //    if (!clientSocket.Connected)
+        //        clientSocket.Connect("192.168.1.101", 8858);//9858
+        //    if (serverStream == null)
+        //        serverStream = default(NetworkStream);
+        //    serverStream = clientSocket.GetStream();
+        //    byte[] outStream = Encoding.UTF8.GetBytes(User.login + "$test$TestMessage" + "$");
+        //serverStream.Write(outStream, 0, outStream.Length);
+        //    serverStream.Flush();
+        //    serverStream.Close();
+        //    clientSocket.Close();
         private void fastCheckBtnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clientSocket = new TcpClient();
-            if (!clientSocket.Connected)
-                clientSocket.Connect("192.168.1.101", 8858);//9858
-            if (serverStream == null)
-                serverStream = default(NetworkStream);
-            serverStream = clientSocket.GetStream();
-            byte[] outStream = Encoding.UTF8.GetBytes(User.first_name + " " + User.last_name + "$");
-            serverStream.Write(outStream, 0, outStream.Length);
-            serverStream.Flush();
-            serverStream.Close();
-            clientSocket.Close();
-
             //using (MyMessageBox mb = new MyMessageBox("Caption", "Label text", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Error))
             //{
 

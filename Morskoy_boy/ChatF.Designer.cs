@@ -77,7 +77,6 @@
             this.sendBtn.Size = new System.Drawing.Size(88, 40);
             this.sendBtn.TabIndex = 2;
             this.sendBtn.Text = "Send";
-            this.sendBtn.Click += new System.EventHandler(this.sendBtn_Click);
             // 
             // messageText
             // 

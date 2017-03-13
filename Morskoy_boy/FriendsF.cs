@@ -276,10 +276,10 @@ namespace Morskoy_boy
         {
             mtp = new MetroTabPage();
             mtp.Text = list[index].First_name + " " + list[index].Last_name;
-            mtp.Tag = list[index].Id;
+            mtp.Tag = list[index].Id.ToString();
             mtp.Controls.Add(new RichTextBox
             {
-                Name = "Dialog" + (f.chatsTab.Controls.Count) + 1.ToString(),
+                Name = "Dialog" + (f.chatsTab.Controls.Count + 1).ToString(),
                 Location = new System.Drawing.Point(5, 5),
                 Size = new System.Drawing.Size(426, 179)
             });
