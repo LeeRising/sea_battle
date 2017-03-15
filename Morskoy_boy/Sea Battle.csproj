@@ -94,6 +94,12 @@
     <Compile Include="UI\Dialogs\MyMessageBox.Designer.cs">
       <DependentUpon>MyMessageBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MyControls\ChatMessages.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MyControls\ChatMessages.Designer.cs">
+      <DependentUpon>ChatMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MyControls\friendsListBox.cs" />
     <Compile Include="UI\MyControls\friendsListBox.designer.cs">
       <DependentUpon>friendsListBox.cs</DependentUpon>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Dialogs\MyMessageBox.resx">
       <DependentUpon>MyMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MyControls\ChatMessages.resx">
+      <DependentUpon>ChatMessages.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
