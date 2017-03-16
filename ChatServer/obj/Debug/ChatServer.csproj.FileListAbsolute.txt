@@ -1,9 +1,3 @@
-D:\MyProject\С#\sea_battle\ChatServer\bin\Debug\ChatServer.exe.config
-D:\MyProject\С#\sea_battle\ChatServer\bin\Debug\ChatServer.exe
-D:\MyProject\С#\sea_battle\ChatServer\bin\Debug\ChatServer.pdb
-D:\MyProject\С#\sea_battle\ChatServer\bin\Debug\Logger.dll
-D:\MyProject\С#\sea_battle\ChatServer\obj\Debug\ChatServer.exe
-D:\MyProject\С#\sea_battle\ChatServer\obj\Debug\ChatServer.pdb
 Z:\MyProject\С#\sea_battle\ChatServer\bin\Debug\ChatServer.exe.config
 Z:\MyProject\С#\sea_battle\ChatServer\bin\Debug\ChatServer.exe
 Z:\MyProject\С#\sea_battle\ChatServer\bin\Debug\ChatServer.pdb
@@ -11,4 +5,3 @@ Z:\MyProject\С#\sea_battle\ChatServer\bin\Debug\Logger.dll
 Z:\MyProject\С#\sea_battle\ChatServer\obj\Debug\ChatServer.csprojResolveAssemblyReference.cache
 Z:\MyProject\С#\sea_battle\ChatServer\obj\Debug\ChatServer.exe
 Z:\MyProject\С#\sea_battle\ChatServer\obj\Debug\ChatServer.pdb
-D:\MyProject\С#\sea_battle\ChatServer\obj\Debug\ChatServer.csprojResolveAssemblyReference.cache

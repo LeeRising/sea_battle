@@ -20,6 +20,24 @@ namespace Morskoy_boy
         public MainF()
         {
             InitializeComponent();
+            //using (var db = new UserInfoModel())
+            //{
+            //    var id = 0;
+            //    var login = "default";
+            //    var loging = 0;
+            //    var password = "default";
+            //    var translate = "eng";
+            //    var user = new UserInfo
+            //    {
+            //        Id = id,
+            //        Login = login,
+            //        Loging = loging,
+            //        Password = password,
+            //        Translate = translate
+            //    };
+            //    db.UserInfos.Add(user);
+            //    db.SaveChanges();
+            //}
         }
 
         //TcpClient clientSocket;
