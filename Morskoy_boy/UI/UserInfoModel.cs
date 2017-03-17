@@ -1,17 +1,10 @@
 namespace Morskoy_boy.UI
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public class UserInfoModel : DbContext
     {
         public DbSet<UserInfo> UserInfos { get; set; }
-        public UserInfoModel() : base("name=UserInfoModel")
-        {
-
-        }
     }
     public class UserInfo
     {

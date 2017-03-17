@@ -20,24 +20,6 @@ namespace Morskoy_boy
         public MainF()
         {
             InitializeComponent();
-            //using (var db = new UserInfoModel())
-            //{
-            //    var id = 0;
-            //    var login = "default";
-            //    var loging = 0;
-            //    var password = "default";
-            //    var translate = "eng";
-            //    var user = new UserInfo
-            //    {
-            //        Id = id,
-            //        Login = login,
-            //        Loging = loging,
-            //        Password = password,
-            //        Translate = translate
-            //    };
-            //    db.UserInfos.Add(user);
-            //    db.SaveChanges();
-            //}
         }
 
         //TcpClient clientSocket;
@@ -103,8 +85,6 @@ namespace Morskoy_boy
                     User.state = (string)_JObject.SelectToken("State");
 
                     nameL.Text = User.first_name + " " + User.last_name;
-                    winL.Text = "Wins:" + User.wins;
-                    loseL.Text = "Loses:" + User.loses;
                     rankL.Text = User.rank;
                     using (WebClient webClient = new WebClient())
                     {
@@ -122,15 +102,19 @@ namespace Morskoy_boy
                 }
                 User.lang = rk.GetValue("translate").ToString();
 
-                Translate.translate(this,User.lang);
+                Translate.translate(this,User.lang,menu);
+                var wt = winL.Text;
+                var lt = loseL.Text;
+                winL.Text = wt + User.wins;
+                loseL.Text = lt + User.loses;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                using(MyMessageBox mb=new MyMessageBox("Connection error!"))
+                using(MyMessageBox mb=new MyMessageBox(ex.ToString()))
                 {
                     mb.ShowDialog();
-                    connection = false;
-                    Application.Exit();
+                    //connection = false;
+                    //Application.Exit();
                 }
             }
         }
@@ -142,6 +126,7 @@ namespace Morskoy_boy
             {
                 Translate.translate(this,User.lang);
             }
+            f.Dispose();
         }
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -21,26 +21,26 @@ namespace Morskoy_boy
             var skinmanager = MaterialSkinManager.Instance;
             skinmanager.AddFormToManage(this);
             skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
-            using (var db = new UserInfoModel())
-            {
-                var id = 0;
-                var login = "default";
-                var loging = 0;
-                var password = "default";
-                var translate = "eng";
-                var user = new UserInfo
-                {
-                    Id = id,
-                    Login = login,
-                    Loging = loging,
-                    Password = password,
-                    Translate = translate
-                };
-                db.UserInfos.Add(user);
-                db.SaveChanges();
-                //var address = db.UserInfos.FirstOrDefault();
-                //MessageBox.Show(address.Login);
-            }
+            //using (var db = new UserInfoModel())
+            //{
+            //    var id = 0;
+            //    var login = "default";
+            //    var loging = 0;
+            //    var password = "default";
+            //    var translate = "eng";
+            //    var user = new UserInfo
+            //    {
+            //        Id = id,
+            //        Login = login,
+            //        Loging = loging,
+            //        Password = password,
+            //        Translate = translate
+            //    };
+            //    db.UserInfos.Add(user);
+            //    db.SaveChanges();
+            //    var address = db.UserInfos.FirstOrDefault();
+            //    MessageBox.Show(address.Login);
+            //}
         }
 
         RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle", true);

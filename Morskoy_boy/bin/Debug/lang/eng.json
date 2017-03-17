@@ -1,0 +1,37 @@
+{
+    "MainF": [
+        {
+            "name": "Batlle in the sea"
+        },
+        {
+            "vscompBtn": "VS Comp"
+        },
+        {
+            "vshumBtn": "VS Player"
+        },
+        {
+            "gamehistoryBtn": "My Games"
+        },
+        {
+            "friendsBtn": "My Friends"
+        },
+        {
+            "winL": "Wins:"
+        },
+        {
+            "loseL":"Loses:"
+        },
+        {
+            "menuToolStripMenuItem":"Menu"
+        },
+        {
+            "settingToolStripMenuItem":"Setting"
+        },
+        {
+            "logOutToolStripMenuItem":"Log out"
+        },
+        {
+            "aboutToolStripMenuItem":"About"
+        }
+    ]
+}

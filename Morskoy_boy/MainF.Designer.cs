@@ -44,8 +44,8 @@ namespace Morskoy_boy
             this.loseL = new MetroFramework.Controls.MetroLabel();
             this.rankL = new MetroFramework.Controls.MetroLabel();
             this.gamehistoryBtn = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.vshumBtn = new MetroFramework.Controls.MetroTile();
+            this.vscompBtn = new MetroFramework.Controls.MetroTile();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileImg)).BeginInit();
             this.SuspendLayout();
@@ -184,41 +184,41 @@ namespace Morskoy_boy
             this.gamehistoryBtn.UseTileImage = true;
             this.gamehistoryBtn.Click += new System.EventHandler(this.gamehistoryBtn_Click);
             // 
-            // metroTile2
+            // vshumBtn
             // 
-            this.metroTile2.BackColor = System.Drawing.Color.White;
-            this.metroTile2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.metroTile2.Location = new System.Drawing.Point(294, 201);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(93, 79);
-            this.metroTile2.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroTile2.TabIndex = 10;
-            this.metroTile2.Text = "VS Player";
-            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile2.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTile2.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile2.TileImage")));
-            this.metroTile2.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile2.UseTileImage = true;
-            this.metroTile2.Click += new System.EventHandler(this.friendsBtn_Click);
+            this.vshumBtn.BackColor = System.Drawing.Color.White;
+            this.vshumBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.vshumBtn.Location = new System.Drawing.Point(294, 201);
+            this.vshumBtn.Name = "vshumBtn";
+            this.vshumBtn.Size = new System.Drawing.Size(93, 79);
+            this.vshumBtn.Style = MetroFramework.MetroColorStyle.Purple;
+            this.vshumBtn.TabIndex = 10;
+            this.vshumBtn.Text = "VS Player";
+            this.vshumBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.vshumBtn.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.vshumBtn.TileImage = ((System.Drawing.Image)(resources.GetObject("vshumBtn.TileImage")));
+            this.vshumBtn.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.vshumBtn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.vshumBtn.UseTileImage = true;
+            this.vshumBtn.Click += new System.EventHandler(this.friendsBtn_Click);
             // 
-            // metroTile3
+            // vscompBtn
             // 
-            this.metroTile3.BackColor = System.Drawing.Color.White;
-            this.metroTile3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.metroTile3.Location = new System.Drawing.Point(195, 201);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(93, 79);
-            this.metroTile3.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroTile3.TabIndex = 10;
-            this.metroTile3.Text = "VS Comp";
-            this.metroTile3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroTile3.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTile3.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile3.TileImage")));
-            this.metroTile3.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile3.UseTileImage = true;
-            this.metroTile3.Click += new System.EventHandler(this.friendsBtn_Click);
+            this.vscompBtn.BackColor = System.Drawing.Color.White;
+            this.vscompBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.vscompBtn.Location = new System.Drawing.Point(195, 201);
+            this.vscompBtn.Name = "vscompBtn";
+            this.vscompBtn.Size = new System.Drawing.Size(93, 79);
+            this.vscompBtn.Style = MetroFramework.MetroColorStyle.Purple;
+            this.vscompBtn.TabIndex = 10;
+            this.vscompBtn.Text = "VS Comp";
+            this.vscompBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.vscompBtn.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.vscompBtn.TileImage = ((System.Drawing.Image)(resources.GetObject("vscompBtn.TileImage")));
+            this.vscompBtn.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.vscompBtn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.vscompBtn.UseTileImage = true;
+            this.vscompBtn.Click += new System.EventHandler(this.friendsBtn_Click);
             // 
             // MainF
             // 
@@ -230,8 +230,8 @@ namespace Morskoy_boy
             this.Controls.Add(this.loseL);
             this.Controls.Add(this.winL);
             this.Controls.Add(this.nameL);
-            this.Controls.Add(this.metroTile3);
-            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.vscompBtn);
+            this.Controls.Add(this.vshumBtn);
             this.Controls.Add(this.gamehistoryBtn);
             this.Controls.Add(this.friendsBtn);
             this.Controls.Add(this.profileImg);
@@ -271,7 +271,7 @@ namespace Morskoy_boy
         private MetroFramework.Controls.MetroLabel loseL;
         private MetroFramework.Controls.MetroLabel rankL;
         private MetroFramework.Controls.MetroTile gamehistoryBtn;
-        private MetroFramework.Controls.MetroTile metroTile2;
-        private MetroFramework.Controls.MetroTile metroTile3;
+        private MetroFramework.Controls.MetroTile vshumBtn;
+        private MetroFramework.Controls.MetroTile vscompBtn;
     }
 }
