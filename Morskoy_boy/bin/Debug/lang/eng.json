@@ -33,5 +33,63 @@
         {
             "aboutToolStripMenuItem":"About"
         }
+    ],
+    "LoginF": [
+        {
+            "name": "Login to play"
+        },
+        {
+            "loginL": "Login:"
+        },
+        {
+            "passL": "Password:"
+        },
+        {
+            "loginBtn": "Login"
+        },
+        {
+            "regBtn": "Register"
+        },
+        {
+            "exitBtn": "Exit"
+        }
+    ],
+    "RegisterF": [
+        {
+            "name": "Register new user"
+        },
+        {
+            "loginL": "Login:"
+        },
+        {
+            "passL": "Password:"
+        },
+        {
+            "rppassL":"Repeat pass:"
+        },
+        {
+            "firstnL": "First name:"
+        },
+        {
+            "lastnL": "Last name:"
+        },
+        {
+            "sexL": "Sex:"
+        },
+        {
+            "sexL/maleL": "male"
+        },
+        {
+            "sexL/femaleL": "female"
+        },
+        {
+            "birthL": "Birthday"
+        },
+        {
+            "regBtn": "Register"
+        },
+        {
+            "backBtn": "Back to login"
+        }
     ]
 }

@@ -15,28 +15,21 @@ namespace Morskoy_boy.UI
             using (StreamReader sr = new StreamReader("lang/" + lang + ".json"))
             {
                 mainobj = JObject.Parse(sr.ReadToEnd());
-                switch (f.Name)
+                elements = new Dictionary<string, string>();
+                jarr = (JArray)mainobj[f.Name];
+                foreach (var ja in jarr.Children<JObject>())
                 {
-                    case "MainF":
-                        elements = new Dictionary<string, string>();
-                        jarr = (JArray)mainobj[f.Name];
-                        foreach (var ja in jarr.Children<JObject>())
-                        {
-                            foreach (JProperty singleProp in ja.Properties())
-                            {
-                                if (!singleProp.Name.Contains("ToolStripMenuItem"))
-                                    elements.Add(singleProp.Name, (string)singleProp.Value);
-                            }
-                        }
-                        break;
-                    case "LoginF":
-                        break;
+                    foreach (JProperty singleProp in ja.Properties())
+                    {
+                        if (!singleProp.Name.Contains("ToolStripMenuItem"))
+                            elements.Add(singleProp.Name, (string)singleProp.Value);
+                    }
                 }
                 foreach (var v in elements)
                 {
-                    if (v.Key != "name")
+                    if (v.Key != "name" && !v.Key.Contains("/"))
                         f.Controls[v.Key].Text = v.Value;
-                    else
+                    if (v.Key == "name")
                         f.Text = v.Value;
                 }
             }
@@ -47,25 +40,18 @@ namespace Morskoy_boy.UI
             using (StreamReader sr = new StreamReader("lang/" + lang + ".json"))
             {
                 mainobj = JObject.Parse(sr.ReadToEnd());
-                switch (f.Name)
+                elements = new Dictionary<string, string>();
+                menuelements = new Dictionary<string, string>();
+                jarr = (JArray)mainobj[f.Name];
+                foreach (var ja in jarr.Children<JObject>())
                 {
-                    case "MainF":
-                        elements = new Dictionary<string, string>();
-                        menuelements = new Dictionary<string, string>();
-                        jarr = (JArray)mainobj[f.Name];
-                        foreach (var ja in jarr.Children<JObject>())
-                        {
-                            foreach (JProperty singleProp in ja.Properties())
-                            {
-                                if (!singleProp.Name.Contains("ToolStripMenuItem"))
-                                    elements.Add(singleProp.Name, (string)singleProp.Value);
-                                else
-                                    menuelements.Add(singleProp.Name, (string)singleProp.Value);
-                            }
-                        }
-                        break;
-                    case "LoginF":
-                        break;
+                    foreach (JProperty singleProp in ja.Properties())
+                    {
+                        if (!singleProp.Name.Contains("ToolStripMenuItem"))
+                            elements.Add(singleProp.Name, (string)singleProp.Value);
+                        else
+                            menuelements.Add(singleProp.Name, (string)singleProp.Value);
+                    }
                 }
                 foreach (var v in elements)
                 {
