@@ -6,6 +6,7 @@ using System.Net;
 using System.Windows.Forms;
 using Morskoy_boy.UI;
 using Morskoy_boy.UI.Dialogs;
+using Morskoy_boy.Models;
 using Morskoy_boy.Tools;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -30,7 +31,7 @@ namespace Morskoy_boy
         //    if (serverStream == null)
         //        serverStream = default(NetworkStream);
         //    serverStream = clientSocket.GetStream();
-        //    byte[] outStream = Encoding.UTF8.GetBytes(User.login + "$test$TestMessage" + "$");
+        //    byte[] outStream = Encoding.UTF8.GetBytes(UserSetting.login + "$test$TestMessage" + "$");
         //serverStream.Write(outStream, 0, outStream.Length);
         //    serverStream.Flush();
         //    serverStream.Close();
@@ -61,37 +62,37 @@ namespace Morskoy_boy
 
         private void MainF_Load(object sender, EventArgs e)
         {
-            User.login = rk.GetValue("login").ToString();
-            User.id = rk.GetValue("id").ToString();
+            UserSetting.login = rk.GetValue("login").ToString();
+            UserSetting.id = rk.GetValue("id").ToString();
             try
             {
                 connection = true;
 
-                var set_online_req = WebRequest.Create(Variables._set_state+"state=Online&id=" + User.id);
+                var set_online_req = WebRequest.Create(Variables._set_state+"state=Online&id=" + UserSetting.id);
                 var response = (HttpWebResponse)set_online_req.GetResponse();
-                foreach (var _JObject in JsonParser.ArrayParse(Variables._get_acc_info + User.id))
+                foreach (var _JObject in JsonParser.ArrayParse(Variables._get_acc_info + UserSetting.id))
                 {
-                    User.first_name = (string)_JObject.SelectToken("First_name");
-                    User.last_name = (string)_JObject.SelectToken("Last_name");
-                    User.sex = (string)_JObject.SelectToken("Sex");
-                    User.e_mail = (string)_JObject.SelectToken("E_mail");
-                    User.cash = (string)_JObject.SelectToken("Cash");
-                    User.wins = (string)_JObject.SelectToken("Wins");
-                    User.loses = (string)_JObject.SelectToken("Loses");
-                    User.rank = (string)_JObject.SelectToken("Rank");
-                    User.reg_date = (string)_JObject.SelectToken("Register_time");
-                    User.birth_date = (string)_JObject.SelectToken("Birth_date");
-                    User.ava = (string)_JObject.SelectToken("Photo");
-                    User.state = (string)_JObject.SelectToken("State");
+                    UserSetting.first_name = (string)_JObject.SelectToken("First_name");
+                    UserSetting.last_name = (string)_JObject.SelectToken("Last_name");
+                    UserSetting.sex = (string)_JObject.SelectToken("Sex");
+                    UserSetting.e_mail = (string)_JObject.SelectToken("E_mail");
+                    UserSetting.cash = (string)_JObject.SelectToken("Cash");
+                    UserSetting.wins = (string)_JObject.SelectToken("Wins");
+                    UserSetting.loses = (string)_JObject.SelectToken("Loses");
+                    UserSetting.rank = (string)_JObject.SelectToken("Rank");
+                    UserSetting.reg_date = (string)_JObject.SelectToken("Register_time");
+                    UserSetting.birth_date = (string)_JObject.SelectToken("Birth_date");
+                    UserSetting.ava = (string)_JObject.SelectToken("Photo");
+                    UserSetting.state = (string)_JObject.SelectToken("State");
 
-                    nameL.Text = User.first_name + " " + User.last_name;
-                    rankL.Text = User.rank;
+                    nameL.Text = UserSetting.first_name + " " + UserSetting.last_name;
+                    rankL.Text = UserSetting.rank;
                     using (WebClient webClient = new WebClient())
                     {
-                        string path = Application.StartupPath + "\\user\\" + User.ava;
+                        string path = Application.StartupPath + "\\UserSetting\\" + UserSetting.ava;
                         if (!File.Exists(path))
                         {
-                            string link = Variables._avatar + User.ava;
+                            string link = Variables._avatar + UserSetting.ava;
                             webClient.DownloadFile(new Uri(link), path);
                         }
                         using (var fstream = File.OpenRead(path))
@@ -100,13 +101,13 @@ namespace Morskoy_boy
                         }
                     }
                 }
-                User.lang = rk.GetValue("translate").ToString();
+                UserSetting.lang = rk.GetValue("translate").ToString();
 
-                Translate.translate(this,User.lang,menu);
+                Translate.translate(this,UserSetting.lang,menu);
                 var wt = winL.Text;
                 var lt = loseL.Text;
-                winL.Text = wt + User.wins;
-                loseL.Text = lt + User.loses;
+                winL.Text = wt + UserSetting.wins;
+                loseL.Text = lt + UserSetting.loses;
             }
             catch (Exception ex)
             {
@@ -124,7 +125,7 @@ namespace Morskoy_boy
             f.ShowDialog();
             if (!f.Focused)
             {
-                Translate.translate(this,User.lang);
+                Translate.translate(this,UserSetting.lang);
             }
             f.Dispose();
         }
@@ -136,7 +137,7 @@ namespace Morskoy_boy
             rk.SetValue("id", "");
             rk.SetValue("password", "");
             logout = true;
-            File.Delete(Path.Combine(Application.StartupPath + @"\user\") + User.ava);
+            File.Delete(Path.Combine(Application.StartupPath + @"\UserSetting\") + UserSetting.ava);
             Close();
         }
         private void MainF_FormClosed(object sender, FormClosedEventArgs e)
@@ -144,7 +145,7 @@ namespace Morskoy_boy
             if (connection)
             {
                 f.Close();
-                var set_online_req = WebRequest.Create(Variables._set_state+"state=Offline&id=" + User.id);
+                var set_online_req = WebRequest.Create(Variables._set_state+"state=Offline&id=" + UserSetting.id);
                 var response = (HttpWebResponse)set_online_req.GetResponse();
                 if (!logout) Application.Exit();
             }

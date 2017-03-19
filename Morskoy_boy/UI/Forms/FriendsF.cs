@@ -49,7 +49,7 @@ namespace Morskoy_boy
         }
         private void FriendsF_Load(object sender, EventArgs e)
         {
-            var request = WebRequest.Create(Variables._get_friend_to_list + User.login);
+            var request = WebRequest.Create(Variables._get_friend_to_list + UserSetting.login);
             reqtext = string.Empty;
             using (var response = (HttpWebResponse)request.GetResponse())
             {
@@ -59,7 +59,7 @@ namespace Morskoy_boy
                 }
             }
             _FArray = new JArray();
-            _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
+            _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + UserSetting.login);
             foreach (var _JObject in _FArray)
             {
                 friendslist.Add(new FriendsList((uint)_JObject.SelectToken("id"), 
@@ -98,7 +98,7 @@ namespace Morskoy_boy
             {
                 Invoke((MethodInvoker)(() =>
                 {
-                    var request = WebRequest.Create(Variables._get_friend_to_list + User.login);
+                    var request = WebRequest.Create(Variables._get_friend_to_list + UserSetting.login);
                     reqtext1 = string.Empty;
                     using (var response = (HttpWebResponse)request.GetResponse())
                     {
@@ -113,7 +113,7 @@ namespace Morskoy_boy
                         friendsListB.Items.Clear();
                         reqtext = reqtext1;
                         _FArray = new JArray();
-                        _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + User.login);
+                        _FArray = JsonParser.ArrayParse(Variables._get_friend_to_list + UserSetting.login);
                         foreach (var _JObject in _FArray)
                         {
                             friendslist.Add(new FriendsList((uint)_JObject.SelectToken("id"),

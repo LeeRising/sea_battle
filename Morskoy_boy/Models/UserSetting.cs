@@ -1,6 +1,6 @@
-﻿namespace Morskoy_boy.UI
+﻿namespace Morskoy_boy.Models
 {
-    class User
+    class UserSetting
     {
         public static string id { get; set; }
         public static string login { get; set; }

@@ -193,7 +193,7 @@
     <Compile Include="Tools\JsonParser.cs" />
     <Compile Include="Tools\MailValid.cs" />
     <Compile Include="UI\Translate.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserSetting.cs" />
     <EmbeddedResource Include="UI\Forms\ChatF.resx">
       <DependentUpon>ChatF.cs</DependentUpon>
     </EmbeddedResource>

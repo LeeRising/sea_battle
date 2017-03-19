@@ -6,6 +6,7 @@ using System.IO;
 using MaterialSkin.Controls;
 using Morskoy_boy.UI.Dialogs;
 using Morskoy_boy.Tools;
+using Morskoy_boy.Models;
 using MaterialSkin;
 using System.Data.SQLite;
 
@@ -45,10 +46,10 @@ namespace Morskoy_boy
             {
                 string login = loginTb.Text,
                    pass = Cryptography.getHashSha256(passTb.Text);
-                User.id = JsonParser.OneResult(Variables._get_user_id + login + "&password=" + pass);
-                if (User.id != "null")
+                UserSetting.id = JsonParser.OneResult(Variables._get_user_id + login + "&password=" + pass);
+                if (UserSetting.id != "null")
                 {
-                    rk.SetValue("id", User.id);
+                    rk.SetValue("id", UserSetting.id);
                     rk.SetValue("login", login);
                     rk.SetValue("password", pass);
                     rk.SetValue("loging", "1");
@@ -62,7 +63,7 @@ namespace Morskoy_boy
                     mf.ShowDialog();
                     Show();
                     ShowInTaskbar = true;
-                    File.Delete(Path.Combine(Application.StartupPath + "/user/") + User.ava);
+                    File.Delete(Path.Combine(Application.StartupPath + "/UserSetting/") + UserSetting.ava);
                     loginTb.Text = "";
                     passTb.Text = "";
                 }
