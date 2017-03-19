@@ -23,7 +23,7 @@ namespace Morskoy_boy
                 JArray array = JArray.Parse(reqtext);
                 return array;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -44,7 +44,7 @@ namespace Morskoy_boy
                 JObject joResponse = JObject.Parse(reqtext);
                 return joResponse.GetValue("result").ToString();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "null";
             }

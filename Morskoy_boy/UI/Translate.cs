@@ -1,25 +1,65 @@
 ﻿using System.IO;
 using System.Windows.Forms;
-using System.Xml;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace Morskoy_boy.UI
 {
     class Translate
     {
-        public static void translate(Form f,string lang)
+        static Dictionary<string, string> elements,menuelements;
+        static JArray jarr;
+        static JObject mainobj;
+        public static void translate(Form f, string lang)
         {
-            XmlDocument doc = new XmlDocument();
-            XmlNodeList nodeList;
-            doc.Load(Application.StartupPath + "/lang/" + lang + ".xml");
-            switch (f.Name)
+            using (StreamReader sr = new StreamReader("lang/" + lang + ".json"))
             {
-                case "MainF":
-                    //nodeList = doc.DocumentElement.SelectSingleNode("mainf");
-                    //f.Text = nodeList[0].InnerText;
-                    //MessageBox.Show(nodeList.Count.ToString());
-                    break;
-                case "LoginF":
-                    break;
+                mainobj = JObject.Parse(sr.ReadToEnd());
+                elements = new Dictionary<string, string>();
+                jarr = (JArray)mainobj[f.Name];
+                foreach (var ja in jarr.Children<JObject>())
+                {
+                    foreach (JProperty singleProp in ja.Properties())
+                    {
+                        if (!singleProp.Name.Contains("ToolStripMenuItem"))
+                            elements.Add(singleProp.Name, (string)singleProp.Value);
+                    }
+                }
+                foreach (var v in elements)
+                {
+                    if (v.Key != "name" && !v.Key.Contains("/"))
+                        f.Controls[v.Key].Text = v.Value;
+                    if (v.Key == "name")
+                        f.Text = v.Value;
+                }
+            }
+        }
+        //Test
+        public static void translate(Form f, string lang,MenuStrip ms)
+        {
+            using (StreamReader sr = new StreamReader("lang/" + lang + ".json"))
+            {
+                mainobj = JObject.Parse(sr.ReadToEnd());
+                elements = new Dictionary<string, string>();
+                menuelements = new Dictionary<string, string>();
+                jarr = (JArray)mainobj[f.Name];
+                foreach (var ja in jarr.Children<JObject>())
+                {
+                    foreach (JProperty singleProp in ja.Properties())
+                    {
+                        if (!singleProp.Name.Contains("ToolStripMenuItem"))
+                            elements.Add(singleProp.Name, (string)singleProp.Value);
+                        else
+                            menuelements.Add(singleProp.Name, (string)singleProp.Value);
+                    }
+                }
+                foreach (var v in elements)
+                {
+                    if (v.Key != "name")
+                        f.Controls[v.Key].Text = v.Value;
+                    else
+                        f.Text = v.Value;
+                }
             }
         }
     }
