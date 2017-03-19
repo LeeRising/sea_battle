@@ -244,7 +244,6 @@ namespace Morskoy_boy
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "See Battle";
-            this.Activated += new System.EventHandler(this.MainF_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainF_FormClosed);
             this.Load += new System.EventHandler(this.MainF_Load);
             this.LocationChanged += new System.EventHandler(this.MainF_LocationChanged);

@@ -121,7 +121,6 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login to play";
-            this.Activated += new System.EventHandler(this.LoginF_Activated);
             this.Load += new System.EventHandler(this.LoginF_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

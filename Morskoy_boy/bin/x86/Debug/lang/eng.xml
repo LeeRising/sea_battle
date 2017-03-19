@@ -1,0 +1,45 @@
+<translate>
+    <loginf>
+        <name>Login to play</name>
+        <loginl>Login:</loginl>
+        <passl>Password:</passl>
+        <loginbtn>Login</loginbtn>
+        <regbtn>Register</regbtn>
+        <exitbtn>Exit</exitbtn>
+    </loginf>
+    <registerf>
+        <fname>Register new user</fname>
+        <loginl>Login:</loginl>
+        <passl>Password:</passl>
+        <rppassl>Repeat pass:</rppassl>
+        <firstn>First name:</firstn>
+        <lastn>Last name:</lastn>
+        <sexl>Sex:</sexl>
+        <malel>male</malel>
+        <femalel>female</femalel>
+        <birthl>Birthday</birthl>
+        <regbtn>Register</regbtn>
+        <backbtn>Exit</backbtn>
+    </registerf>
+    <mainf>
+        <MainF>Batlle in the sea1</MainF>
+        <vscompBtn>VS Comp2</vscompBtn>
+        <vshumBtn>VS Player3</vshumBtn>
+        <gamehBtn>Game history4</gamehBtn>
+        <friendsBtn>Friends5</friendsBtn>
+    </mainf>
+    <Test>
+        <menum>Menu</menum>
+        <settm>Setting</settm>
+        <logoutm>Log out</logoutm>
+    </Test>
+    <dialogs>
+        <okbtn>Ok</okbtn>
+        <yesbtn>Yes</yesbtn>
+        <nobtn>No</nobtn>
+        <cancelbtn>Cancel</cancelbtn>
+    </dialogs>
+    <messages>
+        <errormessages>Error</errormessages>
+    </messages>
+</translate>

@@ -225,7 +225,6 @@ namespace SQLite
 				throw SQLiteException.New (r, msg);
 			}
         }
-
 		static byte[] GetNullTerminatedUtf8 (string s)
 		{
 			var utf8Length = System.Text.Encoding.UTF8.GetByteCount (s);

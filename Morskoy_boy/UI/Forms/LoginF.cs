@@ -9,22 +9,40 @@ using Morskoy_boy.Tools;
 using Morskoy_boy.Models;
 using MaterialSkin;
 using System.Data.SQLite;
-
+using SQLite;
+using System.Collections.Generic;
 
 namespace Morskoy_boy
 {
     public partial class LoginF : MaterialForm
     {
+        SQLiteAsyncConnection db = new SQLiteAsyncConnection("app\\UserAppInfo.sqlite", SQLiteOpenFlags.ReadWrite, true);
         public LoginF()
         {
             InitializeComponent();
             var skinmanager = MaterialSkinManager.Instance;
             skinmanager.AddFormToManage(this);
             skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
-            
-        }
 
-        RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle", true);
+            if (!File.Exists("app\\UserAppInfo.sqlite"))
+            {
+                System.Data.SQLite.SQLiteConnection.CreateFile("UserAppInfo.sqlite");
+                File.Move("UserAppInfo.sqlite", "app\\UserAppInfo.sqlite");
+                db.CreateTableAsync<UserAppInfo>();
+                var v = new List<UserAppInfo>();
+                v.Add(new UserAppInfo
+                {
+                    Id = 0,
+                    userId = "0",
+                    login = "0",
+                    password = "0",
+                    translate = "eng",
+                    loging = "0"
+                });
+                db.InsertAllAsync(v);
+            }
+            UserSetting.lang = db.GetAsync<UserAppInfo>(0).Result.translate;
+        }
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
@@ -49,10 +67,18 @@ namespace Morskoy_boy
                 UserSetting.id = JsonParser.OneResult(Variables._get_user_id + login + "&password=" + pass);
                 if (UserSetting.id != "null")
                 {
-                    rk.SetValue("id", UserSetting.id);
-                    rk.SetValue("login", login);
-                    rk.SetValue("password", pass);
-                    rk.SetValue("loging", "1");
+                    var v = new List<UserAppInfo>();
+                    v.Add(new UserAppInfo
+                    {
+                        Id = 0,
+                        userId = UserSetting.id,
+                        login = login,
+                        password = pass,
+                        translate = "eng",
+                        loging = "1"
+                    });
+                    db.UpdateAllAsync(v);
+
                     using (MyMessageBox mb = new MyMessageBox("Info", "Succesfull loging", MyMessageBox.ButtonType.OK, MyMessageBox.IconType.Info))
                     {
                         mb.ShowDialog(this);
@@ -63,7 +89,6 @@ namespace Morskoy_boy
                     mf.ShowDialog();
                     Show();
                     ShowInTaskbar = true;
-                    File.Delete(Path.Combine(Application.StartupPath + "/UserSetting/") + UserSetting.ava);
                     loginTb.Text = "";
                     passTb.Text = "";
                 }
@@ -87,14 +112,8 @@ namespace Morskoy_boy
 
         private void LoginF_Load(object sender, EventArgs e)
         {
-            if (rk == null)
-            {
-                rk = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
-                rk.SetValue("loging", "0");
-                rk.SetValue("translate", "eng");
-                Translate.translate(this, "eng");
-            }
-            if (rk.GetValue("loging").ToString() == "1")
+            var user_app_info = db.GetAsync<UserAppInfo>(0);
+            if (user_app_info.Result.userId == "1")
             {
                 MainF mf = new MainF();
                 Hide();
@@ -103,13 +122,6 @@ namespace Morskoy_boy
                 Show();
                 ShowInTaskbar = true;
             }
-        }
-
-        private void LoginF_Activated(object sender, EventArgs e)
-        {
-            var skinmanager = MaterialSkinManager.Instance;
-            skinmanager.AddFormToManage(this);
-            skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
         }
     }
 }

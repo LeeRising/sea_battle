@@ -9,10 +9,10 @@ using Morskoy_boy.UI.Dialogs;
 using Morskoy_boy.Models;
 using Morskoy_boy.Tools;
 using MaterialSkin.Controls;
-using MaterialSkin;
-using Newtonsoft.Json.Linq;
 using System.Net.Sockets;
 using System.Text;
+using SQLite;
+using System.Collections.Generic;
 
 namespace Morskoy_boy
 {
@@ -51,19 +51,21 @@ namespace Morskoy_boy
             //    //if (f.Visible == false & friend_window) f.Show();
             //}
         }
-
-        RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
+        
+        SQLiteAsyncConnection db = new SQLiteAsyncConnection("app\\UserAppInfo.sqlite", SQLiteOpenFlags.ReadWrite, true); 
         bool logout = false;
         FriendsF f = new FriendsF();
         GameHistoryF f1 = new GameHistoryF();
         bool friend_window = false,
             game_history_window = false,
             connection = false;
+        string wt, lt;
 
         private void MainF_Load(object sender, EventArgs e)
         {
-            UserSetting.login = rk.GetValue("login").ToString();
-            UserSetting.id = rk.GetValue("id").ToString();
+            var user_app_info = db.GetAsync<UserAppInfo>(0);
+            UserSetting.login = user_app_info.Result.login;
+            UserSetting.id = user_app_info.Result.userId;
             try
             {
                 connection = true;
@@ -87,25 +89,33 @@ namespace Morskoy_boy
 
                     nameL.Text = UserSetting.first_name + " " + UserSetting.last_name;
                     rankL.Text = UserSetting.rank;
-                    using (WebClient webClient = new WebClient())
+                    if (UserSetting.ava != "default.png")
                     {
-                        string path = Application.StartupPath + "\\UserSetting\\" + UserSetting.ava;
-                        if (!File.Exists(path))
+                        using (WebClient webClient = new WebClient())
                         {
-                            string link = Variables._avatar + UserSetting.ava;
-                            webClient.DownloadFile(new Uri(link), path);
+                            string path = "user\\" + UserSetting.ava;
+                            if (!File.Exists(path))
+                            {
+                                string link = Variables._avatar + UserSetting.ava;
+                                webClient.DownloadFile(new Uri(link), path);
+                            }
+                            using (var fstream = File.OpenRead(path))
+                            {
+                                profileImg.Image = Bitmap.FromStream(fstream);
+                            }
                         }
-                        using (var fstream = File.OpenRead(path))
+                    }
+                    else
+                        using (var fstream = File.OpenRead("user\\default.png"))
                         {
                             profileImg.Image = Bitmap.FromStream(fstream);
                         }
-                    }
                 }
-                UserSetting.lang = rk.GetValue("translate").ToString();
+                UserSetting.lang = user_app_info.Result.translate;
 
-                Translate.translate(this,UserSetting.lang,menu);
-                var wt = winL.Text;
-                var lt = loseL.Text;
+                Translate.translate(this,UserSetting.lang);
+                wt = winL.Text;
+                lt = loseL.Text;
                 winL.Text = wt + UserSetting.wins;
                 loseL.Text = lt + UserSetting.loses;
             }
@@ -121,23 +131,36 @@ namespace Morskoy_boy
         }
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SettingF f = new SettingF();
-            f.ShowDialog();
-            if (!f.Focused)
+            using(SettingF f = new SettingF())
             {
-                Translate.translate(this,UserSetting.lang);
+                f.ShowDialog();
+                Hide();
+                ShowInTaskbar = false;
+                if (!f.Focused)
+                {
+                    Translate.translate(this, UserSetting.lang);
+                    winL.Text = wt + UserSetting.wins;
+                    loseL.Text = lt + UserSetting.loses;
+                }
+                Show();
+                ShowInTaskbar = true;
             }
-            f.Dispose();
         }
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rk = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\\LeeRain Interactive\\Sea Battle");
-            rk.SetValue("loging", "0");
-            rk.SetValue("login", "");
-            rk.SetValue("id", "");
-            rk.SetValue("password", "");
+            var v = new List<UserAppInfo>();
+            v.Add(new UserAppInfo
+            {
+                Id = 0,
+                userId = "0",
+                login = "0",
+                password = "0",
+                translate = "eng",
+                loging = "0"
+            });
+            db.UpdateAllAsync(v);
             logout = true;
-            File.Delete(Path.Combine(Application.StartupPath + @"\UserSetting\") + UserSetting.ava);
+            File.Delete(@"user\" + UserSetting.ava);
             Close();
         }
         private void MainF_FormClosed(object sender, FormClosedEventArgs e)
@@ -154,12 +177,6 @@ namespace Morskoy_boy
         {
             f.Location = new Point(Location.X+Size.Width, Location.Y);
             f1.Location = new Point(Location.X - f1.Size.Width, Location.Y);
-        }
-        private void MainF_Activated(object sender, EventArgs e)
-        {
-            var skinmanager = MaterialSkinManager.Instance;
-            skinmanager.AddFormToManage(this);
-            skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
         }
         private void friendsBtn_Click(object sender, EventArgs e)
         {

@@ -3,13 +3,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Morskoy_boy.Tools;
-using MySql.Data.MySqlClient;
 using System.Net;
 using System.IO;
 using MaterialSkin.Controls;
 using System.Text.RegularExpressions;
 using Morskoy_boy.UI.Dialogs;
 using Morskoy_boy.UI;
+using Morskoy_boy.Models;
 
 namespace Morskoy_boy
 {
@@ -205,7 +205,7 @@ namespace Morskoy_boy
 
         private void RegisterF_Load(object sender, EventArgs e)
         {
-            Translate.translate(this,"eng");
+            Translate.translate(this,UserSetting.lang);
             passTb.TextChanged += rppassTb_TextChanged;
         }
     }
