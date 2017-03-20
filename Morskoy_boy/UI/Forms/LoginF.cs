@@ -7,10 +7,10 @@ using MaterialSkin.Controls;
 using Morskoy_boy.UI.Dialogs;
 using Morskoy_boy.Tools;
 using Morskoy_boy.Models;
-using MaterialSkin;
 using System.Data.SQLite;
 using SQLite;
 using System.Collections.Generic;
+using MaterialSkin;
 
 namespace Morskoy_boy
 {
@@ -23,25 +23,32 @@ namespace Morskoy_boy
             var skinmanager = MaterialSkinManager.Instance;
             skinmanager.AddFormToManage(this);
             skinmanager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue800, Primary.LightBlue900, Accent.Blue700, TextShade.WHITE);
-
-            if (!File.Exists("app\\UserAppInfo.sqlite"))
+            try
             {
-                System.Data.SQLite.SQLiteConnection.CreateFile("UserAppInfo.sqlite");
-                File.Move("UserAppInfo.sqlite", "app\\UserAppInfo.sqlite");
-                db.CreateTableAsync<UserAppInfo>();
-                var v = new List<UserAppInfo>();
-                v.Add(new UserAppInfo
+                if (!File.Exists("app\\UserAppInfo.sqlite"))
                 {
-                    Id = 0,
-                    userId = "0",
-                    login = "0",
-                    password = "0",
-                    translate = "eng",
-                    loging = "0"
-                });
-                db.InsertAllAsync(v);
+                    System.Data.SQLite.SQLiteConnection.CreateFile("UserAppInfo.sqlite");
+                    File.Move("UserAppInfo.sqlite", "app\\UserAppInfo.sqlite");
+                    db.CreateTableAsync<UserAppInfo>();
+                    var v = new List<UserAppInfo>();
+                    v.Add(new UserAppInfo
+                    {
+                        Id = 0,
+                        userId = "0",
+                        login = "0",
+                        password = "0",
+                        translate = "eng",
+                        loging = "0"
+                    });
+                    db.InsertAllAsync(v);
+                }
+                UserSetting.lang = db.GetAsync<UserAppInfo>(0).Result.translate;
             }
-            UserSetting.lang = db.GetAsync<UserAppInfo>(0).Result.translate;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
