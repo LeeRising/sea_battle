@@ -13,6 +13,7 @@ namespace Morskoy_boy
 {
     public partial class GameF : MaterialForm
     {
+        PictureBox bufferPb = new PictureBox();
         int x1, x2, x3, x4;
         string getPbName;
         bool mb = false; //Нажатость левой кнопки мыши
@@ -22,19 +23,19 @@ namespace Morskoy_boy
             InitializeComponent();
             using(var v = File.OpenRead("app\\ships\\Simple\\_1.png"))
             {
-                _1Pb.Image = Image.FromStream(v);
+                _1Pb.BackgroundImage = Image.FromStream(v);
             }
             using (var v = File.OpenRead("app\\ships\\Simple\\_2.png"))
             {
-                _2Pb.Image = Image.FromStream(v);
+                _2Pb.BackgroundImage = Image.FromStream(v);
             }
             using (var v = File.OpenRead("app\\ships\\Simple\\_3.png"))
             {
-                _3Pb.Image = Image.FromStream(v);
+                _3Pb.BackgroundImage = Image.FromStream(v);
             }
             using (var v = File.OpenRead("app\\ships\\Simple\\_4.png"))
             {
-                _4Pb.Image = Image.FromStream(v);
+                _4Pb.BackgroundImage = Image.FromStream(v);
             }
             x1 = 4;
             x2 = 3;
@@ -46,10 +47,41 @@ namespace Morskoy_boy
             x4countL.Text = x4.ToString() + " x:";
             groundBuilt();
 
-            _1Pb.Click += delegate { };
-            //_1Pb.MouseMove += delegate { };
-            //_1Pb.MouseDown += delegate { };
+            _1Pb.Click += (sender,e)=> 
+            {
+                getPbName = _1Pb.Name;
+                CreateBufferPb();
+            };
+            _2Pb.Click += delegate
+            {
+                getPbName = _2Pb.Name;
+                CreateBufferPb();
+            };
+            _3Pb.Click += delegate
+            {
+                getPbName = _3Pb.Name;
+                CreateBufferPb();
+            };
+            _4Pb.Click += delegate
+            {
+                getPbName = _4Pb.Name;
+                CreateBufferPb();
+            };
 
+        }
+        void CreateBufferPb()
+        {
+            bufferPb.Name = getPbName + "buffer";
+            bufferPb.BackgroundImageLayout = ImageLayout.Stretch;
+            bufferPb.BackgroundImage = Controls[getPbName].BackgroundImage;
+            bufferPb.Location = Controls[getPbName].Location;
+            bufferPb.Size = Controls[getPbName].Size;
+            Controls.Add(bufferPb);
+            Controls[bufferPb.Name].BringToFront();
+            Controls[bufferPb.Name].Focus();
+            bufferPb.MouseUp += Ships_MouseUp;
+            bufferPb.MouseDown += Ships_MouseDown;
+            bufferPb.MouseMove += Ships_MouseMove;
         }
         void groundBuilt()
         {
@@ -66,57 +98,61 @@ namespace Morskoy_boy
                         groundCells[i, j].BackgroundImage = Image.FromStream(f);
                     }
                     groundCells[i, j].Size = new Size(32, 32);
-                    groundCells[i, j].Location = new Point(i * 32 + 38, j * 32 + 52);
-                    groundPanel.Controls.Add(groundCells[i, j]);
+                    groundCells[i, j].Location = new Point(i * 32 + 50, j * 32 + 128);
+                    Controls.Add(groundCells[i, j]);
                 }
             }
-            groundPanel.Controls.Add(new PictureBox
+            Controls.Add(new PictureBox
             {
                 Name = "LettersPb",
                 BackgroundImageLayout = ImageLayout.Stretch,
-                Size = new Size(320, 32),
-                Location = new Point(38, 20)
+                Size = new Size(320, 30),
+                Location = new Point(50, 96)
             });
-            groundPanel.Controls.Add(new PictureBox
+            Controls.Add(new PictureBox
             {
                 Name = "NumsPb",
                 BackgroundImageLayout = ImageLayout.Stretch,
-                Size = new Size(32, 320),
-                Location = new Point(6, 52)
+                Size = new Size(34, 318),
+                Location = new Point(18, 129)
             });
             using (var f = File.OpenRead("app\\ships\\Simple\\Letters.png"))
             {
-                groundPanel.Controls["LettersPb"].BackgroundImage = Image.FromStream(f);
+                Controls["LettersPb"].BackgroundImage = Image.FromStream(f);
             }
             using (var f = File.OpenRead("app\\ships\\Simple\\Nums.png"))
             {
-                groundPanel.Controls["NumsPb"].BackgroundImage = Image.FromStream(f);
+                Controls["NumsPb"].BackgroundImage = Image.FromStream(f);
             }
+            Controls.Add(groundPanel);
         }
-        private void label1_MouseUp(object sender, MouseEventArgs e)
+        private void Ships_MouseUp(object sender, MouseEventArgs e)
         {
             mb = false;//Неважно какая кнопка была отпущена, сбрасываем нажатость левой кнопки мыши, так проще управлять лейблом ИМХО
             deltaX = 0;// Сбрасываем значения дельта
             deltaY = 0;
+            getPbName = null;
+            Controls.Remove(bufferPb);
+            bufferPb = new PictureBox();
         }
 
 
-        private void label1_MouseMove(object sender, MouseEventArgs e)
+        private void Ships_MouseMove(object sender, MouseEventArgs e)
         {
             if (mb) //Если нажата и удерживается левая кнопка мыши
             {
-                label1.Left = Cursor.Position.X - deltaX; //устанавливаем лейбл в новом месте относительно нового положения курсора экрана
-                label1.Top = Cursor.Position.Y - deltaY;
+                Controls[getPbName + "buffer"].Left = Cursor.Position.X - deltaX; //устанавливаем лейбл в новом месте относительно нового положения курсора экрана
+                Controls[getPbName + "buffer"].Top = Cursor.Position.Y - deltaY;
             }
         }
 
-        private void label1_MouseDown(object sender, MouseEventArgs e)
+        private void Ships_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) //Если нажата левая кнопка мыши
             {
                 mb = true; //Запоминаем статус нажатости
-                deltaX = Cursor.Position.X - label1.Location.X; //Запоминаем значения дельта
-                deltaY = Cursor.Position.Y - label1.Location.Y;
+                deltaX = Cursor.Position.X - Controls[getPbName+ "buffer"].Location.X; //Запоминаем значения дельта
+                deltaY = Cursor.Position.Y - Controls[getPbName + "buffer"].Location.Y;
             }
 
         }

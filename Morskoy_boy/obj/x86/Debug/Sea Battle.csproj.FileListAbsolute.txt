@@ -16,7 +16,6 @@ D:\MyProject\С#\sea_battle\Morskoy_boy\bin\x86\Debug\EntityFramework.SqlServer.
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\x86\Debug\Newtonsoft.Json.xml
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\x86\Debug\System.Data.SQLite.xml
 D:\MyProject\С#\sea_battle\Morskoy_boy\bin\x86\Debug\System.Data.SQLite.dll.config
-D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Sea Battle.csprojResolveAssemblyReference.cache
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.ChatF.resources
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.FriendsF.resources
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.GameF.resources
@@ -31,3 +30,4 @@ D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI.MyControls.
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Sea Battle.csproj.GenerateResource.Cache
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.exe
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.pdb
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Sea Battle.csprojResolveAssemblyReference.cache

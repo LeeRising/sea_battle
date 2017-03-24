@@ -38,10 +38,10 @@
             this.x3countL = new MaterialSkin.Controls.MaterialLabel();
             this.x2countL = new MaterialSkin.Controls.MaterialLabel();
             this.x1countL = new MaterialSkin.Controls.MaterialLabel();
+            this.groundPanel = new System.Windows.Forms.GroupBox();
             this.resetBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.randomBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.startBtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.groundPanel = new System.Windows.Forms.GroupBox();
             this.shipsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._4Pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._3Pb)).BeginInit();
@@ -52,24 +52,21 @@
             // shipsPanel
             // 
             this.shipsPanel.BackColor = System.Drawing.Color.White;
-            this.shipsPanel.Controls.Add(this._4Pb);
-            this.shipsPanel.Controls.Add(this._3Pb);
-            this.shipsPanel.Controls.Add(this._2Pb);
-            this.shipsPanel.Controls.Add(this._1Pb);
             this.shipsPanel.Controls.Add(this.x4countL);
             this.shipsPanel.Controls.Add(this.x3countL);
             this.shipsPanel.Controls.Add(this.x2countL);
             this.shipsPanel.Controls.Add(this.x1countL);
-            this.shipsPanel.Location = new System.Drawing.Point(419, 76);
+            this.shipsPanel.Location = new System.Drawing.Point(389, 76);
             this.shipsPanel.Name = "shipsPanel";
-            this.shipsPanel.Size = new System.Drawing.Size(194, 198);
+            this.shipsPanel.Size = new System.Drawing.Size(198, 198);
             this.shipsPanel.TabIndex = 1;
             this.shipsPanel.TabStop = false;
             this.shipsPanel.Text = "Ships";
             // 
             // _4Pb
             // 
-            this._4Pb.Location = new System.Drawing.Point(44, 152);
+            this._4Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._4Pb.Location = new System.Drawing.Point(430, 227);
             this._4Pb.Name = "_4Pb";
             this._4Pb.Size = new System.Drawing.Size(132, 33);
             this._4Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -78,7 +75,8 @@
             // 
             // _3Pb
             // 
-            this._3Pb.Location = new System.Drawing.Point(44, 107);
+            this._3Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._3Pb.Location = new System.Drawing.Point(430, 183);
             this._3Pb.Name = "_3Pb";
             this._3Pb.Size = new System.Drawing.Size(99, 33);
             this._3Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -87,7 +85,8 @@
             // 
             // _2Pb
             // 
-            this._2Pb.Location = new System.Drawing.Point(44, 65);
+            this._2Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._2Pb.Location = new System.Drawing.Point(430, 140);
             this._2Pb.Name = "_2Pb";
             this._2Pb.Size = new System.Drawing.Size(66, 33);
             this._2Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,7 +95,8 @@
             // 
             // _1Pb
             // 
-            this._1Pb.Location = new System.Drawing.Point(44, 20);
+            this._1Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._1Pb.Location = new System.Drawing.Point(430, 95);
             this._1Pb.Name = "_1Pb";
             this._1Pb.Size = new System.Drawing.Size(33, 33);
             this._1Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,12 +151,22 @@
             this.x1countL.TabIndex = 0;
             this.x1countL.Text = "4 x:";
             // 
+            // groundPanel
+            // 
+            this.groundPanel.BackColor = System.Drawing.Color.White;
+            this.groundPanel.Location = new System.Drawing.Point(12, 76);
+            this.groundPanel.Name = "groundPanel";
+            this.groundPanel.Size = new System.Drawing.Size(368, 380);
+            this.groundPanel.TabIndex = 0;
+            this.groundPanel.TabStop = false;
+            this.groundPanel.Text = "Battle ground";
+            // 
             // resetBtn
             // 
             this.resetBtn.AutoSize = true;
             this.resetBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.resetBtn.Depth = 0;
-            this.resetBtn.Location = new System.Drawing.Point(420, 283);
+            this.resetBtn.Location = new System.Drawing.Point(390, 283);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.resetBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.resetBtn.Name = "resetBtn";
@@ -171,7 +181,7 @@
             this.randomBtn.AutoSize = true;
             this.randomBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.randomBtn.Depth = 0;
-            this.randomBtn.Location = new System.Drawing.Point(496, 283);
+            this.randomBtn.Location = new System.Drawing.Point(466, 283);
             this.randomBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.randomBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.randomBtn.Name = "randomBtn";
@@ -186,7 +196,7 @@
             this.startBtn.AutoSize = true;
             this.startBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.startBtn.Depth = 0;
-            this.startBtn.Location = new System.Drawing.Point(496, 394);
+            this.startBtn.Location = new System.Drawing.Point(466, 394);
             this.startBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.startBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.startBtn.Name = "startBtn";
@@ -196,37 +206,25 @@
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
             // 
-            // groundPanel
-            // 
-            this.groundPanel.BackColor = System.Drawing.Color.White;
-            this.groundPanel.Location = new System.Drawing.Point(12, 76);
-            this.groundPanel.Name = "groundPanel";
-            this.groundPanel.Size = new System.Drawing.Size(400, 400);
-            this.groundPanel.TabIndex = 0;
-            this.groundPanel.TabStop = false;
-            this.groundPanel.Text = "Battle ground";
-            // 
             // GameF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 488);
+            this.ClientSize = new System.Drawing.Size(599, 469);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.randomBtn);
             this.Controls.Add(this.resetBtn);
+            this.Controls.Add(this._1Pb);
+            this.Controls.Add(this._2Pb);
+            this.Controls.Add(this._3Pb);
+            this.Controls.Add(this._4Pb);
             this.Controls.Add(this.shipsPanel);
-            this.Controls.Add(this.groundPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "GameF";
             this.Sizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "VS Bot";
-            this.shipsPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._4Pb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._3Pb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._2Pb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._1Pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,6 +232,7 @@
 
         #endregion
         private System.Windows.Forms.GroupBox shipsPanel;
+        private System.Windows.Forms.GroupBox groundPanel;
         private MaterialSkin.Controls.MaterialFlatButton resetBtn;
         private MaterialSkin.Controls.MaterialFlatButton randomBtn;
         private MaterialSkin.Controls.MaterialFlatButton startBtn;
@@ -245,6 +244,5 @@
         private MaterialSkin.Controls.MaterialLabel x3countL;
         private MaterialSkin.Controls.MaterialLabel x2countL;
         private MaterialSkin.Controls.MaterialLabel x1countL;
-        private System.Windows.Forms.GroupBox groundPanel;
     }
 }
