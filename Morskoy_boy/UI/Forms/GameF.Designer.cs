@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameF));
             this.shipsPanel = new System.Windows.Forms.GroupBox();
-            this._4Pb = new System.Windows.Forms.PictureBox();
-            this._3Pb = new System.Windows.Forms.PictureBox();
-            this._2Pb = new System.Windows.Forms.PictureBox();
-            this._1Pb = new System.Windows.Forms.PictureBox();
             this.x4countL = new MaterialSkin.Controls.MaterialLabel();
             this.x3countL = new MaterialSkin.Controls.MaterialLabel();
             this.x2countL = new MaterialSkin.Controls.MaterialLabel();
             this.x1countL = new MaterialSkin.Controls.MaterialLabel();
+            this._4Pb = new System.Windows.Forms.PictureBox();
+            this._3Pb = new System.Windows.Forms.PictureBox();
+            this._2Pb = new System.Windows.Forms.PictureBox();
+            this._1Pb = new System.Windows.Forms.PictureBox();
             this.groundPanel = new System.Windows.Forms.GroupBox();
             this.resetBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.randomBtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -62,46 +62,6 @@
             this.shipsPanel.TabIndex = 1;
             this.shipsPanel.TabStop = false;
             this.shipsPanel.Text = "Ships";
-            // 
-            // _4Pb
-            // 
-            this._4Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._4Pb.Location = new System.Drawing.Point(430, 227);
-            this._4Pb.Name = "_4Pb";
-            this._4Pb.Size = new System.Drawing.Size(132, 33);
-            this._4Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this._4Pb.TabIndex = 7;
-            this._4Pb.TabStop = false;
-            // 
-            // _3Pb
-            // 
-            this._3Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._3Pb.Location = new System.Drawing.Point(430, 183);
-            this._3Pb.Name = "_3Pb";
-            this._3Pb.Size = new System.Drawing.Size(99, 33);
-            this._3Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this._3Pb.TabIndex = 6;
-            this._3Pb.TabStop = false;
-            // 
-            // _2Pb
-            // 
-            this._2Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._2Pb.Location = new System.Drawing.Point(430, 140);
-            this._2Pb.Name = "_2Pb";
-            this._2Pb.Size = new System.Drawing.Size(66, 33);
-            this._2Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this._2Pb.TabIndex = 5;
-            this._2Pb.TabStop = false;
-            // 
-            // _1Pb
-            // 
-            this._1Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._1Pb.Location = new System.Drawing.Point(430, 95);
-            this._1Pb.Name = "_1Pb";
-            this._1Pb.Size = new System.Drawing.Size(33, 33);
-            this._1Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this._1Pb.TabIndex = 4;
-            this._1Pb.TabStop = false;
             // 
             // x4countL
             // 
@@ -151,6 +111,46 @@
             this.x1countL.TabIndex = 0;
             this.x1countL.Text = "4 x:";
             // 
+            // _4Pb
+            // 
+            this._4Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._4Pb.Location = new System.Drawing.Point(430, 227);
+            this._4Pb.Name = "_4Pb";
+            this._4Pb.Size = new System.Drawing.Size(132, 33);
+            this._4Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._4Pb.TabIndex = 7;
+            this._4Pb.TabStop = false;
+            // 
+            // _3Pb
+            // 
+            this._3Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._3Pb.Location = new System.Drawing.Point(430, 183);
+            this._3Pb.Name = "_3Pb";
+            this._3Pb.Size = new System.Drawing.Size(99, 33);
+            this._3Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._3Pb.TabIndex = 6;
+            this._3Pb.TabStop = false;
+            // 
+            // _2Pb
+            // 
+            this._2Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._2Pb.Location = new System.Drawing.Point(430, 140);
+            this._2Pb.Name = "_2Pb";
+            this._2Pb.Size = new System.Drawing.Size(66, 33);
+            this._2Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._2Pb.TabIndex = 5;
+            this._2Pb.TabStop = false;
+            // 
+            // _1Pb
+            // 
+            this._1Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._1Pb.Location = new System.Drawing.Point(430, 95);
+            this._1Pb.Name = "_1Pb";
+            this._1Pb.Size = new System.Drawing.Size(33, 33);
+            this._1Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._1Pb.TabIndex = 4;
+            this._1Pb.TabStop = false;
+            // 
             // groundPanel
             // 
             this.groundPanel.BackColor = System.Drawing.Color.White;
@@ -193,15 +193,14 @@
             // 
             // startBtn
             // 
-            this.startBtn.AutoSize = true;
             this.startBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.startBtn.Depth = 0;
-            this.startBtn.Location = new System.Drawing.Point(466, 394);
+            this.startBtn.Location = new System.Drawing.Point(399, 367);
             this.startBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.startBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.startBtn.Name = "startBtn";
             this.startBtn.Primary = false;
-            this.startBtn.Size = new System.Drawing.Size(55, 36);
+            this.startBtn.Size = new System.Drawing.Size(188, 36);
             this.startBtn.TabIndex = 4;
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
@@ -225,6 +224,11 @@
             this.Sizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "VS Bot";
+            this.shipsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._4Pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._3Pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._2Pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._1Pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

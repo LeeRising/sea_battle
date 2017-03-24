@@ -11,8 +11,10 @@ namespace Morskoy_boy
         [STAThread]
         static void Main()
         {
+            UI.LoadingScreen.SplashScreen.ShowSplashScreen();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            UI.LoadingScreen.SplashScreen.CloseForm();
             Application.Run(new GameF());
         }
     }
