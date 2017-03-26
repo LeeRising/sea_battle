@@ -34,7 +34,7 @@ namespace Morskoy_boy.Engine
                         groundCells[i, j].BackgroundImage = Image.FromStream(f1);
                     }
                     groundCells[i, j].Size = new Size(32, 32);
-                    groundCells[i, j].Location = new Point(i * 32 + 50, j * 32 + 128);
+                    groundCells[i, j].Location = new Point(i * 28 + 47, j * 28 + 128);
                     f.Controls.Add(groundCells[i, j]);
                 }
             }
@@ -42,14 +42,14 @@ namespace Morskoy_boy.Engine
             {
                 Name = "LettersPb",
                 BackgroundImageLayout = ImageLayout.Stretch,
-                Size = new Size(320, 30),
-                Location = new Point(50, 96)
+                Size = new Size(280, 30),
+                Location = new Point(50, 98)
             });
             f.Controls.Add(new PictureBox
             {
                 Name = "NumsPb",
                 BackgroundImageLayout = ImageLayout.Stretch,
-                Size = new Size(34, 318),
+                Size = new Size(30, 280),
                 Location = new Point(18, 129)
             });
             using (var f1 = File.OpenRead("app\\ships\\Simple\\Letters.png"))

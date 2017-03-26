@@ -56,9 +56,9 @@
             this.shipsPanel.Controls.Add(this.x3countL);
             this.shipsPanel.Controls.Add(this.x2countL);
             this.shipsPanel.Controls.Add(this.x1countL);
-            this.shipsPanel.Location = new System.Drawing.Point(389, 76);
+            this.shipsPanel.Location = new System.Drawing.Point(374, 75);
             this.shipsPanel.Name = "shipsPanel";
-            this.shipsPanel.Size = new System.Drawing.Size(198, 198);
+            this.shipsPanel.Size = new System.Drawing.Size(185, 198);
             this.shipsPanel.TabIndex = 1;
             this.shipsPanel.TabStop = false;
             this.shipsPanel.Text = "Ships";
@@ -114,9 +114,9 @@
             // _4Pb
             // 
             this._4Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._4Pb.Location = new System.Drawing.Point(430, 227);
+            this._4Pb.Location = new System.Drawing.Point(415, 228);
             this._4Pb.Name = "_4Pb";
-            this._4Pb.Size = new System.Drawing.Size(132, 33);
+            this._4Pb.Size = new System.Drawing.Size(118, 30);
             this._4Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this._4Pb.TabIndex = 7;
             this._4Pb.TabStop = false;
@@ -124,9 +124,9 @@
             // _3Pb
             // 
             this._3Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._3Pb.Location = new System.Drawing.Point(430, 183);
+            this._3Pb.Location = new System.Drawing.Point(415, 184);
             this._3Pb.Name = "_3Pb";
-            this._3Pb.Size = new System.Drawing.Size(99, 33);
+            this._3Pb.Size = new System.Drawing.Size(92, 30);
             this._3Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this._3Pb.TabIndex = 6;
             this._3Pb.TabStop = false;
@@ -134,9 +134,9 @@
             // _2Pb
             // 
             this._2Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._2Pb.Location = new System.Drawing.Point(430, 140);
+            this._2Pb.Location = new System.Drawing.Point(415, 141);
             this._2Pb.Name = "_2Pb";
-            this._2Pb.Size = new System.Drawing.Size(66, 33);
+            this._2Pb.Size = new System.Drawing.Size(58, 30);
             this._2Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this._2Pb.TabIndex = 5;
             this._2Pb.TabStop = false;
@@ -144,9 +144,9 @@
             // _1Pb
             // 
             this._1Pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._1Pb.Location = new System.Drawing.Point(430, 95);
+            this._1Pb.Location = new System.Drawing.Point(415, 96);
             this._1Pb.Name = "_1Pb";
-            this._1Pb.Size = new System.Drawing.Size(33, 33);
+            this._1Pb.Size = new System.Drawing.Size(30, 30);
             this._1Pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this._1Pb.TabIndex = 4;
             this._1Pb.TabStop = false;
@@ -156,7 +156,7 @@
             this.groundPanel.BackColor = System.Drawing.Color.White;
             this.groundPanel.Location = new System.Drawing.Point(12, 76);
             this.groundPanel.Name = "groundPanel";
-            this.groundPanel.Size = new System.Drawing.Size(368, 380);
+            this.groundPanel.Size = new System.Drawing.Size(335, 348);
             this.groundPanel.TabIndex = 0;
             this.groundPanel.TabStop = false;
             this.groundPanel.Text = "Battle ground";
@@ -166,7 +166,7 @@
             this.resetBtn.AutoSize = true;
             this.resetBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.resetBtn.Depth = 0;
-            this.resetBtn.Location = new System.Drawing.Point(390, 283);
+            this.resetBtn.Location = new System.Drawing.Point(375, 282);
             this.resetBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.resetBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.resetBtn.Name = "resetBtn";
@@ -181,7 +181,7 @@
             this.randomBtn.AutoSize = true;
             this.randomBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.randomBtn.Depth = 0;
-            this.randomBtn.Location = new System.Drawing.Point(466, 283);
+            this.randomBtn.Location = new System.Drawing.Point(436, 282);
             this.randomBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.randomBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.randomBtn.Name = "randomBtn";
@@ -193,23 +193,24 @@
             // 
             // startBtn
             // 
+            this.startBtn.AutoSize = true;
             this.startBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.startBtn.Depth = 0;
-            this.startBtn.Location = new System.Drawing.Point(399, 367);
+            this.startBtn.Location = new System.Drawing.Point(451, 355);
             this.startBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.startBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.startBtn.Name = "startBtn";
-            this.startBtn.Primary = false;
-            this.startBtn.Size = new System.Drawing.Size(188, 36);
+            this.startBtn.Primary = true;
+            this.startBtn.Size = new System.Drawing.Size(55, 36);
             this.startBtn.TabIndex = 4;
             this.startBtn.Text = "Start";
-            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.UseVisualStyleBackColor = false;
             // 
             // GameF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 469);
+            this.ClientSize = new System.Drawing.Size(574, 431);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.randomBtn);
             this.Controls.Add(this.resetBtn);
