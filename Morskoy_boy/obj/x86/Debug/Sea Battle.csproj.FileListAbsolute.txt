@@ -32,3 +32,35 @@ D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.exe
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.pdb
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI.LoadingScreen.SplashScreen.resources
 D:\MyProject\С#\sea_battle\Morskoy_boy\obj\x86\Debug\Sea Battle.csprojResolveAssemblyReference.cache
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\Morskoy_boy.exe.config
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\Morskoy_boy.exe
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\Morskoy_boy.pdb
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\EntityFramework.dll
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\EntityFramework.SqlServer.dll
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\MetroFramework.dll
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\MetroFramework.Fonts.dll
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\System.Data.SQLite.dll
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\System.Data.SQLite.EF6.dll
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\System.Data.SQLite.Linq.dll
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\EntityFramework.xml
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\EntityFramework.SqlServer.xml
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\Newtonsoft.Json.xml
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\System.Data.SQLite.xml
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\bin\x86\Debug\System.Data.SQLite.dll.config
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Sea Battle.csprojResolveAssemblyReference.cache
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.ChatF.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.FriendsF.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.GameF.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.GameHistoryF.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.LoginF.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.MainF.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.Properties.Resources.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.RegisterF.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.SettingF.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI.Dialogs.MyMessageBox.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI.LoadingScreen.SplashScreen.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI.MyControls.ChatMessages.resources
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Sea Battle.csproj.GenerateResource.Cache
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.exe
+C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.pdb
