@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Morskoy_boy.Engine;
+using System.Runtime.InteropServices;
 
 namespace Morskoy_boy
 {
@@ -76,6 +77,52 @@ namespace Morskoy_boy
         PictureBox bufferPb;
         bool mb = false;
         int deltaX, deltaY;
+        Graphics g;
+
+        [DllImport("user32")]
+        private static extern IntPtr GetWindowDC(IntPtr hwnd);
+        protected void MarkerDrawer(Color c)
+        {
+            IntPtr hdc = GetWindowDC(this.Handle);
+            using (g = Graphics.FromHdc(hdc))
+            {
+                using (Pen p = new Pen(c, 5))
+                {
+                    Point[] points =
+                        {
+                        Controls[getPbName].Location,
+                            new Point(Controls[getPbName].Location.X,Controls[getPbName].Location.Y+10),
+                        Controls[getPbName].Location,
+                            new Point(Controls[getPbName].Location.X+10,Controls[getPbName].Location.Y)
+                        };
+                    g.DrawLines(p, points);
+                    Point[] points1 =
+                    {
+                            new Point(Controls[getPbName].Location.X, Controls[getPbName].Location.Y+Controls[getPbName].Size.Height),
+                            new Point(Controls[getPbName].Location.X, Controls[getPbName].Location.Y+Controls[getPbName].Size.Height-10),
+                            new Point(Controls[getPbName].Location.X, Controls[getPbName].Location.Y+Controls[getPbName].Size.Height),
+                            new Point(Controls[getPbName].Location.X+10, Controls[getPbName].Location.Y+Controls[getPbName].Size.Height)
+                        };
+                    g.DrawLines(p, points1);
+                    Point[] points2 =
+                    {
+                            new Point(Controls[getPbName].Location.X+Controls[getPbName].Size.Width, Controls[getPbName].Location.Y),
+                            new Point(Controls[getPbName].Location.X+Controls[getPbName].Size.Width-10, Controls[getPbName].Location.Y),
+                            new Point(Controls[getPbName].Location.X+Controls[getPbName].Size.Width, Controls[getPbName].Location.Y),
+                            new Point(Controls[getPbName].Location.X+Controls[getPbName].Size.Width, Controls[getPbName].Location.Y+10)
+                        };
+                    g.DrawLines(p, points2);
+                    Point[] points3 =
+                    {
+                            new Point(Controls[getPbName].Location.X+Controls[getPbName].Size.Width, Controls[getPbName].Location.Y+Controls[getPbName].Size.Height),
+                            new Point(Controls[getPbName].Location.X+Controls[getPbName].Size.Width, Controls[getPbName].Location.Y+Controls[getPbName].Size.Height-10),
+                            new Point(Controls[getPbName].Location.X+Controls[getPbName].Size.Width, Controls[getPbName].Location.Y+Controls[getPbName].Size.Height),
+                            new Point(Controls[getPbName].Location.X+Controls[getPbName].Size.Width-10, Controls[getPbName].Location.Y+Controls[getPbName].Size.Height)
+                        };
+                    g.DrawLines(p, points3);
+                }
+            }
+        }
         public void CreateBufferPb(int x)
         {
             if (x > 0)
@@ -88,6 +135,7 @@ namespace Morskoy_boy
                 bufferPb.Size = Controls[getPbName].Size;
                 Controls.Add(bufferPb);
                 Controls[bufferPb.Name].BringToFront();
+                MarkerDrawer(Color.Red);
                 bufferPb.MouseUp += Ships_MouseUp;
                 bufferPb.MouseDown += Ships_MouseDown;
                 bufferPb.MouseMove += Ships_MouseMove;
@@ -140,6 +188,7 @@ namespace Morskoy_boy
                 mb = true;
                 deltaX = Cursor.Position.X - Controls[shipname].Location.X;
                 deltaY = Cursor.Position.Y - Controls[shipname].Location.Y;
+                Controls[shipname].BringToFront();
             }
         }
         public void Ships_MouseEnter(object sender, EventArgs e)
@@ -151,6 +200,7 @@ namespace Morskoy_boy
         {
             if (bufferPb.Location == Controls[getPbName].Location)
             {
+                MarkerDrawer(Color.White);
                 Controls.Remove(bufferPb);
                 switch (x_11)
                 {

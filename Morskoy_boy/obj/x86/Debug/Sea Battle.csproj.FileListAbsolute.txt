@@ -64,3 +64,16 @@ C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI
 C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Sea Battle.csproj.GenerateResource.Cache
 C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.exe
 C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.pdb
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.ChatF.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.FriendsF.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.GameF.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.GameHistoryF.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.LoginF.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.MainF.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.Properties.Resources.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.RegisterF.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.SettingF.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI.Dialogs.MyMessageBox.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI.LoadingScreen.SplashScreen.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Morskoy_boy.UI.MyControls.ChatMessages.resources
+D:\MyProject\С#\seaBattle\Morskoy_boy\obj\x86\Debug\Sea Battle.csproj.GenerateResource.Cache
