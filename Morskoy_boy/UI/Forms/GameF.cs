@@ -179,12 +179,15 @@ namespace Morskoy_boy
             {
                 Controls[shipname].Left = Cursor.Position.X - deltaX;
                 Controls[shipname].Top = Cursor.Position.Y - deltaY;
+
+                label1.Text = Cursor.Position.X.ToString() + " " + Cursor.Position.Y.ToString();
             }
         }
         public void Ships_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
+                shipsPanel.Refresh();
                 mb = true;
                 deltaX = Cursor.Position.X - Controls[shipname].Location.X;
                 deltaY = Cursor.Position.Y - Controls[shipname].Location.Y;
@@ -224,6 +227,7 @@ namespace Morskoy_boy
             }
             shipname = string.Empty;
         }
+
     }
     #endregion
 }

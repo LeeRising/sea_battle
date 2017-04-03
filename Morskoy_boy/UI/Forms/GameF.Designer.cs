@@ -42,6 +42,7 @@
             this.resetBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.randomBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.startBtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.shipsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._4Pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._3Pb)).BeginInit();
@@ -206,11 +207,21 @@
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(525, 406);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "label1";
+            // 
             // GameF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 431);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.randomBtn);
             this.Controls.Add(this.resetBtn);
@@ -249,5 +260,6 @@
         private MaterialSkin.Controls.MaterialLabel x3countL;
         private MaterialSkin.Controls.MaterialLabel x2countL;
         private MaterialSkin.Controls.MaterialLabel x1countL;
+        private System.Windows.Forms.Label label1;
     }
 }
