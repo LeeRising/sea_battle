@@ -7,9 +7,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 using System.Windows.Forms;
 using Morskoy_boy.Engine;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace Morskoy_boy
 {
@@ -123,6 +125,38 @@ namespace Morskoy_boy
                 }
             }
         }
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            bufferPb.MouseUp -= Ships_MouseUp;
+            bufferPb.MouseDown -= Ships_MouseDown;
+            bufferPb.MouseMove -= Ships_MouseMove;
+            bufferPb.MouseEnter -= Ships_MouseEnter;
+            bufferPb.MouseLeave -= Ships_MouseLive;
+        }
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            bufferPb.MouseUp -= Ships_MouseUp;
+            bufferPb.MouseDown -= Ships_MouseDown;
+            bufferPb.MouseMove -= Ships_MouseMove;
+            bufferPb.MouseEnter -= Ships_MouseEnter;
+            bufferPb.MouseLeave -= Ships_MouseLive;
+            x1 = 4;
+            x2 = 3;
+            x3 = 2;
+            x4 = 1;
+            x1countL.Text = x1.ToString() + " x:";
+            x2countL.Text = x2.ToString() + " x:";
+            x3countL.Text = x3.ToString() + " x:";
+            x4countL.Text = x4.ToString() + " x:";
+            Regex regex = new Regex(@"\d[_]\d[Pbbuffer]+");
+            foreach (var v in Controls.OfType<PictureBox>())
+            {
+                if (regex.IsMatch(v.Name))
+                    Controls.Remove(v);
+            }
+            shipsPanel.Refresh();
+        }
+
         public void CreateBufferPb(int x)
         {
             if (x > 0)
@@ -180,7 +214,8 @@ namespace Morskoy_boy
                 Controls[shipname].Left = Cursor.Position.X - deltaX;
                 Controls[shipname].Top = Cursor.Position.Y - deltaY;
 
-                label1.Text = Cursor.Position.X.ToString() + " " + Cursor.Position.Y.ToString();
+                //label1.Text = Cursor.Position.X.ToString() + " " + Cursor.Position.Y.ToString();
+                label1.Text = Controls[shipname].Name;
             }
         }
         public void Ships_MouseDown(object sender, MouseEventArgs e)
@@ -201,7 +236,7 @@ namespace Morskoy_boy
         }
         public void Ships_MouseLive(object sender, EventArgs e)
         {
-            if (bufferPb.Location == Controls[getPbName].Location)
+            if (Controls[shipname].Location == Controls[getPbName].Location)
             {
                 MarkerDrawer(Color.White);
                 Controls.Remove(bufferPb);

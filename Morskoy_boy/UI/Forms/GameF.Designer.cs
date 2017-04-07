@@ -176,6 +176,7 @@
             this.resetBtn.TabIndex = 2;
             this.resetBtn.Text = "Reset";
             this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // randomBtn
             // 
@@ -206,11 +207,12 @@
             this.startBtn.TabIndex = 4;
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = false;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(525, 406);
+            this.label1.Location = new System.Drawing.Point(448, 409);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 8;
