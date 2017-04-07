@@ -15,7 +15,7 @@ namespace Morskoy_boy
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //UI.LoadingScreen.SplashScreen.CloseForm();
-            Application.Run(new UI.LoadingScreen.SplashScreen());
+            Application.Run(new GameF());
         }
     }
 }
