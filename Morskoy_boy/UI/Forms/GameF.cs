@@ -12,6 +12,7 @@ namespace Morskoy_boy
 {
     public partial class GameF : MaterialForm
     {
+
         int x1, x2, x3, x4, x_11;
         string getPbName, shipname;
         public GameF()
