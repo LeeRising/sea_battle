@@ -154,6 +154,7 @@ namespace Morskoy_boy
                 if (regex.IsMatch(v.Name))
                     Controls.Remove(v);
             }
+            Refresh();
             shipsPanel.Refresh();
         }
 
@@ -214,8 +215,7 @@ namespace Morskoy_boy
                 Controls[shipname].Left = Cursor.Position.X - deltaX;
                 Controls[shipname].Top = Cursor.Position.Y - deltaY;
 
-                //label1.Text = Cursor.Position.X.ToString() + " " + Cursor.Position.Y.ToString();
-                label1.Text = Controls[shipname].Name;
+                label1.Text = Cursor.Position.X.ToString() + " " + Cursor.Position.Y.ToString();
             }
         }
         public void Ships_MouseDown(object sender, MouseEventArgs e)
@@ -227,6 +227,13 @@ namespace Morskoy_boy
                 deltaX = Cursor.Position.X - Controls[shipname].Location.X;
                 deltaY = Cursor.Position.Y - Controls[shipname].Location.Y;
                 Controls[shipname].BringToFront();
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                int _wid = Controls[shipname].Size.Width;
+                int _hei = Controls[shipname].Size.Height;
+                Controls[shipname].Size = new Size(_hei, _wid);
+                Controls[shipname].BackgroundImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
             }
         }
         public void Ships_MouseEnter(object sender, EventArgs e)
@@ -260,9 +267,12 @@ namespace Morskoy_boy
                 x3countL.Text = x3.ToString() + " x:";
                 x4countL.Text = x4.ToString() + " x:";
             }
+            else
+            {
+
+            }
             shipname = string.Empty;
         }
-
     }
     #endregion
 }
