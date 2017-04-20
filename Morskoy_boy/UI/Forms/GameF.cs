@@ -127,6 +127,8 @@ namespace Morskoy_boy
             bufferPb.MouseMove -= Ships_MouseMove;
             bufferPb.MouseEnter -= Ships_MouseEnter;
             bufferPb.MouseLeave -= Ships_MouseLive;
+            
+
         }
         private void resetBtn_Click(object sender, EventArgs e)
         {
@@ -202,6 +204,25 @@ namespace Morskoy_boy
             mb = false;
             deltaX = 0;
             deltaY = 0;
+
+            Controls[shipname].SendToBack();
+            Controls[shipname].Location = GetChildAtPoint(Controls[shipname].Location).Location;
+            //Regex reg = new Regex(@"[groundCell]+\d\d");
+            //foreach (var v in Controls.OfType<PictureBox>())
+            //{
+            //    if (reg.IsMatch(v.Name))
+            //    {
+            //        if (v.Location == GetChildAtPoint(p).Location)
+            //        {
+            //            Controls[shipname].Location = v.Location;
+            //        }
+            //        else
+            //        {
+
+            //        }
+            //    }
+            //}
+            Controls[shipname].BringToFront();
         }
         public void Ships_MouseMove(object sender, MouseEventArgs e)
         {
@@ -210,7 +231,7 @@ namespace Morskoy_boy
                 Controls[shipname].Left = Cursor.Position.X - deltaX;
                 Controls[shipname].Top = Cursor.Position.Y - deltaY;
 
-                label1.Text = Cursor.Position.X.ToString() + " " + Cursor.Position.Y.ToString();
+                label1.Text = Controls[shipname].Location.X.ToString() + " " + Controls[shipname].Location.Y.ToString();
             }
         }
         public void Ships_MouseDown(object sender, MouseEventArgs e)
@@ -261,10 +282,6 @@ namespace Morskoy_boy
                 x2countL.Text = x2.ToString() + " x:";
                 x3countL.Text = x3.ToString() + " x:";
                 x4countL.Text = x4.ToString() + " x:";
-            }
-            else
-            {
-
             }
             shipname = string.Empty;
         }

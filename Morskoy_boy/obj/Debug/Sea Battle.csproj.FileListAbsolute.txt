@@ -211,3 +211,5 @@ C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.UI.MyC
 C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csproj.GenerateResource.Cache
 C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.exe
 C:\Users\LeeRising\Documents\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.pdb
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Sea Battle.csprojResolveAssemblyReference.cache
+D:\MyProject\С#\sea_battle\Morskoy_boy\obj\Debug\Morskoy_boy.UI.LoadingScreen.SplashScreen.resources

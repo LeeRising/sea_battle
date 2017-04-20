@@ -14,12 +14,8 @@ namespace Morskoy_boy.Engine
     {
         public static char[] BattleGround  { get;private set; }
         static PictureBox bufferPb = new PictureBox();
-        static Form ContextForm;
-        static string PbName;
-        static bool mb = false; //Нажатость левой кнопки мыши
-        static int deltaX, deltaY; //Некоторая условная разность координат курсора относительно экрана и позиции объекта относительно границ формы-владельца
 
-        public static void groundBuilt(Form f)
+        public static void groundBuilt(Form f)//add string ships model
         {
             PictureBox[,] groundCells = new PictureBox[10, 10];
             for (int i = 0; i < 10; i++)
@@ -34,7 +30,7 @@ namespace Morskoy_boy.Engine
                         groundCells[i, j].BackgroundImage = Image.FromStream(f1);
                     }
                     groundCells[i, j].Size = new Size(32, 32);
-                    groundCells[i, j].Location = new Point(i * 28 + 47, j * 28 + 128);
+                    groundCells[i, j].Location = new Point(i * 30 + 47, j * 30 + 128);
                     f.Controls.Add(groundCells[i, j]);
                 }
             }
@@ -59,51 +55,6 @@ namespace Morskoy_boy.Engine
             using (var f1 = File.OpenRead("app\\ships\\Simple\\Nums.png"))
             {
                 f.Controls["NumsPb"].BackgroundImage = Image.FromStream(f1);
-            }
-        }
-        public static void CreateBufferPb(Form f,string getPbName)
-        {
-            ContextForm = f;
-            PbName = getPbName;
-            bufferPb.Name = getPbName + "buffer";
-            bufferPb.BackgroundImageLayout = ImageLayout.Stretch;
-            bufferPb.BackgroundImage = f.Controls[getPbName].BackgroundImage;
-            bufferPb.Location = f.Controls[getPbName].Location;
-            bufferPb.Size = f.Controls[getPbName].Size;
-            f.Controls.Add(bufferPb);
-            f.Controls[bufferPb.Name].BringToFront();
-            f.Controls[bufferPb.Name].Focus();
-            bufferPb.MouseUp += Ships_MouseUp;
-            bufferPb.MouseDown += Ships_MouseDown;
-            bufferPb.MouseMove += Ships_MouseMove;
-        }
-        public static void Ships_MouseUp(object sender, MouseEventArgs e)
-        {
-            mb = false;//Неважно какая кнопка была отпущена, сбрасываем нажатость левой кнопки мыши, так проще управлять лейблом ИМХО
-            deltaX = 0;// Сбрасываем значения дельта
-            deltaY = 0;
-            PbName = null;
-            ContextForm.Controls.Remove(bufferPb);
-            bufferPb = new PictureBox();
-        }
-
-
-        public static void Ships_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mb) //Если нажата и удерживается левая кнопка мыши
-            {
-                ContextForm.Controls[PbName + "buffer"].Left = Cursor.Position.X - deltaX; //устанавливаем лейбл в новом месте относительно нового положения курсора экрана
-                ContextForm.Controls[PbName + "buffer"].Top = Cursor.Position.Y - deltaY;
-            }
-        }
-
-        public static void Ships_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left) //Если нажата левая кнопка мыши
-            {
-                mb = true; //Запоминаем статус нажатости
-                deltaX = Cursor.Position.X - ContextForm.Controls[PbName + "buffer"].Location.X; //Запоминаем значения дельта
-                deltaY = Cursor.Position.Y - ContextForm.Controls[PbName + "buffer"].Location.Y;
             }
         }
     }
