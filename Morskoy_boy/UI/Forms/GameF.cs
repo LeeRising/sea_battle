@@ -14,10 +14,14 @@ namespace Morskoy_boy
     {
         int x1, x2, x3, x4, x_11;
         string getPbName, shipname;
-        public GameF()
+        PictureBox bufferPb;
+        bool mb = false;
+        int deltaX, deltaY;
+        Graphics g;
+        Regex pbbuffregex = new Regex(@"\d[_]\d[Pbbuffer]+");
+
+        public void DrawShipsPanel()
         {
-            InitializeComponent();
-            #region Draw Ships Panel
             using (var v = File.OpenRead("app\\ships\\Simple\\_1.png"))
             {
                 _1Pb.BackgroundImage = Image.FromStream(v);
@@ -34,6 +38,12 @@ namespace Morskoy_boy
             {
                 _4Pb.BackgroundImage = Image.FromStream(v);
             }
+        }
+        public GameF()
+        {
+            InitializeComponent();
+            #region Draw Ships Panel
+            DrawShipsPanel();
             x1 = 4;
             x2 = 3;
             x3 = 2;
@@ -71,10 +81,6 @@ namespace Morskoy_boy
                 CreateBufferPb(x4);
             };
         }
-        PictureBox bufferPb;
-        bool mb = false;
-        int deltaX, deltaY;
-        Graphics g;
 
         [DllImport("user32")]
         private static extern IntPtr GetWindowDC(IntPtr hwnd);
@@ -120,45 +126,11 @@ namespace Morskoy_boy
                 }
             }
         }
-        private void startBtn_Click(object sender, EventArgs e)
-        {
-            bufferPb.MouseUp -= Ships_MouseUp;
-            bufferPb.MouseDown -= Ships_MouseDown;
-            bufferPb.MouseMove -= Ships_MouseMove;
-            bufferPb.MouseEnter -= Ships_MouseEnter;
-            bufferPb.MouseLeave -= Ships_MouseLive;
-            
-
-        }
-        private void resetBtn_Click(object sender, EventArgs e)
-        {
-            bufferPb.MouseUp -= Ships_MouseUp;
-            bufferPb.MouseDown -= Ships_MouseDown;
-            bufferPb.MouseMove -= Ships_MouseMove;
-            bufferPb.MouseEnter -= Ships_MouseEnter;
-            bufferPb.MouseLeave -= Ships_MouseLive;
-            x1 = 4;
-            x2 = 3;
-            x3 = 2;
-            x4 = 1;
-            x1countL.Text = x1.ToString() + " x:";
-            x2countL.Text = x2.ToString() + " x:";
-            x3countL.Text = x3.ToString() + " x:";
-            x4countL.Text = x4.ToString() + " x:";
-            Regex regex = new Regex(@"\d[_]\d[Pbbuffer]+");
-            foreach (var v in Controls.OfType<PictureBox>())
-            {
-                if (regex.IsMatch(v.Name))
-                    Controls.Remove(v);
-            }
-            Refresh();
-            shipsPanel.Refresh();
-        }
-
         public void CreateBufferPb(int x)
         {
             if (x > 0)
             {
+                DrawShipsPanel();
                 bufferPb = new PictureBox();
                 bufferPb.Name = shipname = x.ToString() + getPbName + "buffer";
                 bufferPb.BackgroundImageLayout = ImageLayout.Stretch;
@@ -198,6 +170,68 @@ namespace Morskoy_boy
                 x4countL.Text = x4.ToString() + " x:";
             }
         }
+        public void BufferDelete()
+        {
+            MarkerDrawer(Color.White);
+            Controls.Remove(bufferPb);
+            switch (x_11)
+            {
+                case 1:
+                    if (x1 <= 4 && x1 < 5)
+                        x1++;
+                    break;
+                case 2:
+                    if (x2 <= 3 && x2 < 4)
+                        x2++;
+                    break;
+                case 3:
+                    if (x3 <= 2 && x3 < 3)
+                        x3++;
+                    break;
+                case 4:
+                    if (x4 <= 1 && x4 < 2)
+                        x4++;
+                    break;
+            }
+            x1countL.Text = x1.ToString() + " x:";
+            x2countL.Text = x2.ToString() + " x:";
+            x3countL.Text = x3.ToString() + " x:";
+            x4countL.Text = x4.ToString() + " x:";
+        }
+
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            bufferPb.MouseUp -= Ships_MouseUp;
+            bufferPb.MouseDown -= Ships_MouseDown;
+            bufferPb.MouseMove -= Ships_MouseMove;
+            bufferPb.MouseEnter -= Ships_MouseEnter;
+            bufferPb.MouseLeave -= Ships_MouseLive;
+
+
+        }
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            bufferPb.MouseUp -= Ships_MouseUp;
+            bufferPb.MouseDown -= Ships_MouseDown;
+            bufferPb.MouseMove -= Ships_MouseMove;
+            bufferPb.MouseEnter -= Ships_MouseEnter;
+            bufferPb.MouseLeave -= Ships_MouseLive;
+            x1 = 4;
+            x2 = 3;
+            x3 = 2;
+            x4 = 1;
+            x1countL.Text = x1.ToString() + " x:";
+            x2countL.Text = x2.ToString() + " x:";
+            x3countL.Text = x3.ToString() + " x:";
+            x4countL.Text = x4.ToString() + " x:";
+            foreach (var v in Controls.OfType<PictureBox>())
+            {
+                if (pbbuffregex.IsMatch(v.Name))
+                    Controls.Remove(v);
+            }
+            shipsPanel.Refresh();
+        }
+
         #region ShipsMouseEvent
         public void Ships_MouseUp(object sender, MouseEventArgs e)
         {
@@ -205,24 +239,69 @@ namespace Morskoy_boy
             deltaX = 0;
             deltaY = 0;
 
-            Controls[shipname].SendToBack();
-            Controls[shipname].Location = GetChildAtPoint(Controls[shipname].Location).Location;
-            //Regex reg = new Regex(@"[groundCell]+\d\d");
-            //foreach (var v in Controls.OfType<PictureBox>())
-            //{
-            //    if (reg.IsMatch(v.Name))
-            //    {
-            //        if (v.Location == GetChildAtPoint(p).Location)
-            //        {
-            //            Controls[shipname].Location = v.Location;
-            //        }
-            //        else
-            //        {
+            try
+            {
+                Controls[shipname].SendToBack();
+                Controls[shipname].Location = GetChildAtPoint(new Point(Controls[shipname].Location.X + 10, Controls[shipname].Location.Y + 10)).Location;
+                for (int i = 10; i <= 32; i++)
+                {
+                    for (int j = 10; j <= 32; j++)
+                    {
+                        if (pbbuffregex.IsMatch(GetChildAtPoint(new Point(Controls[shipname].Location.X - i, Controls[shipname].Location.Y - j)).Name))
+                        {
+                            BufferDelete();
+                            return;
+                        }
+                    }
+                }
+                for (int i = 10; i <= 32; i++)
+                {
+                    for (int j = 10; j <= 32; j++)
+                    {
+                        if (pbbuffregex.IsMatch(GetChildAtPoint(new Point(Controls[shipname].Location.X + i, Controls[shipname].Location.Y + j)).Name))
+                        {
+                            BufferDelete();
+                            return;
+                        }
+                    }
+                }
+                for (int i = 10; i <= 32; i++)
+                {
+                    for (int j = 10; j <= 32; j++)
+                    {
+                        if (pbbuffregex.IsMatch(GetChildAtPoint(new Point(Controls[shipname].Location.X + i, Controls[shipname].Location.Y - j)).Name))
+                        {
+                            BufferDelete();
+                            return;
+                        }
+                    }
+                }
+                for (int i = 10; i <= 32; i++)
+                {
+                    for (int j = 10; j <= 32; j++)
+                    {
+                        if (pbbuffregex.IsMatch(GetChildAtPoint(new Point(Controls[shipname].Location.X - i, Controls[shipname].Location.Y + j)).Name))
+                        {
+                            BufferDelete();
+                            return;
+                        }
+                    }
+                }
+                if ((Controls[shipname].Location.X < 50 | Controls[shipname].Location.Y < 130) ||
+                    (Controls[shipname].Location.X > 370 | Controls[shipname].Location.Y > 450) ||
+                    (Controls[shipname].Location.X + Controls[shipname].Size.Width >= 402 | Controls[shipname].Location.Y + Controls[shipname].Size.Height >= 482))
+                    BufferDelete();
+                Controls[shipname].BringToFront();
+            }
+            catch (Exception)
+            {
+                BufferDelete();
+            }
 
-            //        }
-            //    }
-            //}
-            Controls[shipname].BringToFront();
+            if (x1 == 0 && x4 == 0 && x3 == 0 && x4 == 0)
+                startBtn.Enabled = true;
+            else
+                startBtn.Enabled = false;
         }
         public void Ships_MouseMove(object sender, MouseEventArgs e)
         {
@@ -230,8 +309,6 @@ namespace Morskoy_boy
             {
                 Controls[shipname].Left = Cursor.Position.X - deltaX;
                 Controls[shipname].Top = Cursor.Position.Y - deltaY;
-
-                label1.Text = Controls[shipname].Location.X.ToString() + " " + Controls[shipname].Location.Y.ToString();
             }
         }
         public void Ships_MouseDown(object sender, MouseEventArgs e)
@@ -259,29 +336,16 @@ namespace Morskoy_boy
         }
         public void Ships_MouseLive(object sender, EventArgs e)
         {
-            if (Controls[shipname].Location == Controls[getPbName].Location)
+            try
             {
-                MarkerDrawer(Color.White);
-                Controls.Remove(bufferPb);
-                switch (x_11)
+                if (Controls[shipname].Location == Controls[getPbName].Location)
                 {
-                    case 1:
-                        x1++;
-                        break;
-                    case 2:
-                        x2++;
-                        break;
-                    case 3:
-                        x3++;
-                        break;
-                    case 4:
-                        x4++;
-                        break;
+                    BufferDelete();
                 }
-                x1countL.Text = x1.ToString() + " x:";
-                x2countL.Text = x2.ToString() + " x:";
-                x3countL.Text = x3.ToString() + " x:";
-                x4countL.Text = x4.ToString() + " x:";
+            }
+            catch (Exception)
+            {
+
             }
             shipname = string.Empty;
         }
